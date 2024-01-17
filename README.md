@@ -1,6 +1,6 @@
 # fast-delivery-src
 
-## Last Mile Logistics - Delivery Management Application
+## Fast Delivery - Delivery Management Application
 
 # Project Description
 
