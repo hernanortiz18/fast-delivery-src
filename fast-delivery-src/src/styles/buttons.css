@@ -1,0 +1,84 @@
+.greenButton {
+  width: 270px;
+  height: 30px;
+  padding: 8px 22px;
+  background-color: rgba(0, 234, 119, 1);
+  color: rgba(61, 29, 243, 1);
+  border-radius: 15px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  font-family: "Poppins";
+  letter-spacing: 0.15px;
+}
+
+.greenButton:hover {
+  background-color: rgb(2, 208, 108);
+}
+
+.transparentButton1 {
+  width: 270px;
+  height: 30px;
+  padding: 8px 22px;
+  background-color: transparent;
+  color: rgba(255, 255, 255, 1);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 234, 119, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  font-family: "Poppins";
+  letter-spacing: 0.15px;
+}
+
+.transparentButton2 {
+  width: 270px;
+  height: 30px;
+  padding: 8px 22px;
+  background-color: transparent;
+  color: rgba(61, 29, 243, 1);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 234, 119, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  font-family: "Poppins";
+  letter-spacing: 0.15px;
+}
+
+.link1 {
+  width: fit-content;
+  color: rgba(255, 255, 255, 1);
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  font-family: "Poppins";
+  font-weight: 300;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15px;
+}
+
+.link2 {
+  width: fit-content;
+  color: rgba(61, 29, 243, 1);
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  font-family: "Poppins";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  text-transform: initial;
+  letter-spacing: 0.15px;
+}

@@ -1,0 +1,41 @@
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon-container {
+  position: absolute;
+  left: 15px; 
+  display: flex;
+  align-items: center;
+  pointer-events: none; 
+}
+
+input {
+  width: 300px;
+  height: 35px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-left: 2.5rem;
+  border: 0.5px solid rgba(255, 255, 255, 1);
+  border-radius: 10px;
+  color: rgba(255, 255, 255, 1);
+  background-color: transparent;
+  line-height: 24px;
+  font-family: "Poppins";
+  font-size: 14px;
+}
+
+.showPswBtn {
+  font-family: "Poppins";
+  font-size: 12px;
+  margin-top: 0;
+  margin-left: 5px;
+  text-decoration: underline;
+  color: rgba(255, 255, 255, 1);
+}
+
+.showPswBtn:hover {
+  cursor: pointer;
+}
