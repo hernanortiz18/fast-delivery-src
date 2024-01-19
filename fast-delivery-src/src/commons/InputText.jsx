@@ -2,6 +2,7 @@ import React from "react";
 import "../styles/input.css";
 
 function InputText({
+  className,
   placeholder,
   name,
   value = "",
@@ -9,7 +10,6 @@ function InputText({
   disabled = false,
   type = "text",
 }) {
-
   const handleChange = (e) => {
     if (type === "tel") {
       const newValue = e.target.value;
@@ -22,6 +22,7 @@ function InputText({
   };
   return (
     <input
+      className={className}
       placeholder={placeholder}
       name={name}
       type={type}

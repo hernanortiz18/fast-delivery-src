@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/input.css";
-import UserIcon from "@/components/UserIcon";
+// import "../styles/input.css";
 
 function InputEmail({
+  className,
   placeholder,
   name,
   value = "",
@@ -13,19 +13,15 @@ function InputEmail({
     if (onChange) onChange(e);
   };
   return (
-    <div className="input-container">
-      <span className="icon-container">
-        <UserIcon />
-      </span>
-      <input
-        placeholder={placeholder}
-        name={name}
-        type="email"
-        value={value}
-        disabled={disabled}
-        onChange={handleChange}
-      />
-    </div>
+    <input
+      className={className}
+      placeholder={placeholder}
+      name={name}
+      type="email"
+      value={value}
+      disabled={disabled}
+      onChange={handleChange}
+    />
   );
 }
 
