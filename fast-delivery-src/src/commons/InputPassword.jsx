@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import "../styles/input.css";
 import PswIcon from "@/components/PswIcon";
+import PswVisibleIcon from "@/components/PswVisibleIcon";
+import PswNoVisibleIcon from "@/components/PswNoVisibleIcon";
 
 function InputPassword({
+  className,
   placeholder,
   name,
   value,
@@ -21,10 +24,8 @@ function InputPassword({
   return (
     <div>
       <div className="input-container">
-        <span className="icon-container">
-          <PswIcon />
-        </span>
         <input
+        className={className}
           placeholder={placeholder}
           name={name}
           type={showPassword ? "text" : "password"}
@@ -32,11 +33,22 @@ function InputPassword({
           onChange={handleChange}
           disabled={disabled}
         />
+        <span className="showPswIcon-container">
+          {showPassword ? (
+            <button className="showPswBtn" onClick={togglePasswordVisibility}>
+              <PswVisibleIcon />
+            </button>
+          ) : (
+            <button className="showPswBtn" onClick={togglePasswordVisibility}>
+              <PswNoVisibleIcon />
+            </button>
+          )}
+        </span>
       </div>
 
-      <p className="showPswBtn" onClick={togglePasswordVisibility}>
+      {/* <p className="showPswBtn" onClick={togglePasswordVisibility}>
         Show Password
-      </p>
+      </p> */}
     </div>
   );
 }

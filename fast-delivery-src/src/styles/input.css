@@ -6,13 +6,20 @@
 
 .icon-container {
   position: absolute;
-  left: 15px; 
+  left: 15px;
   display: flex;
   align-items: center;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
-input {
+.showPswIcon-container {
+  position: absolute;
+  right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.inputBlue {
   width: 300px;
   height: 35px;
   margin-top: 8px;
@@ -27,7 +34,22 @@ input {
   font-size: 14px;
 }
 
-.showPswBtn {
+.inputWhite {
+  width: 300px;
+  height: 35px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  padding-left: 2.5rem;
+  border: 0.5px solid rgba(61, 29, 243, 1);
+  border-radius: 10px;
+  color: rgba(61, 29, 243, 1);
+  background-color: transparent;
+  line-height: 24px;
+  font-family: "Poppins";
+  font-size: 14px;
+}
+
+.showPswBtnWhite {
   font-family: "Poppins";
   font-size: 12px;
   margin-top: 0;
@@ -36,6 +58,6 @@ input {
   color: rgba(255, 255, 255, 1);
 }
 
-.showPswBtn:hover {
+.showPswBtnWhite:hover {
   cursor: pointer;
 }
