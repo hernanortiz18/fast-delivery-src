@@ -22,8 +22,7 @@
 .inputBlue {
   width: 300px;
   height: 35px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin: 5px;
   padding-left: 2.5rem;
   border: 0.5px solid rgba(255, 255, 255, 1);
   border-radius: 10px;
@@ -35,11 +34,10 @@
 }
 
 .inputWhite {
-  width: 300px;
+  width: 270px;
   height: 35px;
-  margin-top: 8px;
-  margin-bottom: 8px;
-  padding-left: 2.5rem;
+  margin: 5px;
+  padding-left: 1rem;
   border: 0.5px solid rgba(61, 29, 243, 1);
   border-radius: 10px;
   color: rgba(61, 29, 243, 1);
