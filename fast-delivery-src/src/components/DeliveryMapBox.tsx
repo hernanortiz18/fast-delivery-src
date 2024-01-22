@@ -17,7 +17,7 @@ function DeliveryMapBox() {
       </div>
       <div className="boxStyle">
         <div className="mapContainer">
-
+    
         </div>
         <div style={{display: "flex", flexDirection: "column", }}>
           <div className="deliveryMapInfo"><p style={{fontWeight: "bold"}}>Destino: ​ </p><p> Amenabar 2100, CABA</p></div>
