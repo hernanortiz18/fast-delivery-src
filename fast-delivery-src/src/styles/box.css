@@ -41,6 +41,10 @@
   color: #3d1df3;
 }
 
+.arrowIcon:hover{
+  cursor: pointer;
+}
+
 .title {
   font-weight: bold;
   font-size: 16px;
