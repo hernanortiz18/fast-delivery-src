@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import Logo from "@/components/Logo";
 import Login from "@/components/Login";
-import Navbar from "@/commons/Navbar";
 
 export default function Home() {
   return (
