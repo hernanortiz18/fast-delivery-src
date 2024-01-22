@@ -1,6 +1,15 @@
 import React from "react";
 import "../styles/input.css";
 
+type InputTextProps = {
+  className: string
+  placeholder: string
+  name: string
+  value: string
+  onChange:  React.ChangeEventHandler<HTMLInputElement>
+  disabled: boolean
+  type: string
+}
 function InputText({
   className,
   placeholder,
@@ -9,8 +18,8 @@ function InputText({
   onChange,
   disabled = false,
   type = "text",
-}) {
-  const handleChange = (e) => {
+}: InputTextProps) {
+  const handleChange =  (e: React.ChangeEvent<HTMLInputElement>): void => {
     if (type === "tel") {
       const newValue = e.target.value;
       if (/^\d*$/.test(newValue)) {

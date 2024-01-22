@@ -1,6 +1,5 @@
 import React from "react";
 import "@/styles/buttons.css";
-import Navbar from "@/commons/Navbar";
 
 function page() {
   return (

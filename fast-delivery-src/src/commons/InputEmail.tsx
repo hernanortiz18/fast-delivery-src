@@ -1,6 +1,14 @@
 import React from "react";
 // import "../styles/input.css";
 
+type InputEmailProps = {
+  className: string
+  placeholder: string
+  name: string
+  value: string
+  onChange: React.ChangeEventHandler<HTMLInputElement>
+  disabled: boolean
+}
 function InputEmail({
   className,
   placeholder,
@@ -8,8 +16,8 @@ function InputEmail({
   value = "",
   onChange,
   disabled = false,
-}) {
-  const handleChange = (e) => {
+}: InputEmailProps) {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) onChange(e);
   };
   return (

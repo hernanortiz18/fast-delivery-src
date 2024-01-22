@@ -6,7 +6,6 @@ import "../styles/buttons.css";
 import "../styles/input.css";
 import UserIcon from "./UserIcon";
 import PswIcon from "./PswIcon";
-import PswVisibleIcon from "./PswVisibleIcon";
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -14,7 +13,7 @@ function Login() {
     password: "",
   });
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   return (
@@ -28,6 +27,7 @@ function Login() {
           placeholder="Email"
           name="email"
           value={formData.email}
+          disabled={false}
           onChange={handleChange}
         />
       </div>
@@ -40,6 +40,7 @@ function Login() {
           placeholder="Password"
           name="password"
           value={formData.password}
+          disabled={false}
           onChange={handleChange}
         />
       </div>
