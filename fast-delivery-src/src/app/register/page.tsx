@@ -1,9 +1,14 @@
-import React from 'react'
+import Navbar from "@/commons/Navbar";
+import CreateAccountBox from "@/components/CreateAccountBox";
+import React from "react";
 
 function page() {
   return (
-    <div>page</div>
-  )
+    <div>
+      <Navbar />
+      <CreateAccountBox />
+    </div>
+  );
 }
 
-export default page
+export default page;

@@ -1,0 +1,53 @@
+.boxStyle {
+  width: 320px;
+  height: fit-content;
+  padding: 20px;
+  padding-top: 50px;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.headerBox {
+  background-color: #c7ffb1;
+  padding: 10px;
+  padding-bottom: 20px;
+  color: #3d1df3;
+  text-align: center;
+  font-size: 18px;
+  height: 60px;
+  width: 320px;
+  display: flex;
+  margin: auto;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+  z-index: 1;
+  top: 10px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.arrowIcon {
+  position: absolute;
+  margin: 10px;
+  margin-left: 0;
+  font-size: 30px;
+  color: #3d1df3;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
