@@ -1,6 +1,6 @@
 import React from "react";
 
-function PswNoVisibleIcon({ className }) {
+function PswNoVisibleIcon({ className }: {className: string}) {
   return (
     <svg
       className={className}

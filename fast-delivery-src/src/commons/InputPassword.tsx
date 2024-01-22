@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import "../styles/input.css";
-import PswIcon from "@/components/PswIcon";
 import PswVisibleIcon from "@/components/PswVisibleIcon";
 import PswNoVisibleIcon from "@/components/PswNoVisibleIcon";
 
+type InputPasswordProps = {
+  className: string
+  placeholder: string
+  name: string
+  value: string
+  onChange: React.ChangeEventHandler<HTMLInputElement>
+  disabled: boolean
+}
 function InputPassword({
   className,
   placeholder,
@@ -11,14 +18,14 @@ function InputPassword({
   value,
   onChange,
   disabled = false,
-}) {
+}: InputPasswordProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) onChange(e);
   };
   return (
@@ -36,19 +43,15 @@ function InputPassword({
         <span className="showPswIcon-container">
           {showPassword ? (
             <button className="showPswBtn" onClick={togglePasswordVisibility}>
-              <PswVisibleIcon />
+              <PswVisibleIcon className={""} />
             </button>
           ) : (
             <button className="showPswBtn" onClick={togglePasswordVisibility}>
-              <PswNoVisibleIcon />
+              <PswNoVisibleIcon className={""} />
             </button>
           )}
         </span>
       </div>
-
-      {/* <p className="showPswBtn" onClick={togglePasswordVisibility}>
-        Show Password
-      </p> */}
     </div>
   );
 }
