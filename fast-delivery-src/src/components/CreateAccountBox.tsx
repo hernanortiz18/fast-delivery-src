@@ -7,6 +7,7 @@ import "../styles/buttons.css";
 import InputText from "@/commons/InputText";
 import InputEmail from "@/commons/InputEmail";
 import InputPassword from "@/commons/InputPassword";
+import CameraAddIcon from "./CameraAddIcon";
 
 function CreateAccountBox() {
   const [formData, setFormData] = useState({
@@ -31,6 +32,11 @@ function CreateAccountBox() {
         </div>
       </div>
       <div className="boxStyle">
+        <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "20px", marginTop: "15px" }}>
+          <div style={{ width: "95px", height: "95px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #3d1df3", borderRadius: "100px" }}>
+            <CameraAddIcon />
+          </div>
+        </div>
         <form className="formContainer">
           <InputText
             className="inputWhite"
@@ -73,7 +79,7 @@ function CreateAccountBox() {
             onChange={handleChange}
           />
           <div
-            style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginTop: "20px" }}
+            style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginTop: "20px", marginBottom: "5px" }}
           >
             <button className="greenButton">Crear</button>
             <button className="link2" >Ya tenés una cuenta?</button>
