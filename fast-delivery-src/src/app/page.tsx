@@ -7,7 +7,6 @@ import Navbar from "@/commons/Navbar";
 export default function Home() {
   return (
     <div>
-      <Navbar />
       <div
       style={{
         display: "flex",

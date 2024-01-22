@@ -44,9 +44,11 @@ function Login() {
           onChange={handleChange}
         />
       </div>
-      <button className="greenButton">Ingresar</button>
-      <button className="transparentButton1">Crear Cuenta</button>
-      <button className="link1">olvidé mi contraseña</button>
+      <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginTop: "20px", alignItems: "center" }}>
+        <button className="greenButton">Ingresar</button>
+        <button className="transparentButton1">Crear Cuenta</button>
+        <button className="link1">olvidé mi contraseña</button>
+      </div>
     </div>
   );
 }
