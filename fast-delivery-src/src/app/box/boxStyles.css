@@ -1,0 +1,30 @@
+.box-dotted-line {
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .box-rectangle {
+    border: 1px solid #3D1DF3;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .box-checkbox {
+    margin-right: 5px;
+    margin-left: 10px;
+  }
+  
+  .box-title {
+    font-weight: bolder;
+  }
+  
+  .box-subtitle {
+    color: #3D1DF3;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+  }
+  
