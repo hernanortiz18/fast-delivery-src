@@ -32,11 +32,13 @@
   line-height: 24px;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
+  font-weight: 400;
 }
 
 .inputBlue::placeholder {
   color: white;
-  opacity: 1;
+  opacity: 0.7;
+  font-weight: 400;
 }
 
 .inputWhite {
@@ -51,12 +53,13 @@
   line-height: 24px;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
-
+  font-weight: 400;
 }
 
 .inputWhite::placeholder {
   color: #3D1DF3;
-  opacity: 1;
+  opacity: 0.7;
+  font-weight: 400;
 }
 
 .showPswBtnWhite {
@@ -70,4 +73,13 @@
 
 .showPswBtnWhite:hover {
   cursor: pointer;
+}
+
+.inputWhite .showPswBtn {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+  margin-top: 0;
+  margin-left: 5px;
+  text-decoration: underline;
+  color: rgba(61, 29, 243, 1);
 }

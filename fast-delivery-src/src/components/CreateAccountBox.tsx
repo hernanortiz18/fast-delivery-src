@@ -28,14 +28,16 @@ function CreateAccountBox() {
       <div className="headerBox">
         <IoArrowBackCircleOutline className="arrowIcon" />
         <div style={{ display: "flex", margin: "auto" }}>
-          <h1 className="title">Creá tu cuenta</h1>
+          <p className="title">Creá tu cuenta</p>
         </div>
       </div>
       <div className="boxStyle">
         <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "20px", marginTop: "15px" }}>
+        <button>
           <div style={{ width: "95px", height: "95px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #3d1df3", borderRadius: "100px" }}>
             <CameraAddIcon />
           </div>
+        </button> 
         </div>
         <form className="formContainer">
           <InputText
@@ -57,7 +59,7 @@ function CreateAccountBox() {
           <InputEmail
             className="inputWhite"
             placeholder="Email"
-            name="Email"
+            name="email"
             value={formData.email}
             disabled={false}
             onChange={handleChange}
@@ -73,7 +75,7 @@ function CreateAccountBox() {
           <InputPassword
             className="inputWhite"
             placeholder="Repetir Contraseña"
-            name="repeatPassword"
+            name="confirmPassword"
             value={formData.confirmPassword}
             disabled={false}
             onChange={handleChange}
@@ -82,7 +84,7 @@ function CreateAccountBox() {
             style={{ display: "flex", flexDirection: "column", gap: "0.5rem", marginTop: "20px", marginBottom: "5px" }}
           >
             <button className="greenButton">Crear</button>
-            <button className="link2" >Ya tenés una cuenta?</button>
+            <button className="link2">¿Ya tenés una cuenta?</button>
             <button className="transparentButton2">Iniciar Sesión</button>
           </div>
         </form>

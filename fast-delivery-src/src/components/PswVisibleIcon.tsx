@@ -3,9 +3,8 @@ import React from "react";
 function PswVisibleIcon({className}: {className: string}) {
   return (
     <svg
-      className={className}
       viewBox="0 0 1024 1024"
-      fill="white"
+      fill={className}
       height="20px"
       width="20px"
     >

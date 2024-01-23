@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
 .greenButton {
   width: 270px;
   height: 35px;
@@ -12,6 +12,7 @@
   justify-content: center;
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.15px;
+  font-weight: 400;
 }
 
 .greenButton:hover {
