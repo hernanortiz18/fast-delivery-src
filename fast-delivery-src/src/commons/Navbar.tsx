@@ -3,6 +3,8 @@ import "../styles/navbar.css";
 import AppIcon from "../components/AppIcon";
 import LogoutIcon from "../components/LogoutIcon";
 
+
+
 function Navbar() {
   return (
     <div className="navbar-container">
