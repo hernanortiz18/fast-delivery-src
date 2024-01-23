@@ -23,7 +23,7 @@ function Box() {
           <h1 className="box-subtitle">¿Cuántos paquetes repartirás hoy?</h1>
           <hr className="box-dotted-line" />
 
-          {/* Primer rectángulo */}
+          
           <div className="box-rectangle">
             <div className="box-checkbox">
               <input type="checkbox" />
@@ -35,7 +35,7 @@ function Box() {
             </div>
           </div>
 
-          {/* Segundo rectángulo */}
+          
           <div className="box-rectangle">
             <div className="box-checkbox">
               <input type="checkbox" />
@@ -47,7 +47,7 @@ function Box() {
             </div>
           </div>
 
-          {/* Tercer rectángulo */}
+
           <div className="box-rectangle">
             <div className="box-checkbox">
               <input type="checkbox" />
@@ -59,7 +59,7 @@ function Box() {
             </div>
           </div>
 
-          {/* Cuarto rectángulo */}
+          
           <div className="box-rectangle">
             <div className="box-checkbox">
               <input type="checkbox" />
