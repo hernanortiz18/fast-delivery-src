@@ -80,7 +80,7 @@ function Box() {
         </div>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginTop: "20px", alignItems: "center" }}>
-        <button style={{fontFamily: 'sans-serif', }} className="greenButton">Iniciar Jornada</button>
+        <button className="greenButton">Iniciar Jornada</button>
       </div>
     </div>
     
