@@ -24,7 +24,7 @@ function CreateAccountBox() {
   };
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", marginTop: "4.5rem" }}
+      style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
     >
       <div className="headerBox">
         <IoArrowBackCircleOutline className="arrowIcon" />
@@ -40,7 +40,7 @@ function CreateAccountBox() {
           </div>
         </button> 
         </div>
-        <form className="formContainer">
+        <div className="formContainer">
           <InputText
             className="inputWhite"
             placeholder="Nombre"
@@ -75,7 +75,7 @@ function CreateAccountBox() {
           />
           <InputPassword
             className="inputWhite"
-            placeholder="Repetir Contraseña"
+            placeholder="Confirmar Contraseña"
             name="confirmPassword"
             value={formData.confirmPassword}
             disabled={false}
@@ -88,7 +88,7 @@ function CreateAccountBox() {
             <button className="link2">¿Ya tenés una cuenta?</button>
             <Link href='/'><button className="transparentButton2">Iniciar Sesión</button></Link>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

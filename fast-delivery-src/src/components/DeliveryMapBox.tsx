@@ -7,7 +7,7 @@ import "../styles/buttons.css";
 function DeliveryMapBox() {
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", marginTop: "4.5rem" }}
+      style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
     >
       <div className="headerBox">
         <IoArrowBackCircleOutline className="arrowIcon" />
