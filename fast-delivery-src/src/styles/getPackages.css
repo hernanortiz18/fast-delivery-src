@@ -28,3 +28,26 @@
     justify-content: center;
   }
   
+  .box-content {
+    color: #3D1DF3;
+    font-size: 15px;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .dottedVerticalLine {
+    border-left: 1px dotted #3D1DF3;
+    height: 30px;
+    margin: 0 10px;
+  }
+
+  input[type="checkbox"]{
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+    display: flex;
+    margin: auto;
+  }
+
+  input[type="checkbox"]:checked{
+    background-color: #c7ffb1;
+  }
