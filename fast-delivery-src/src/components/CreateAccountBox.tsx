@@ -8,6 +8,7 @@ import InputText from "@/commons/InputText";
 import InputEmail from "@/commons/InputEmail";
 import InputPassword from "@/commons/InputPassword";
 import CameraAddIcon from "./CameraAddIcon";
+import Link from "next/link";
 
 function CreateAccountBox() {
   const [formData, setFormData] = useState({
@@ -85,7 +86,7 @@ function CreateAccountBox() {
           >
             <button className="greenButton">Crear</button>
             <button className="link2">¿Ya tenés una cuenta?</button>
-            <button className="transparentButton2">Iniciar Sesión</button>
+            <Link href='/'><button className="transparentButton2">Iniciar Sesión</button></Link>
           </div>
         </form>
       </div>
