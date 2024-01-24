@@ -4,8 +4,8 @@ import InputEmail from "../commons/InputEmail";
 import InputPassword from "../commons/InputPassword";
 import "../styles/buttons.css";
 import "../styles/input.css";
-import UserIcon from "./UserIcon";
-import PswIcon from "./PswIcon";
+import UserIcon from "../assets/UserIcon";
+import PswIcon from "../assets/PswIcon";
 
 function Login() {
   const [formData, setFormData] = useState({

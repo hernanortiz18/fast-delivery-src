@@ -4,10 +4,11 @@ import "../styles/box.css";
 import "../styles/input.css";
 import "../styles/buttons.css";
 
+
 function DeliveryMapBox() {
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", marginTop: "4.5rem" }}
+      style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
     >
       <div className="headerBox">
         <IoArrowBackCircleOutline className="arrowIcon" />
@@ -17,14 +18,14 @@ function DeliveryMapBox() {
       </div>
       <div className="boxStyle">
         <div className="mapContainer">
-    
+
         </div>
-        <div style={{display: "flex", flexDirection: "column", }}>
-          <div className="deliveryMapInfo"><p style={{fontWeight: "bold"}}>Destino: ​ </p><p> Amenabar 2100, CABA</p></div>
-          <div className="deliveryMapInfo"><p style={{fontWeight: "bold"}}>Número de paquete: ​ </p><p> #0A235</p></div>
-          <div className="deliveryMapInfo"><p style={{fontWeight: "bold"}}>Recibe: ​ </p><p> Mauro Bruno</p></div>
+        <div style={{ display: "flex", flexDirection: "column", }}>
+          <div className="deliveryMapInfo"><p className="infoP" style={{ fontWeight: "bolder" }}>Destino: ​ </p><p className="infoP"> Amenabar 2100, CABA</p></div>
+          <div className="deliveryMapInfo"><p className="infoP" style={{ fontWeight: "bolder" }}>Número de paquete: ​ </p><p className="infoP"> #0A235</p></div>
+          <div className="deliveryMapInfo"><p className="infoP" style={{ fontWeight: "bolder" }}>Recibe: ​ </p><p className="infoP"> Mauro Bruno</p></div>
         </div>
-        <button className="greenButton" style={{marginTop: "30px"}}>Finalizar</button>
+        <button className="greenButton" style={{ marginTop: "30px" }}>Finalizar</button>
       </div>
       <div style={{ display: "flex", margin: "15px auto" }}>
         <button className="transparentButton1">Cancelar entrega</button>

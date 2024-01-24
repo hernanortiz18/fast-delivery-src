@@ -7,7 +7,7 @@ import "../styles/buttons.css";
 import InputText from "@/commons/InputText";
 import InputEmail from "@/commons/InputEmail";
 import InputPassword from "@/commons/InputPassword";
-import CameraAddIcon from "./CameraAddIcon";
+import CameraAddIcon from "../assets/CameraAddIcon";
 
 function CreateAccountBox() {
   const [formData, setFormData] = useState({
@@ -23,7 +23,7 @@ function CreateAccountBox() {
   };
   return (
     <div
-      style={{ display: "flex", flexDirection: "column", marginTop: "4.5rem" }}
+      style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
     >
       <div className="headerBox">
         <IoArrowBackCircleOutline className="arrowIcon" />
@@ -33,11 +33,11 @@ function CreateAccountBox() {
       </div>
       <div className="boxStyle">
         <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "20px", marginTop: "15px" }}>
-        <button>
-          <div style={{ width: "95px", height: "95px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #3d1df3", borderRadius: "100px" }}>
-            <CameraAddIcon />
-          </div>
-        </button> 
+          <button>
+            <div style={{ width: "95px", height: "95px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #3d1df3", borderRadius: "100px" }}>
+              <CameraAddIcon />
+            </div>
+          </button>
         </div>
         <form className="formContainer">
           <InputText
