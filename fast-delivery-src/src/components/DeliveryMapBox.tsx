@@ -15,11 +15,11 @@ function DeliveryMapBox() {
           <h1 className="title">Reparto en curso</h1>
         </div>
       </div>
-      <div className="boxStyle">
+      <div className="boxDeliveryMapStyle">
         <div className="mapContainer">
     
         </div>
-        <div style={{display: "flex", flexDirection: "column", }}>
+        <div style={{display: "flex", flexDirection: "column", marginBottom: "20px" }}>
           <div className="deliveryMapInfo"><p style={{fontWeight: "bold"}}>Destino: ​ </p><p> Amenabar 2100, CABA</p></div>
           <div className="deliveryMapInfo"><p style={{fontWeight: "bold"}}>Número de paquete: ​ </p><p> #0A235</p></div>
           <div className="deliveryMapInfo"><p style={{fontWeight: "bold"}}>Recibe: ​ </p><p> Mauro Bruno</p></div>

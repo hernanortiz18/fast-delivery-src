@@ -32,7 +32,7 @@ function CreateAccountBox() {
           <p className="title">Creá tu cuenta</p>
         </div>
       </div>
-      <div className="boxStyle">
+      <div className="boxRegisterStyle">
         <div style={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", marginBottom: "20px", marginTop: "15px" }}>
         <button>
           <div style={{ width: "95px", height: "95px", display: "flex", alignItems: "center", justifyContent: "center", border: "1px solid #3d1df3", borderRadius: "100px" }}>
