@@ -1,16 +1,23 @@
+"use client"
 import React from "react";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import "../styles/box.css";
 import "@/styles/buttons.css";
 import "@/styles/getPackages.css";
+import { useRouter } from "next/navigation";
 
 function GetpackageBox() {
+  const router = useRouter();
+
+  const handleBackButton = () => {
+    router.back();
+  };
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
     >
       <div className="headerBox">
-        <IoArrowBackCircleOutline className="arrowIcon" />
+          <IoArrowBackCircleOutline className="arrowIcon" onClick={handleBackButton}/>
         <div style={{ display: "flex", margin: "auto" }}>
           <h1 className="title box-title">Obtener paquetes</h1>
         </div>
