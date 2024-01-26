@@ -6,8 +6,13 @@
   margin: auto;
   background-color: white;
   border-radius: 10px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   z-index: 2;
+}
+
+.boxDeliveryMapStyle::-webkit-scrollbar {
+  width: 2px; 
 }
 
 .boxGetPackagesStyle {
@@ -30,13 +35,17 @@
   width: 300px;
   height: 495px;
   padding: 15px;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
   margin: auto;
   background-color: white;
   border-radius: 10px;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 2;
+}
+
+.boxRegisterStyle::-webkit-scrollbar {
+  width: 2px; 
 }
 
 .headerBox {
