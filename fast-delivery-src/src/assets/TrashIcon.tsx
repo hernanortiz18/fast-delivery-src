@@ -2,15 +2,14 @@ import React from "react";
 
 function TrashIcon() {
     return (
-        <div>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.11377 4.66667C8.38833 3.88987 9.12915 3.33334 9.99997 3.33334C10.8708 3.33334 11.6116 3.88987 11.8862 4.66667" stroke="#FF062E" stroke-linecap="round" />
-                <path d="M15.6666 6H4.33325" stroke="#FF062E" stroke-linecap="round" />
-                <path d="M14.5556 7.66666L14.2489 12.2661C14.1309 14.036 14.0719 14.921 13.4953 15.4605C12.9186 16 12.0317 16 10.2578 16H9.74223C7.96836 16 7.08142 16 6.50475 15.4605C5.92808 14.921 5.86908 14.036 5.75109 12.2661L5.44446 7.66666" stroke="#FF062E" stroke-linecap="round" />
-                <path d="M8.33331 9.33334L8.66665 12.6667" stroke="#FF062E" stroke-linecap="round" />
-                <path d="M11.6666 9.33334L11.3333 12.6667" stroke="#FF062E" stroke-linecap="round" />
+        <div style={{ marginRight: "15px" }}>
+            <svg width="13" height="15" viewBox="0 0 13 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4.66931 2.36842C4.93579 1.57118 5.65483 1 6.50002 1C7.34522 1 8.06425 1.57118 8.33073 2.36842" stroke="#FF062E" stroke-linecap="round" />
+                <path d="M12 3.73688H1" stroke="#FF062E" stroke-linecap="round" />
+                <path d="M10.9216 5.44739L10.624 10.1678C10.5095 11.9843 10.4522 12.8926 9.89248 13.4463C9.33277 14 8.47193 14 6.75024 14H6.24983C4.52815 14 3.6673 14 3.10759 13.4463C2.54789 12.8926 2.49062 11.9843 2.3761 10.1678L2.07849 5.44739" stroke="#FF062E" stroke-linecap="round" />
+                <path d="M4.88245 7.1579L5.20597 10.5789" stroke="#FF062E" stroke-linecap="round" />
+                <path d="M8.11772 7.1579L7.79419 10.5789" stroke="#FF062E" stroke-linecap="round" />
             </svg>
-
         </div>
     );
 }
