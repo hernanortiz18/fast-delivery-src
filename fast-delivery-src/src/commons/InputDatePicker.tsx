@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import "@/styles/input.css";
+import "@/assets/ArrowIcon";
+import ArrowIcon from "@/assets/ArrowIcon";
 
 type DatePickerProps = {
   className: string;
@@ -15,7 +17,9 @@ const InputDatePicker: React.FC<DatePickerProps> = ({
   name,
   onSelectPicker,
 }) => {
+  const [openCalendar, setOpenCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
+  const pickerRef = useRef<flatpickr.Instance | undefined>(undefined);
 
   useEffect(() => {
     const inputElement = document.getElementById(
@@ -32,21 +36,56 @@ const InputDatePicker: React.FC<DatePickerProps> = ({
           onSelectPicker(selectedDates[0]);
         }
       },
+      onClose: () => {
+        setOpenCalendar(false);
+      },
     });
+
+    pickerRef.current = picker;
+
     return () => {
       picker.destroy();
     };
   }, [name, onSelectPicker, selectedDate]);
+
+  const handleArrowButtonClick = () => {
+    if (pickerRef.current) {
+      if (openCalendar) {
+        pickerRef.current.close();
+        setOpenCalendar(false);
+      } else {
+        pickerRef.current.open();
+        setOpenCalendar(true);
+      }
+    }
+  };
+  const handleInputClick = () => {
+    if (pickerRef.current) {
+      if (openCalendar) {
+        pickerRef.current.close();
+        setOpenCalendar(false);
+      } else {
+        pickerRef.current.open();
+        setOpenCalendar(true);
+      }
+    }
+  };
   return (
     <div>
-      <input
-        type="text"
-        id={name}
-        name={name}
-        className={className}
-        placeholder={placeholder}
-        data-input
-      />
+      <div className="input-container">
+        <input
+          type="text"
+          id={name}
+          name={name}
+          className={className}
+          placeholder={placeholder}
+          data-input
+          onClick={handleInputClick}
+        />
+        <button className="arrow-container" onClick={handleArrowButtonClick}>
+          <ArrowIcon />
+        </button>
+      </div>
     </div>
   );
 };
