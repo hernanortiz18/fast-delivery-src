@@ -1,0 +1,28 @@
+.hi-admin {
+  color: #3d1df3;
+  font-family: "Poppins" sans-serif;
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 700;
+}
+
+.days-order {
+  color: #3d1df3;
+  font-family: "Poppins" sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 400;
+}
+
+.presentation-container {
+  display: flex;
+  gap: 15px;
+  justify-content: start;
+  align-items: center;
+}
+
+.p-container{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
