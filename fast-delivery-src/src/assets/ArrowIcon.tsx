@@ -1,5 +1,8 @@
 import React from "react";
 
+type ArrowIconProps ={
+  className: string
+}
 function ArrowIcon() {
   return (
     <div>

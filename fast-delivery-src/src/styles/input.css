@@ -83,3 +83,11 @@
   text-decoration: underline;
   color: rgba(61, 29, 243, 1);
 }
+
+.arrow-container{
+  position: absolute;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
