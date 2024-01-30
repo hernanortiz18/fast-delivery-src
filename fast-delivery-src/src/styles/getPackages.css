@@ -1,0 +1,70 @@
+.box-dotted-line {
+  border: 0.5px dotted #3d1df3;
+  top: 155px;
+  left: 45px;
+  width: 270px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.box-rectangle {
+  width: 270px;
+  height: 46px;
+  border: 0.5px solid #3d1df3;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.box-checkbox {
+  margin-right: 5px;
+  margin-left: 10px;
+}
+
+.box-title {
+  font-weight: bolder;
+}
+
+.box-subtitle {
+  /* width: 212px;
+  height: 20px; */
+  color: #3d1df3;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  /* top: 128px;
+  left: 74px; */
+}
+
+.box-content {
+  color: #3d1df3;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+}
+
+.dottedVerticalLine {
+  border-left: 0.5px dotted #3d1df3;
+  height: 30px;
+  margin: 0 10px;
+}
+
+.input-checkbox {
+  box-sizing: border-box;
+  display: flex;
+  margin: auto;
+  width: 16px;
+  height: 16px;
+  left: 55px;
+  top: 521px;
+  border: 1px solid #3d1df3;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.input-checkbox:checked {
+  background-color: #c7ffb1;
+}
+

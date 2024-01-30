@@ -4,8 +4,11 @@ import InputEmail from "../commons/InputEmail";
 import InputPassword from "../commons/InputPassword";
 import "../styles/buttons.css";
 import "../styles/input.css";
+
 import UserIcon from "../assets/UserIcon";
 import PswIcon from "../assets/PswIcon";
+import Link from "next/link";
+
 
 function Login() {
   const [formData, setFormData] = useState({
@@ -46,7 +49,7 @@ function Login() {
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginTop: "20px", alignItems: "center" }}>
         <button className="greenButton">Ingresar</button>
-        <button className="transparentButton1">Crear Cuenta</button>
+        <Link href='/register'><button className="transparentButton1">Crear Cuenta</button></Link>
         <button className="link1">olvidé mi contraseña</button>
       </div>
     </div>

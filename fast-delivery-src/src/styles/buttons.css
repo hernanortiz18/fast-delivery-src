@@ -102,6 +102,7 @@
   text-transform: initial;
   letter-spacing: 0.15px;
   margin: auto;
+  pointer-events: none;
 }
 
 .arrowAccordion {

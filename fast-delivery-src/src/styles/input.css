@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 .input-container {
   position: relative;
   display: flex;
@@ -32,7 +32,7 @@
   line-height: 24px;
   font-family: "Poppins", sans-serif;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 .inputBlue::placeholder {
@@ -52,12 +52,12 @@
   background-color: transparent;
   line-height: 24px;
   font-family: "Poppins", sans-serif;
-  font-size: 14px;
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .inputWhite::placeholder {
-  color: #3D1DF3;
+  color: #3d1df3;
   opacity: 0.7;
   font-weight: 400;
 }

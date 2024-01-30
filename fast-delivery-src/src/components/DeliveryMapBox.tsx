@@ -1,21 +1,29 @@
+"use client"
 import React from "react";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import "../styles/box.css";
 import "../styles/input.css";
 import "../styles/buttons.css";
+import { useRouter } from "next/navigation";
 
 
 function DeliveryMapBox() {
+  const router = useRouter();
+
+  const handleBackButton = () => {
+    router.back();
+  };
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
     >
       <div className="headerBox">
-        <IoArrowBackCircleOutline className="arrowIcon" />
+          <IoArrowBackCircleOutline className="arrowIcon" onClick={handleBackButton}/>
         <div style={{ display: "flex", margin: "auto" }}>
           <h1 className="title">Reparto en curso</h1>
         </div>
       </div>
+
       <div className="boxStyle">
         <div className="mapContainer">
 
@@ -26,6 +34,7 @@ function DeliveryMapBox() {
           <div className="deliveryMapInfo"><p className="infoP" style={{ fontWeight: "bolder" }}>Recibe: ​ </p><p className="infoP"> Mauro Bruno</p></div>
         </div>
         <button className="greenButton" style={{ marginTop: "30px" }}>Finalizar</button>
+
       </div>
       <div style={{ display: "flex", margin: "15px auto" }}>
         <button className="transparentButton1">Cancelar entrega</button>

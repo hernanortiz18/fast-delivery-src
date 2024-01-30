@@ -8,7 +8,6 @@ function Box() {
       <Navbar />
       <GetpackageBox />
     </div>
-
   );
 }
 
