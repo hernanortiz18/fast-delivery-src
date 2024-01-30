@@ -18,13 +18,13 @@ function DeliveryMapBox() {
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
     >
       <div className="headerBox">
-          <IoArrowBackCircleOutline className="arrowIcon" onClick={handleBackButton}/>
+        <IoArrowBackCircleOutline className="arrowIcon" onClick={handleBackButton} />
         <div style={{ display: "flex", margin: "auto" }}>
           <h1 className="title">Reparto en curso</h1>
         </div>
       </div>
 
-      <div className="boxStyle">
+      <div className="boxDeliveryMapStyle">
         <div className="mapContainer">
 
         </div>

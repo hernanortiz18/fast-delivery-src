@@ -5,10 +5,10 @@ import "@/styles/input.css";
 import InputEmail from "@/commons/InputEmail";
 import InputText from "@/commons/InputText";
 import InputPassword from "@/commons/InputPassword";
-import PswIcon from "@/components/PswIcon";
-import UserIcon from "@/components/UserIcon";
+import PswIcon from "@/assets/PswIcon";
+import UserIcon from "@/assets/UserIcon";
 
-function page() {
+function Page() {
   const [form, setForm] = useState({
     inputText: "",
     InputEmail: "",
@@ -143,4 +143,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
