@@ -9,7 +9,7 @@ import BoxIcon from "@/assets/BoxIcon";
 import ArrowIcon from "@/assets/ArrowIcon";
 
 function Init() {
-  const [openSection, setOpenSection] = useState(0); // "repatosPendientes" or "historialRepartos"
+  const [openSection, setOpenSection] = useState(0);
 
   const handleClick = (selectedSection: number) => {
     if (openSection === 3 || openSection === selectedSection) {
