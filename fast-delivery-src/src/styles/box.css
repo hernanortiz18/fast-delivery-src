@@ -118,3 +118,22 @@
   background-position: center;
   background-repeat: no-repeat;
 }
+
+.accordion {
+  font-family: "Poppins", sans-serif;
+}
+
+.paquetes {
+  color: #3D1DF3;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+  /* 166.667% */
+}
+
+.infoP {
+  font-family: "Poppins";
+  font-size: 12px;
+}

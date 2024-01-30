@@ -7,7 +7,7 @@ import "../styles/buttons.css";
 import InputText from "@/commons/InputText";
 import InputEmail from "@/commons/InputEmail";
 import InputPassword from "@/commons/InputPassword";
-import CameraAddIcon from "./CameraAddIcon";
+import CameraAddIcon from "../assets/CameraAddIcon";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 
