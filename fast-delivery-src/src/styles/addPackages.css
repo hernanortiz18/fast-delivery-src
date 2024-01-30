@@ -1,0 +1,37 @@
+.box-subtitle2 {
+  /* width: 212px;
+  height: 20px; */
+  color: #3d1df3;
+  font-size: 12px;
+  margin-bottom: 10px;
+  /* top: 128px;
+  left: 74px; */
+}
+
+.inputsContainer{
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.box-dotted-line {
+  border: 0.5px dotted #3d1df3;
+  top: 155px;
+  left: 45px;
+  width: 270px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+.formAddPackages {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* align-items: center; */
+  margin: 5rem auto;
+  
+}
+

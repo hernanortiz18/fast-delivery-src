@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.3",
     "@emotion/styled": "^11.11.0",
+    "flatpickr": "^4.6.13",
     "framer-motion": "^11.0.3",
     "next": "14.0.4",
     "react": "^18",
