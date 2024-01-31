@@ -16,7 +16,7 @@ const DeliveryProfile = () => {
             <div className="headerBox">
                 <IoArrowBackCircleOutline className="arrowIcon"/>
             <div style={{margin:"auto"}}>
-                <h1 className="title">Perfil del repatidor</h1>
+                <h1 className="title">Perfil del repartidor</h1>
             </div>
             </div>
             <div className="boxDeliveryProfileStyle">
@@ -31,7 +31,7 @@ const DeliveryProfile = () => {
                 />
                 </div>
                 <div style={{ display:"flex", flexDirection:"column", width:"80%", marginLeft:"5px"}}>
-                    <h1 style={{fontSize:"14px", fontWeight:"700", color:"#3D1DF3", marginLeft:"5.5px"}}>Hernán Ortiz</h1>
+                    <h1 style={{fontSize:"14px", fontWeight:"700", color:"#3D1DF3", marginLeft:"5.5px", lineHeight:"20px"}}>Hernán Ortiz</h1>
                     <span style={
                         {margin:"5px",backgroundColor:"#C7FFB1", borderRadius:"999px",
                     color:"#3D1DF3", height:"15px",
