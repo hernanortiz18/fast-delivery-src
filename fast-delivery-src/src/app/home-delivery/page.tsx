@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import "../../styles/init.css";
+import "../../styles/homeDelivery.css";
 import "../../styles/input.css";
 import "../../styles/buttons.css";
 import Navbar from "@/commons/Navbar";
