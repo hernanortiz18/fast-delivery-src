@@ -38,12 +38,14 @@ border: 1px;
     border-radius: 20px;
     left: 2px;
     top: 1px;
-    background-color: #00EA77;
+    background-color: #626262;
     transition: .4s;
    }
    
 
    
    input:checked + .slider:before {
-    transform: translateX(10px);
+    transform: translateX(9px);
+    background-color: #00EA77
+    ;
    }

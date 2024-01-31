@@ -12,7 +12,7 @@ const page = () => {
         <>
         <Navbar />
         <div style={{
-            display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"end"
+            display:"flex", flexDirection:"column"
         }}>
         <DeliveryProfile />
         <PendingDeliveries />
