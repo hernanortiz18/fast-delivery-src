@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Logo from "@/components/Logo";
+import Logo from "@/assets/Logo";
 import LoginA from "@/components/LoginAdmin";
 
 function LoginAdmin() {

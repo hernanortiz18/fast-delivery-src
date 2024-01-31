@@ -34,7 +34,7 @@ function AddPackagesBox() {
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
     >
-      <div className="headerBox">
+      <div className="headerBoxProfile">
         <IoArrowBackCircleOutline
           className="arrowIcon"
           onClick={handleBackButton}

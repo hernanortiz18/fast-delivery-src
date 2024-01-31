@@ -14,7 +14,7 @@ function ManageOrdersBox() {
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
     >
-      <div className="headerBox">
+      <div className="headerBoxProfile">
         <div style={{ display: "flex", margin: "auto" }}>
           <p className="title">Gestionar Pedidos</p>
         </div>
