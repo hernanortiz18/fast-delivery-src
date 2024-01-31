@@ -1,13 +1,13 @@
 .accordion {
   font-family: "Poppins";
-  
+
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .accordion-box-top {
-  
+
   width: 300px;
   padding: 15px;
   margin: 17px auto;
@@ -24,19 +24,20 @@
   border-radius: 10px;
   overflow: hidden;
 }
+
 .accordion-comp {
   font-family: "Poppins";
-  
+
   display: flex;
   flex-direction: column;
-  
+
 }
 
 .accordion-box-top-comp {
-  
+
   width: 300px;
   padding: 15px;
-  margin: 17px auto;
+  margin: 10px auto;
   background-color: white;
   border-radius: 10px;
   overflow: hidden;
