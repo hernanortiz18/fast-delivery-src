@@ -27,6 +27,13 @@
   z-index: 2;
 }
 
+.boxGetDetailStyle {
+  width: 270px;
+  height: 240px;
+  padding: 10px;
+  margin: auto;
+  background-color: white;
+}
 .boxDeliveryProfileStyle {
   display: flex;
   flex-direction: row;

@@ -7,6 +7,7 @@ import "@/styles/avatar.css";
 import Avatar from "@/commons/Avatar";
 import CarrouselCalendar from "./CarrouselCalendar";
 import { TfiPlus } from "react-icons/tfi";
+import GetDetail from "./GetDetail";
 
 function ManageOrdersBox() {
   
@@ -36,9 +37,16 @@ function ManageOrdersBox() {
         <div className="carrousel-calendar-container">
           <CarrouselCalendar  />
         </div>
+          <div>
+
+          <div style={{marginBottom: "2 rem"}}>
+          <GetDetail/>
+        </div>
+          </div>
+  
         <button
           className="greenButton"
-          style={{ marginTop: "auto", marginBottom: "10px", fontSize: "12px" }}
+          style={{ marginTop: "auto", marginBottom: "10px", fontSize: "12px", }}
         >
           Nuevo Paquete
           <TfiPlus
