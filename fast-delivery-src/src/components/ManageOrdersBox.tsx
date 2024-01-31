@@ -9,7 +9,7 @@ import CarrouselCalendar from "./CarrouselCalendar";
 import { TfiPlus } from "react-icons/tfi";
 
 function ManageOrdersBox() {
-  const calendarData = ["lun", "mar", "mié", "jue", "vie"];
+  
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
@@ -34,7 +34,7 @@ function ManageOrdersBox() {
           </div>
         </div>
         <div className="carrousel-calendar-container">
-          <CarrouselCalendar calendarData={calendarData} />
+          <CarrouselCalendar  />
         </div>
         <button
           className="greenButton"
