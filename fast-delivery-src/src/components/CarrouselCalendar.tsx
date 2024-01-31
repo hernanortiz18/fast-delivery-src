@@ -2,43 +2,71 @@ import React, { useEffect, useState } from "react";
 import "@/styles/carrouselCalendar.css";
 import DoubleRigthArrow from "@/assets/DoubleRigthArrow";
 import DoubleLeftArrow from "@/assets/DoubleLeftArrow";
+import {
+  addDays,
+  startOfWeek,
+  endOfWeek,
+  eachDayOfInterval,
+  format,
+  isToday,
+} from "date-fns";
+import esLocale from "date-fns/locale/es";
 
-type CalendarCarouselProps = {
-  calendarData: string[];
-};
+type CalendarCarouselProps = {};
 
-function CarrouselCalendar({ calendarData }: CalendarCarouselProps) {
+function CarrouselCalendar() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const daysToShow = 5;
+  const [selectedDay, setSelectedDay] = useState<string | null>(null);
 
   const prevSlide = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+      setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
 
   const nextSlide = () => {
-    const lastSlideIndex = Math.ceil(calendarData.length / daysToShow) - 1;
-
-    if (currentIndex < lastSlideIndex) {
-      setCurrentIndex(currentIndex + 1);
-    }
+    setCurrentIndex((prevIndex) => prevIndex + 1);
   };
 
   const updateCarousel = () => {
-    const offset = -currentIndex * 100;
-    // document.getElementById('carousel-container').style.transform = `translateX(${offset}%)`;
+    const container = document.getElementById("carousel-container");
+
+    if (container !== null) {
+      const offset = -currentIndex * 100;
+      container.style.transform = `translateX(${offset}%)`;
+    } else {
+      console.error(
+        "El elemento con ID 'carousel-container' no fue encontrado."
+      );
+    }
   };
   useEffect(() => {
     updateCarousel();
   }, [currentIndex]);
-  const startDayIndex = currentIndex * daysToShow;
 
-  const visibleDays = calendarData.slice(
+  const getWeekDays = (): string[] => {
+    const currentDate = new Date();
+    const daysInWeek = 5;
+    const weekDays = [];
+
+    for (let i = 0; i < daysInWeek; i++) {
+      const day = addDays(currentDate, i);
+      weekDays.push(day.toISOString()); // Usar el formato ISO para asegurar compatibilidad
+    }
+
+    return weekDays;
+  };
+  const startDayIndex = currentIndex * daysToShow;
+  const visibleDays = getWeekDays().slice(
     startDayIndex,
     startDayIndex + daysToShow
   );
-  const getMonthName = (index: number) => {
+
+  const handleDayClick = (day: string) => {
+    setSelectedDay(day);
+  };
+  const getMonthName = (date: Date) => {
     const months = [
       "Enero",
       "Febrero",
@@ -54,23 +82,28 @@ function CarrouselCalendar({ calendarData }: CalendarCarouselProps) {
       "Diciembre",
     ];
 
-    return months[index];
+    return months[date.getMonth()];
   };
 
   return (
     <div id="carousel-container" className="carouselContainer">
       <div className="calendarCarouselContainer">
-        <div className="monthName">{getMonthName(currentIndex)}</div>
+        <div className="monthName">{getMonthName(new Date())}</div>
         <hr className="box-dotted-line" />
         <div className="calendarCarrousel">
           {visibleDays.map((day, index) => (
-            <div key={index} className="calendarDay">
-              <div className="dayName">{day}</div>
-              <div className="dayNumber">
-                {(index + 1).toString().padStart(2, "0")}
+            <div
+              key={index}
+              className={`calendarDay ${
+                day === selectedDay ? "selected" : ""
+              } ${isToday(new Date(day)) ? "today" : ""}`}
+            >
+              <div className="dayName">
+                {format(new Date(day), "EE", { locale: esLocale })}
               </div>
+              <div className="dayNumber">{format(new Date(day), "dd")}</div>
             </div>
-          ))}{" "}
+          ))}
           <button className="prevBtn" onClick={prevSlide}>
             <DoubleLeftArrow />
           </button>

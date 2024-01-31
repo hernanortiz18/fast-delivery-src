@@ -38,7 +38,7 @@
     "src/components/Login.tsx",
     "src/app/page.tsx",
     "src/app/register/page.tsx"
-  ],
+, "src/components/CalendarComponent.jsx"  ],
   "exclude": [
     "node_modules"
   ]
