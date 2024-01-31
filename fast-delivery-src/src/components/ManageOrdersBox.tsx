@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import "../styles/box.css";
-import "@/styles/manageOrders.css";
+import "../styles/manageOrders.css";
 import "../styles/buttons.css";
 import "@/styles/avatar.css";
 import Avatar from "@/commons/Avatar";
@@ -9,7 +9,7 @@ import CarrouselCalendar from "./CarrouselCalendar";
 import { TfiPlus } from "react-icons/tfi";
 
 function ManageOrdersBox() {
-  
+
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
@@ -34,7 +34,7 @@ function ManageOrdersBox() {
           </div>
         </div>
         <div className="carrousel-calendar-container">
-          <CarrouselCalendar  />
+          <CarrouselCalendar />
         </div>
         <button
           className="greenButton"
