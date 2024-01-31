@@ -2,14 +2,7 @@ import React, { useEffect, useState } from "react";
 import "@/styles/carrouselCalendar.css";
 import DoubleRigthArrow from "@/assets/DoubleRigthArrow";
 import DoubleLeftArrow from "@/assets/DoubleLeftArrow";
-import {
-  addDays,
-  startOfWeek,
-  endOfWeek,
-  eachDayOfInterval,
-  format,
-  isToday,
-} from "date-fns";
+import { addDays, format, isToday, getMonth } from "date-fns";
 import esLocale from "date-fns/locale/es";
 
 type CalendarCarouselProps = {};
@@ -20,48 +13,47 @@ function CarrouselCalendar() {
   const [selectedDay, setSelectedDay] = useState<string | null>(null);
 
   const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevIndex) => prevIndex - 1);
-    }
+    setCurrentIndex((prevIndex) => prevIndex - daysToShow);
   };
 
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => prevIndex + 1);
+    setCurrentIndex((prevIndex) => prevIndex + daysToShow);
   };
 
-  const updateCarousel = () => {
-    const container = document.getElementById("carousel-container");
+  // const updateCarousel = () => {
+  //   const container = document.getElementById("carousel-container");
 
-    if (container !== null) {
-      const offset = -currentIndex * 100;
-      container.style.transform = `translateX(${offset}%)`;
-    } else {
-      console.error(
-        "El elemento con ID 'carousel-container' no fue encontrado."
-      );
-    }
-  };
-  useEffect(() => {
-    updateCarousel();
-  }, [currentIndex]);
+  //   if (container !== null) {
+  //     const offset = -currentIndex * 100;
+  //     container.style.transform = `translateX(${offset}%)`;
+  //   } else {
+  //     console.error(
+  //       "El elemento con ID 'carousel-container' no fue encontrado."
+  //     );
+  //   }
+  // };
+  // useEffect(() => {
+  //   updateCarousel();
+  // }, [currentIndex]);
 
-  const getWeekDays = (): string[] => {
-    const currentDate = new Date();
-    const daysInWeek = 5;
+  const getWeekDays = (
+    startIndex: number
+  ): { day: string; disabled: boolean }[] => {
+    const currentDate = addDays(new Date(), startIndex);
     const weekDays = [];
 
-    for (let i = 0; i < daysInWeek; i++) {
+    for (let i = 0; i < daysToShow; i++) {
       const day = addDays(currentDate, i);
-      weekDays.push(day.toISOString()); // Usar el formato ISO para asegurar compatibilidad
+      const isWeekend = day.getDay() === 0 || day.getDay() === 6; // 0 es domingo, 6 es sábado
+      const disabled = isWeekend;
+
+      weekDays.push({ day: day.toISOString(), disabled });
     }
 
     return weekDays;
   };
-  const startDayIndex = currentIndex * daysToShow;
-  const visibleDays = getWeekDays().slice(
-    startDayIndex,
-    startDayIndex + daysToShow
-  );
+  // const startDayIndex = currentIndex * daysToShow;
+  const visibleDays = getWeekDays(currentIndex);
 
   const handleDayClick = (day: string) => {
     setSelectedDay(day);
@@ -82,26 +74,30 @@ function CarrouselCalendar() {
       "Diciembre",
     ];
 
-    return months[date.getMonth()];
+    return months[getMonth(date)];
   };
-
   return (
     <div id="carousel-container" className="carouselContainer">
       <div className="calendarCarouselContainer">
         <div className="monthName">{getMonthName(new Date())}</div>
         <hr className="box-dotted-line" />
         <div className="calendarCarrousel">
-          {visibleDays.map((day, index) => (
+          {visibleDays.map((dayData, index) => (
             <div
               key={index}
               className={`calendarDay ${
-                day === selectedDay ? "selected" : ""
-              } ${isToday(new Date(day)) ? "today" : ""}`}
+                dayData.day === selectedDay ? "selected" : ""
+              } ${isToday(new Date(dayData.day)) ? "today" : ""} ${
+                dayData.disabled ? "disabled" : ""
+              }`}
+              onClick={() => !dayData.disabled && handleDayClick(dayData.day)}
             >
               <div className="dayName">
-                {format(new Date(day), "EE", { locale: esLocale })}
+                {format(new Date(dayData.day), "EE", { locale: esLocale })}
               </div>
-              <div className="dayNumber">{format(new Date(day), "dd")}</div>
+              <div className="dayNumber">
+                {format(new Date(dayData.day), "dd")}
+              </div>
             </div>
           ))}
           <button className="prevBtn" onClick={prevSlide}>

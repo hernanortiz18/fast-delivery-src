@@ -1,5 +1,4 @@
 import Navbar from "@/commons/Navbar";
-import CalendarComponent from "@/components/CalendarComponent";
 import ManageOrdersBox from "@/components/ManageOrdersBox";
 
 import React from "react";
