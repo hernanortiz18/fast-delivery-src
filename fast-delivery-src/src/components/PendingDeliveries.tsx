@@ -21,9 +21,9 @@ const PendingDeliveries = () => {
   };
 
     return (
-        <div className="accordion">
+        <div className="accordion-comp">
 
-        <div className="accordion-box-top">
+        <div className="accordion-box-top-comp">
 
           <div className="box-title" onClick={() => handleClick(1)}>
             <h1>Repartos Pendientes</h1>

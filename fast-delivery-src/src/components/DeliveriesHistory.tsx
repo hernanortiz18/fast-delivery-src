@@ -17,8 +17,8 @@ const DeliveriesHistory = () =>{
     }
   };
     return(
-<div className="accordion">
-<div className="accordion-box-bottom">
+<div className="accordion-comp">
+<div className="accordion-box-bottom-comp">
 
           <div className="box-title" onClick={() => handleClick(2)}>
             <h1>Historial de Repartos</h1>
