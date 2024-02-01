@@ -91,3 +91,11 @@
   align-items: center;
   justify-content: center;
 }
+ /*estilos del calendar de inputDatePicker*/
+
+ .custom-picker-container {
+  background-color: #3d1df3; /* Fondo del calendario */
+  border: 1px solid #0c0909; /* Borde del calendario */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra del calendario */
+  font-family: "Poppins" sans-serif;
+}

@@ -80,7 +80,7 @@ function CarrouselCalendar() {
     <div id="carousel-container" className="carouselContainer">
       <div className="calendarCarouselContainer">
         <div className="monthName">{getMonthName(new Date())}</div>
-        <hr className="box-dotted-line" />
+        <hr className="box-dotted-line2" />
         <div className="calendarCarrousel">
           {visibleDays.map((dayData, index) => (
             <div

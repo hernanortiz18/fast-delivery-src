@@ -36,6 +36,26 @@
   margin: 0px 2.5px;
 }
 
+.calendarDay2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #fff; /* Ajusta el color de fondo según sea necesario */
+  z-index: 1;
+  width: 41px;
+  height: 50px;
+  border: 0.5px solid #3d1df3;
+  border-radius: 10px;
+  font-family: "Poppins";
+  color: #3d1df3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 .prevBtn,
 .nextBtn {
   width: 16px;
@@ -66,12 +86,21 @@
   width: 95%;
   display: flex;
   justify-content: start;
-  /* margin-left: 10px; */
   font-family: "Poppins" sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: #3d1df3;
   padding: 5px 5px 3px 3px;
+}
+.month {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  font-family: "Poppins" sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #3d1df3;
+  /* padding: 5px 5px 3px 1px; */
 }
 
 .dayName {
@@ -83,9 +112,16 @@
 
 .box-dotted-line {
   border: 0.5px dotted #3d1df3;
+  width: 270px;
+  margin-bottom: 3px;
+}
+.box-dotted-line2 {
+  border: 0.5px dotted #3d1df3;
   width: 250px;
   margin-bottom: 3px;
 }
+
+
 
 .today {
   background-color: #c7ffb1;
