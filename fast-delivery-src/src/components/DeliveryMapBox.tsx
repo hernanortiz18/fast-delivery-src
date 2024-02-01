@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { IoArrowBackCircleOutline } from "react-icons/io5";
 import "../styles/box.css";
 import "../styles/input.css";
 import "../styles/buttons.css";
