@@ -5,6 +5,8 @@ import Image from "next/image";
 import "../styles/box.css";
 import "../styles/switch.css";
 import "../styles/buttons.css";
+import Avatar from '@/commons/Avatar'
+import '@/styles/avatar.css'
 
 import deliveryProfileImage from "../assets/delivery-profile.jpeg";
 import { useRouter } from "next/navigation";
@@ -42,6 +44,7 @@ const DeliveryProfile = () => {
               margin: "",
             }}
           />
+          {/* <Avatar src="/img/hernan.jpeg" className="distributors-profile-avatar"/> */}
         </div>
         <div
           style={{
