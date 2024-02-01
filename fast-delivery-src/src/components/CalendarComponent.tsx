@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "@/styles/carrouselCalendar.css";
+import "../styles/carrouselCalendar.css";
 import { addDays, format, isToday, getMonth } from "date-fns";
 import esLocale from "date-fns/locale/es";
 
@@ -50,14 +50,11 @@ function CalendarComponent() {
     <div id="carousel-container" className="carouselContainer">
       <div className="calendarCarouselContainer">
         <div className="month">{getMonthName(new Date())}</div>
-        <div style={{ display: "flex" }}>
-          <hr className="box-dotted-line" />
-          <div className="calendarDay2">
-            <div className="dayName">
-              {format(new Date(), "EE", { locale: esLocale })}
-            </div>
-            <div className="dayNumber">{format(new Date(), "dd")}</div>
+        <div className="calendarDay2">
+          <div className="dayName">
+            {format(new Date(), "EE", { locale: esLocale })}
           </div>
+          <div className="dayNumber">{format(new Date(), "dd")}</div>
         </div>
       </div>
     </div>

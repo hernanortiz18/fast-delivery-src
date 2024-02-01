@@ -1,0 +1,104 @@
+"use client";
+import React from "react";
+import "../styles/deliveryDrivers.css";
+import { useRouter } from "next/navigation";
+import ArrowBack from "@/assets/ArrowBack";
+import BoxIcon from "@/assets/BoxIcon";
+import "../styles/init.css";
+import TrashIcon from "@/assets/TrashIcon";
+import SeeMoreArrow from "@/assets/SeeMoreArrow";
+import CalendarComponent from "./CalendarComponent";
+import Avatar from "@/commons/Avatar";
+
+function DeliveryDrivers() {
+    const router = useRouter();
+
+    const handleBackButton = () => {
+        router.back();
+    };
+    return (
+        <div
+            style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
+        >
+            <div className="header-box">
+                <div className="arrow-back">
+                    <ArrowBack onClick={handleBackButton} />
+                </div>
+                <h1 className="header-box-title">Repartidores</h1>
+            </div>
+            <div className="white-box">
+                <CalendarComponent />
+
+                <div className="driver-container">
+                    <div className="percentage-name-container">
+                        <div className="percentage">
+
+                        </div>
+                        <div className="name-tag-container">
+                            <p className="name">Farid</p>
+                            <div className="status-tag course">
+                                en curso
+                            </div>
+                        </div>
+                    </div>
+                    <div className="profile-picture-container">
+                    </div>
+                </div>
+
+                <div className="driver-container">
+                    <div className="percentage-name-container">
+                        <div className="percentage">
+
+                        </div>
+                        <div className="name-tag-container">
+                            <p className="name">Luciana</p>
+                            <div className="status-tag delivered">
+                                entregado
+                            </div>
+                        </div>
+                    </div>
+                    <div className="profile-picture-container">
+                    </div>
+                </div>
+
+                <div className="driver-container">
+                    <div className="percentage-name-container">
+                        <div className="percentage">
+
+                        </div>
+                        <div className="name-tag-container">
+                            <p className="name">Dario</p>
+                            <div className="status-tag course">
+                                en curso
+                            </div>
+                        </div>
+                    </div>
+                    <div className="profile-picture-container">
+                    </div>
+                </div>
+
+                <div className="driver-container">
+                    <div className="percentage-name-container">
+                        <div className="percentage">
+
+                        </div>
+                        <div className="name-tag-container">
+                            <p className="name">Santiago</p>
+                            <div className="status-tag disabled">
+                                Deshabilitado
+                            </div>
+                        </div>
+                    </div>
+                    <div className="profile-picture-container">
+                    </div>
+                </div>
+
+                <div className="see-more-arrow-container">
+                    <SeeMoreArrow />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default DeliveryDrivers;

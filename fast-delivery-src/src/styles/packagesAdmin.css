@@ -50,19 +50,7 @@
     flex-direction: row;
 }
 
-.month {
-    color: #3D1DF3;
-    font-family: Poppins;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 15px;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    border-bottom: 1px dotted #3D1DF3;
-    height: fit-content;
-    width: 229px;
-}
+
 
 .calendarDay {
     width: 41px;
