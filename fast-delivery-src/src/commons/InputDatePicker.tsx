@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
+import "flatpickr/dist/l10n/es";
 import "@/styles/input.css";
 import "@/assets/ArrowIcon";
 import ArrowIcon from "@/assets/ArrowIcon";
@@ -30,6 +31,13 @@ const InputDatePicker: React.FC<DatePickerProps> = ({
       enableTime: false,
       dateFormat: "d/m/y",
       defaultDate: selectedDate,
+      minDate: "today",
+      locale: "es",
+      disable: [
+        function (date) {
+          return date.getDay() === 6 || date.getDay() === 0;
+        },
+      ],
       onChange: (selectedDates) => {
         if (selectedDates && selectedDates.length > 0) {
           setSelectedDate(selectedDates[0]);
