@@ -6,13 +6,21 @@ import "../styles/buttons.css";
 import "../styles/input.css";
 import UserIcon from "../assets/UserIcon";
 import PswIcon from "../assets/PswIcon";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-function LoginAdmin() {
+const LoginAdmin = () => {
+  
+  const router = useRouter()
+  
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  
+  const handleClick = () =>{
+    router.replace("/manage-orders")
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -46,7 +54,7 @@ function LoginAdmin() {
       />
     </div>
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginTop: "20px", alignItems: "center" }}>
-      <button className="greenButton">Ingresar</button>
+      <button className="greenButton" onClick={handleClick}>Ingresar</button>
       <button className="link1">olvidé mi contraseña</button>
     </div>
   </div>

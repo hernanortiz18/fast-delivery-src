@@ -7,6 +7,8 @@ import "../styles/box.css";
 import "../styles/input.css";
 import "../styles/buttons.css";
 import "../styles/addPackages.css";
+import { ToastContainer, Zoom, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import InputDatePicker from "@/commons/InputDatePicker";
 import ArrowBack from "@/assets/ArrowBack";
 
@@ -23,6 +25,10 @@ function AddPackagesBox() {
   const handleBackButton = () => {
     router.back();
   };
+
+  const handleAddPackage = () =>{
+    toast.success("Paquete agregado con éxito")
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -86,8 +92,10 @@ function AddPackagesBox() {
         </div>{" "}
         <button
           className="greenButton"
+          onClick={handleAddPackage}
           style={{ marginTop: "auto", marginBottom: "10px" }}
         >
+          <ToastContainer position="bottom-left" transition={Zoom} autoClose={4000}/>
           Agregar
         </button>
       </div>

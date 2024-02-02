@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import { useRouter } from "next/navigation";
 import "../styles/box.css";
 import "../styles/manageOrders.css";
 import "../styles/buttons.css";
@@ -9,6 +10,20 @@ import CarrouselCalendar from "./CarrouselCalendar";
 import { TfiPlus } from "react-icons/tfi";
 
 function ManageOrdersBox() {
+
+  const router = useRouter()
+
+  const handleClickNewPackage = () => {
+    router.push("/add-package")
+  }
+
+  /*
+      FUNCIÓN PARA IR AL PERFIL DEL REPARTIDOR
+  */
+
+  // const handleClickDeliveries = () => {
+  //   router.push("/")
+  // }
 
   return (
     <div
@@ -37,7 +52,7 @@ function ManageOrdersBox() {
           <CarrouselCalendar />
         </div>
         <button
-          className="greenButton"
+          className="greenButton" onClick={handleClickNewPackage}
           style={{ marginTop: "auto", marginBottom: "10px", fontSize: "12px" }}
         >
           Nuevo Paquete
