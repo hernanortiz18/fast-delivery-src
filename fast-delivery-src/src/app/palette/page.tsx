@@ -5,8 +5,10 @@ import "@/styles/input.css";
 import InputEmail from "@/commons/InputEmail";
 import InputText from "@/commons/InputText";
 import InputPassword from "@/commons/InputPassword";
-import PswIcon from "@/assets/PswIcon";
-import UserIcon from "@/assets/UserIcon";
+import PswIcon from "@/components/PswIcon";
+import UserIcon from "@/components/UserIcon";
+import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
+
 
 function Page() {
   const [form, setForm] = useState({
@@ -138,6 +140,9 @@ function Page() {
             value={form.InputPassword}
           />
         </div>
+      <CircularProgress  style={{marginTop: '30px'}} value={40} color='green.400'>
+  <CircularProgressLabel>40%</CircularProgressLabel>
+</CircularProgress>
       </div>
     </div>
   );
