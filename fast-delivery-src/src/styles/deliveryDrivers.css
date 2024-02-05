@@ -49,7 +49,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 51px;
+    margin-top: 30px;
 }
 
 .month {
@@ -67,7 +67,6 @@
 .percentage {
     width: 71px;
     height: 71px;
-    border: #3D1DF3 1px solid;
     border-radius: 70px;
 }
 
@@ -80,6 +79,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 3px;
 }
 
 .name {
@@ -113,4 +113,16 @@
 .disabled {
     background: #62626233;
     color: #62626233;
+}
+
+.drivers-container{
+    width: 100%;
+    height: 370px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 10px;
+}
+
+.drivers-container::-webkit-scrollbar{
+    width: 2px;
 }
