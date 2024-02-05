@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/navbar.css";
-import AppIcon from "../components/AppIcon";
-import LogoutIcon from "../components/LogoutIcon";
+import AppIcon from "../assets/AppIcon";
+import LogoutIcon from "../assets/LogoutIcon";
 
 
 

@@ -5,6 +5,7 @@ import "../styles/box.css";
 import "@/styles/buttons.css";
 import "@/styles/getPackages.css";
 import { useRouter } from "next/navigation";
+import ArrowBack from "@/assets/ArrowBack";
 
 function GetpackageBox() {
   const router = useRouter();
@@ -17,7 +18,7 @@ function GetpackageBox() {
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
     >
       <div className="headerBox">
-          <IoArrowBackCircleOutline className="arrowIcon" onClick={handleBackButton}/>
+          <ArrowBack onClick={handleBackButton} />
         <div style={{ display: "flex", margin: "auto" }}>
           <h1 className="title box-title">Obtener paquetes</h1>
         </div>

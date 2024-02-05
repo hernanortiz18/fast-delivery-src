@@ -9,7 +9,8 @@ import PswIcon from "@/components/PswIcon";
 import UserIcon from "@/components/UserIcon";
 import { CircularProgress, CircularProgressLabel } from '@chakra-ui/react'
 
-function page() {
+
+function Page() {
   const [form, setForm] = useState({
     inputText: "",
     InputEmail: "",
@@ -147,4 +148,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
