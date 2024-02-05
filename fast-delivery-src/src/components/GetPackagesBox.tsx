@@ -39,9 +39,7 @@ function GetpackageBox() {
 
         <CheckboxPackage address="Av. Francisco Beiro 2667" city="CABA" />
       </div>
-      <div
-        className="button-container"
-      >
+      <div className="button-container">
         <button className="greenButton">Iniciar Jornada</button>
       </div>
     </div>
