@@ -33,36 +33,41 @@ function PackagesAdmin() {
         <div className="package-amount">523 paquetes</div>
         <div className="accordion-container">
           <AccordionPackageItem
-            packageCode="#0A235"
-            packageDirection="Amenabar 2100,<br />CABA"
+            packageCode="0A235"
+            packageDirection="Amenabar 2100"
+            location="CABA"
             additionalElement={
               <TrashIcon style={{marginBottom: "17px"}}/>
             }
           />
            <AccordionPackageItem
-            packageCode="#0A235"
-            packageDirection="Castillo 1356,<br />CABA"
+            packageCode="0A235"
+            packageDirection="Castillo 1356"
+            location="CABA"
             additionalElement={
               <TrashIcon style={{marginBottom: "17px"}}/>
             }
           />
             <AccordionPackageItem
-            packageCode="#0H167"
-            packageDirection="Av. Carabobo 2888,<br />CABA"
+            packageCode="0H167"
+            packageDirection="Av. Carabobo 2888"
+            location="CABA"
             additionalElement={
               <TrashIcon style={{marginBottom: "17px"}}/>
             }
           />
             <AccordionPackageItem
-            packageCode="#0H166"
-            packageDirection="Mendoza 1810,<br />CABA"
+            packageCode="0H166"
+            packageDirection="Mendoza 1810"
+            location="CABA"
             additionalElement={
               <TrashIcon style={{marginBottom: "17px"}}/>
             }
           />
              <AccordionPackageItem
-            packageCode="#0B540"
-            packageDirection="Scalabrini Ortiz 5073,<br />CABA"
+            packageCode="0B540"
+            packageDirection="Scalabrini Ortiz 5073"
+            location="CABA"
             additionalElement={
               <TrashIcon style={{marginBottom: "17px"}}/>
             }
