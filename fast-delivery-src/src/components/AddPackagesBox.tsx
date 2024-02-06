@@ -89,7 +89,7 @@ function AddPackagesBox() {
               onSelectPicker={handleDateSelect}
             />
           </div>
-        </div>{" "}
+        </div>
         <button
           className="greenButton"
           onClick={handleAddPackage}

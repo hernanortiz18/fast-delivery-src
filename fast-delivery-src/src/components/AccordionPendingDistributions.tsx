@@ -29,15 +29,17 @@ function AccordionPendingDistributions({
       {(openSection === 1 || openSection === 3) && (
         <>
           <AccordionPackageItem
-            packageCode="#0A235"
-            packageDirection="Amenabar 2100,<br />CABA"
+            packageCode="0A235"
+            packageDirection="Amenabar 2100"
+            location="CABA"
             tags="course"
             tagContent="En curso"
             additionalElement={<TrashIcon />}
           />
           <AccordionPackageItem
-            packageCode="#0G370"
-            packageDirection="Heredia 785,<br />CABA"
+            packageCode="0G370"
+            packageDirection="Heredia 785"
+            location="CABA"
             tags="pending"
             tagContent="Pendiente"
             additionalElement={
