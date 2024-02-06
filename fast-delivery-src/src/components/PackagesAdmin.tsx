@@ -3,11 +3,11 @@ import React from "react";
 import "@/styles/packagesAdmin.css";
 import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
-import BoxIcon from "@/assets/BoxIcon";
 import "../styles/init.css";
 import TrashIcon from "@/assets/TrashIcon";
 import SeeMoreArrow from "@/assets/SeeMoreArrow";
 import CalendarComponent from "./CalendarComponent";
+import AccordionPackageItem from "./AccordionPackageItem";
 
 function PackagesAdmin() {
   const router = useRouter();
@@ -21,7 +21,7 @@ function PackagesAdmin() {
     >
       <div className="header-box">
         <div className="arrow-back">
-          <ArrowBack onClick={handleBackButton}/>
+          <ArrowBack onClick={handleBackButton} />
         </div>
         <h1 className="header-box-title">Paquetes</h1>
       </div>
@@ -31,75 +31,48 @@ function PackagesAdmin() {
         </div>
 
         <div className="package-amount">523 paquetes</div>
-
-        <div className="package-item">
-          <div className="box-icon-info-container">
-            <BoxIcon />
-            <div className="info-container">
-              <h1 className="package-code">#0A235</h1>
-              <h2 className="package-direction">
-                Castillo 1356,
-                <br />
-                CABA
-              </h2>
-            </div>
-          </div>
-          <div className="trash-container">
-            <TrashIcon />
-          </div>
+        <div className="accordion-container">
+          <AccordionPackageItem
+            packageCode="0A235"
+            packageDirection="Amenabar 2100"
+            location="CABA"
+            additionalElement={
+              <TrashIcon style={{marginBottom: "17px"}}/>
+            }
+          />
+           <AccordionPackageItem
+            packageCode="0A235"
+            packageDirection="Castillo 1356"
+            location="CABA"
+            additionalElement={
+              <TrashIcon style={{marginBottom: "17px"}}/>
+            }
+          />
+            <AccordionPackageItem
+            packageCode="0H167"
+            packageDirection="Av. Carabobo 2888"
+            location="CABA"
+            additionalElement={
+              <TrashIcon style={{marginBottom: "17px"}}/>
+            }
+          />
+            <AccordionPackageItem
+            packageCode="0H166"
+            packageDirection="Mendoza 1810"
+            location="CABA"
+            additionalElement={
+              <TrashIcon style={{marginBottom: "17px"}}/>
+            }
+          />
+             <AccordionPackageItem
+            packageCode="0B540"
+            packageDirection="Scalabrini Ortiz 5073"
+            location="CABA"
+            additionalElement={
+              <TrashIcon style={{marginBottom: "17px"}}/>
+            }
+          />
         </div>
-
-        <div className="package-item">
-          <div className="box-icon-info-container">
-            <BoxIcon />
-            <div className="info-container">
-              <h1 className="package-code">#0H167</h1>
-              <h2 className="package-direction">
-                Av. Carabobo y Rivadavia,
-                <br />
-                CABA
-              </h2>
-            </div>
-          </div>
-          <div className="trash-container">
-            <TrashIcon />
-          </div>
-        </div>
-
-        <div className="package-item">
-          <div className="box-icon-info-container">
-            <BoxIcon />
-            <div className="info-container">
-              <h1 className="package-code">#0H166</h1>
-              <h2 className="package-direction">
-                Mendoza 1810,
-                <br />
-                CABA
-              </h2>
-            </div>
-          </div>
-          <div className="trash-container">
-            <TrashIcon />
-          </div>
-        </div>
-
-        <div className="package-item">
-          <div className="box-icon-info-container">
-            <BoxIcon />
-            <div className="info-container">
-              <h1 className="package-code">#0B540</h1>
-              <h2 className="package-direction">
-                Scalabrini Ortiz 5073,
-                <br />
-                CABA
-              </h2>
-            </div>
-          </div>
-          <div className="trash-container">
-            <TrashIcon />
-          </div>
-        </div>
-
         <div className="see-more-arrow-container">
           <SeeMoreArrow />
         </div>

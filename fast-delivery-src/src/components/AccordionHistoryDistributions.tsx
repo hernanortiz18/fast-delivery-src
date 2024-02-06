@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "@/styles/homeDelivery.css";
 import "@/styles/input.css";
 import "@/styles/buttons.css";
-import TrashIcon from "@/assets/TrashIcon";
 import AccordionPackageItem from "./AccordionPackageItem";
 import ArrowIcon from "@/assets/ArrowIcon";
 
@@ -15,7 +14,7 @@ function AccordionHistoryDistributions({onClick}: AccordionHistoryDistributionsP
 
   const handleClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
-    onClick(); // Puedes llamar a la función onClick desde aquí si es necesario
+    onClick(); 
   };
   return (
     <div className="accordion-box-top">
@@ -27,14 +26,16 @@ function AccordionHistoryDistributions({onClick}: AccordionHistoryDistributionsP
       {(openSection === 1 || openSection === 3) && (
         <>
           <AccordionPackageItem
-            packageCode="#0A235"
-            packageDirection="Amenabar 2100,<br />CABA"
+            packageCode="0A235"
+            packageDirection="Amenabar 2100"
+            location="CABA"
             tags="delivered"
             tagContent="Entregado"
           />
           <AccordionPackageItem
-            packageCode="#0G370"
-            packageDirection="Heredia 785,<br />CABA"
+            packageCode="0G370"
+            packageDirection="Heredia 785"
+            location="CABA"
             tags="delivered"
             tagContent="Entregado"
           />

@@ -3,13 +3,13 @@ import React from "react";
 import "../styles/deliveryDrivers.css";
 import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
-import BoxIcon from "@/assets/BoxIcon";
 import "../styles/init.css";
 import "@/styles/avatar.css";
-import TrashIcon from "@/assets/TrashIcon";
 import SeeMoreArrow from "@/assets/SeeMoreArrow";
 import CalendarComponent from "./CalendarComponent";
 import Avatar from "@/commons/Avatar";
+import CircularProgresss from "@/commons/CircularProgresss";
+import DeliveryDriverCommon from "@/commons/DeliveryDriverCommon";
 
 function DeliveryDrivers() {
   const router = useRouter();
@@ -29,63 +29,63 @@ function DeliveryDrivers() {
       </div>
       <div className="white-box">
         <CalendarComponent />
-
-        <div className="driver-container">
-          <div className="percentage-name-container">
-            <div className="percentage"></div>
-            <div className="name-tag-container">
-              <p className="name">Hernan</p>
-              <div className="status-tag course">en curso</div>
-            </div>
-          </div>
-          <Avatar
-            src="/img/hernan.jpeg"
-            className="distributors-stats-avatar"
+        <div className="drivers-container">
+          <DeliveryDriverCommon
+            driverName="Hernan"
+            tags="course"
+            tagContent="en curso"
+            percentage={<CircularProgresss percentage={25} />}
+            avatar={
+              <Avatar
+                src="/img/hernan.jpeg"
+                className="distributors-stats-avatar"
+              />
+            }
+          />
+          <DeliveryDriverCommon
+            driverName="Belen"
+            tags="course"
+            tagContent="En curso"
+            percentage={<CircularProgresss percentage={65} />}
+            avatar={
+              <Avatar
+                src="/img/belen.jpg"
+                className="distributors-stats-avatar"
+              />
+            }
+          />
+          <DeliveryDriverCommon
+            driverName="Juan"
+            tags="delivered"
+            tagContent="Entregado"
+            percentage={<CircularProgresss percentage={100} />}
+            avatar={
+              <Avatar
+                src="/img/juancho.jpg"
+                className="distributors-stats-avatar"
+              />
+            }
+          />
+          <DeliveryDriverCommon
+            driverName="Francisco"
+            tags="disabled"
+            tagContent="Deshabilitado"
+            percentage={<CircularProgresss percentage={0} />}
+            avatar={
+              <Avatar
+                src="/img/sosa.jpg"
+                className="distributors-stats-avatar"
+              />
+            }
+          />
+          <DeliveryDriverCommon
+            driverName="Franco"
+            tags="delivered"
+            tagContent="Entregado"
+            percentage={<CircularProgresss percentage={100} />}
+            avatar={<Avatar src="/img/franco.jpg" className="distributors-stats-avatar" />}
           />
         </div>
-
-        <div className="driver-container">
-          <div className="percentage-name-container">
-            <div className="percentage"></div>
-            <div className="name-tag-container">
-              <p className="name">Belen</p>
-              <div className="status-tag delivered">entregado</div>
-            </div>
-          </div>
-          <Avatar
-            src="/img/belen.jpg"
-            className="distributors-stats-avatar"
-          />
-        </div>
-
-        <div className="driver-container">
-          <div className="percentage-name-container">
-            <div className="percentage"></div>
-            <div className="name-tag-container">
-              <p className="name">Juan</p>
-              <div className="status-tag course">en curso</div>
-            </div>
-          </div>
-          <Avatar
-            src="/img/juancho.jpg"
-            className="distributors-stats-avatar"
-          />
-        </div>
-
-        <div className="driver-container">
-          <div className="percentage-name-container">
-            <div className="percentage"></div>
-            <div className="name-tag-container">
-              <p className="name">Francisco</p>
-              <div className="status-tag disabled">Deshabilitado</div>
-            </div>
-          </div>
-          <Avatar
-            src="/img/sosa.jpg"
-            className="distributors-stats-avatar"
-          />
-        </div>
-
         <div className="see-more-arrow-container">
           <SeeMoreArrow />
         </div>

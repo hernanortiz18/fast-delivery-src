@@ -5,6 +5,7 @@ import "../styles/input.css";
 import "../styles/buttons.css";
 import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
+import DeliveryMapInfo from "./DeliveryMapInfo";
 
 function DeliveryMapBox() {
   const router = useRouter();
@@ -25,26 +26,11 @@ function DeliveryMapBox() {
 
       <div className="boxDeliveryMapStyle">
         <div className="mapContainer"></div>
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div className="deliveryMapInfo">
-            <p className="infoP" style={{ fontWeight: "bolder" }}>
-              Destino: ​{" "}
-            </p>
-            <p className="infoP"> Amenabar 2100, CABA</p>
-          </div>
-          <div className="deliveryMapInfo">
-            <p className="infoP" style={{ fontWeight: "bolder" }}>
-              Número de paquete: ​{" "}
-            </p>
-            <p className="infoP"> #0A235</p>
-          </div>
-          <div className="deliveryMapInfo">
-            <p className="infoP" style={{ fontWeight: "bolder" }}>
-              Recibe: ​{" "}
-            </p>
-            <p className="infoP"> Mauro Bruno</p>
-          </div>
-        </div>
+        <DeliveryMapInfo
+          packageDirection="Amenabar 2100"
+          packageCode="0A235"
+          clientName="Mauro Bruno"
+        />
         <button className="greenButton" style={{ marginTop: "30px" }}>
           Finalizar
         </button>

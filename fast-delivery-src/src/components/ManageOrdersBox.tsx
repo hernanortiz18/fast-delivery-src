@@ -8,14 +8,14 @@ import "@/styles/avatar.css";
 import Avatar from "@/commons/Avatar";
 import CarrouselCalendar from "./CarrouselCalendar";
 import { TfiPlus } from "react-icons/tfi";
+import AdminPresentation from "./AdminPresentation";
 
 function ManageOrdersBox() {
-
-  const router = useRouter()
+  const router = useRouter();
 
   const handleClickNewPackage = () => {
-    router.push("/add-package")
-  }
+    router.push("/add-package");
+  };
 
   /*
       FUNCIÓN PARA IR AL PERFIL DEL REPARTIDOR
@@ -38,21 +38,16 @@ function ManageOrdersBox() {
         className="boxRegisterStyle"
         style={{ display: "flex", flexDirection: "column" }}
       >
-        <div className="presentation-container">
-          <Avatar
-            src="https://static.vecteezy.com/system/resources/previews/023/186/830/non_2x/portrait-of-a-wolf-in-profile-on-a-dark-background-digital-painting-ai-generative-image-free-photo.jpg"
-            className="admin-avatar"
-          />
-          <div className="p-container">
-            <p className="hi-admin">¡Hola Admin!</p>
-            <p className="days-order">Estos son los pedidos del día</p>
-          </div>
-        </div>
+        <AdminPresentation
+          adminPic="https://static.vecteezy.com/system/resources/previews/023/186/830/non_2x/portrait-of-a-wolf-in-profile-on-a-dark-background-digital-painting-ai-generative-image-free-photo.jpg"
+          adminName="Lobo"
+        />
         <div className="carrousel-calendar-container">
           <CarrouselCalendar />
         </div>
         <button
-          className="greenButton" onClick={handleClickNewPackage}
+          className="greenButton"
+          onClick={handleClickNewPackage}
           style={{ marginTop: "auto", marginBottom: "10px", fontSize: "12px" }}
         >
           Nuevo Paquete
