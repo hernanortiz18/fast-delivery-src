@@ -93,7 +93,7 @@
   font-size: 14px;
   font-weight: 700;
   color: #3d1df3;
-  padding: 5px 5px 3px 3px;
+  padding: 5px 5px 3px 8px;
 }
 
 .month {
@@ -127,6 +127,8 @@
   border: 0.5px dotted #3d1df3;
   width: 250px;
   margin-bottom: 3px;
+  display: flex;
+  margin: 0 auto 5px;
 }
 
 
@@ -140,4 +142,11 @@
   background-color: rgba(98, 98, 98, 0.2);
   color: #626262;
   border: none;
+}
+
+.details-date{
+  font-size: 14px;
+  font-family: 'Poppins' sans-serif;
+  font-weight: 400;
+  color: #3d1df3;
 }
