@@ -34,6 +34,23 @@
   font-size: 12px;
 }
 
+.detailsGreenButton{
+  width: 51px;
+  height: 26px;
+  padding: 8px 22px;
+  color: rgba(61, 29, 243, 1);
+  border-radius: 12.5px;
+  background: #00EA77;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.15px;
+  font-weight: 400;
+  font-size: 12px;
+}
+
 .greenButton:hover {
   background-color: rgb(2, 208, 108);
 }

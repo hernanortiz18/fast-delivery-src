@@ -9,6 +9,7 @@ import Avatar from "@/commons/Avatar";
 import CarrouselCalendar from "./CarrouselCalendar";
 import { TfiPlus } from "react-icons/tfi";
 import AdminPresentation from "./AdminPresentation";
+import DetailsComponent from "./DetailsComponent";
 
 function ManageOrdersBox() {
   const router = useRouter();
@@ -44,6 +45,9 @@ function ManageOrdersBox() {
         />
         <div className="carrousel-calendar-container">
           <CarrouselCalendar />
+        </div>
+        <div className="details-container">
+        <DetailsComponent />
         </div>
         <button
           className="greenButton"
