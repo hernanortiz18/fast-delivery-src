@@ -6,14 +6,20 @@ import "../../styles/buttons.css";
 import Navbar from "@/commons/Navbar";
 import AccordionPendingDistributions from "@/components/AccordionPendingDistributions";
 import AccordionHistoryDistributions from "@/components/AccordionHistoryDistributions";
-import Link from "next/link";
+import { useRouter } from "next/navigation";
+
 
 function Init() {
   const [openSection, setOpenSection] = useState(0);
+  const router = useRouter()
 
   const handleAccordionClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
   };
+
+  const handleClick = () => {
+    router.push("/get-packages")
+  }
 
   return (
     <div>
@@ -21,9 +27,8 @@ function Init() {
       <div className="accordion">
         <AccordionPendingDistributions onClick={handleAccordionClick} />
         <AccordionHistoryDistributions onClick={handleAccordionClick} />
-        <Link href="/get-packages">
-          <button className="greenButton">Obtener Paquetes</button>
-        </Link>
+        <button className="greenButton" onClick={handleClick}>Obtener Paquetes</button>
+
       </div>
     </div>
   );

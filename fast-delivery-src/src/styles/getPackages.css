@@ -1,70 +1,61 @@
-.box-dotted-line {
-  border: 0.5px dotted #3d1df3;
-  top: 155px;
-  left: 45px;
-  width: 270px;
-  margin-top: 15px;
-  margin-bottom: 20px;
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.headerBox {
+  background-color: #c7ffb1;
+  padding: 10px 10px 20px 15px;
+  height: 60px;
+  width: 300px;
+  margin: auto;
+  border-radius: 10px 10px 0px 0px;
+  position: relative;
+  z-index: 1;
+  top: 10px;
 }
 
-.box-rectangle {
-  width: 270px;
-  height: 46px;
-  border: 0.5px solid #3d1df3;
-  padding: 10px;
-  border-radius: 10px;
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.box-checkbox {
-  margin-right: 5px;
-  margin-left: 10px;
-}
-
-.box-title {
-  font-weight: bolder;
+.title {
+  position: relative;
+  top: -25px;
+  font-family: "Poppins";
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #3d1df3;
+  text-align: center;
 }
 
 .box-subtitle {
-  /* width: 212px;
-  height: 20px; */
+  font-family: Poppins;
   color: #3d1df3;
   font-size: 12px;
+  line-height: 20px;
+  height: 35px;
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin: 0 auto;
-  /* top: 128px;
-  left: 74px; */
+  border-bottom: #3d1df3 1px dotted;
+  margin-bottom: 15px;
+  width: 270px;
 }
 
-.box-content {
-  color: #3d1df3;
-  font-size: 12px;
-  font-family: "Poppins", sans-serif;
-}
-
-.dottedVerticalLine {
-  border-left: 0.5px dotted #3d1df3;
-  height: 30px;
-  margin: 0 10px;
-}
-
-.input-checkbox {
-  box-sizing: border-box;
-  display: flex;
+.boxGetPackagesStyle {
+  width: 300px;
+  height: 452px;
+  padding: 0 15px 15px;
   margin: auto;
-  width: 16px;
-  height: 16px;
-  left: 55px;
-  top: 521px;
-  border: 1px solid #3d1df3;
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: white;
+  border-radius: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 2;
 }
 
-.input-checkbox:checked {
-  background-color: #c7ffb1;
+.boxGetPackagesStyle::-webkit-scrollbar {
+  width: 5px;
 }
 
+.button-container {
+  margin-top: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

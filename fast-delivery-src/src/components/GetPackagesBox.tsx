@@ -1,11 +1,10 @@
 "use client"
 import React from "react";
-import { IoArrowBackCircleOutline } from "react-icons/io5";
-import "../styles/box.css";
 import "@/styles/buttons.css";
-import "@/styles/getPackages.css";
+import "../styles/getPackages.css";
 import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
+import CheckboxPackage from "@/commons/CheckboxPackage";
 
 function GetpackageBox() {
   const router = useRouter();
@@ -18,109 +17,29 @@ function GetpackageBox() {
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
     >
       <div className="headerBox">
-          <ArrowBack onClick={handleBackButton} />
-        <div style={{ display: "flex", margin: "auto" }}>
-          <h1 className="title box-title">Obtener paquetes</h1>
-        </div>
+        <ArrowBack onClick={handleBackButton} />
+        <h1 className="title">Obtener paquetes</h1>
       </div>
       <div className="boxGetPackagesStyle">
         <h1 className="box-subtitle">¿Cuántos paquetes repartirás hoy?</h1>
-        <hr className="box-dotted-line" />
-        {/* <div className="box-rectangle-container"> */}
-          <div className="box-rectangle">
-            <div className="box-checkbox">
-              <input type="checkbox" className="input-checkbox" />
-            </div>
-            <div className="dottedVerticalLine"></div>
-            <div>
-              <h2 className="box-content">Amenabar 2100,</h2>
-              <h2 className="box-content">CABA</h2>
-            </div>
-          </div>
 
-          <div className="box-rectangle">
-            <div className="box-checkbox">
-              <input type="checkbox" className="input-checkbox" />
-            </div>
-            <div className="dottedVerticalLine"></div>
-            <div>
-              <h2 className="box-content">Av Carabobo 4132,</h2>
-              <h2 className="box-content">CABA</h2>
-            </div>
-          </div>
+        <CheckboxPackage address="Amenabar 2100" city="CABA" />
 
-          <div className="box-rectangle">
-            <div className="box-checkbox">
-              <input type="checkbox" className="input-checkbox" />
-            </div>
-            <div className="dottedVerticalLine"></div>
-            <div>
-              <h2 className="box-content">Melian 1242,</h2>
-              <h2 className="box-content">CABA</h2>
-            </div>
-          </div>
+        <CheckboxPackage address="Av Carabobo 4132" city="CABA" />
 
-          <div className="box-rectangle">
-            <div className="box-checkbox">
-              <input type="checkbox" className="input-checkbox" />
-            </div>
-            <div className="dottedVerticalLine"></div>
-            <div>
-              <h2 className="box-content">Castillo 670,</h2>
-              <h2 className="box-content">CABA</h2>
-            </div>
-          </div>
-          <div className="box-rectangle">
-            <div className="box-checkbox">
-              <input type="checkbox" className="input-checkbox" />
-            </div>
-            <div className="dottedVerticalLine"></div>
-            <div>
-              <h2 className="box-content">Gorriti 4595,</h2>
-              <h2 className="box-content">CABA</h2>
-            </div>
-          </div>
-          <div className="box-rectangle">
-            <div className="box-checkbox">
-              <input type="checkbox" className="input-checkbox" />
-            </div>
-            <div className="dottedVerticalLine"></div>
-            <div>
-              <h2 className="box-content">Av. Gral. Mosconi 1056,</h2>
-              <h2 className="box-content">CABA</h2>
-            </div>
-          </div>
-          <div className="box-rectangle">
-            <div className="box-checkbox">
-              <input type="checkbox" className="input-checkbox" />
-            </div>
-            <div className="dottedVerticalLine"></div>
-            <div>
-              <h2 className="box-content">Tacuarí 1797,</h2>
-              <h2 className="box-content">CABA</h2>
-            </div>
-          </div>
-          <div className="box-rectangle">
-            <div className="box-checkbox">
-              <input type="checkbox" className="input-checkbox" />
-            </div>
-            <div className="dottedVerticalLine"></div>
-            <div>
-              <h2 className="box-content">Av. Francisco Beiro 2667,</h2>
-              <h2 className="box-content">CABA</h2>
-            </div>
-          </div>
-        {/* </div> */}
+        <CheckboxPackage address="Melian 1242" city="CABA" />
+
+        <CheckboxPackage address="Castillo 670" city="CABA" />
+
+        <CheckboxPackage address="Gorriti 4595" city="CABA" />
+
+        <CheckboxPackage address="Av. Gral. Mosconi 1056" city="CABA" />
+
+        <CheckboxPackage address="Tacuarí 1797" city="CABA" />
+
+        <CheckboxPackage address="Av. Francisco Beiro 2667" city="CABA" />
       </div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "1rem",
-          marginTop: "20px",
-          alignItems: "center",
-        }}
-      >
+      <div className="button-container">
         <button className="greenButton">Iniciar Jornada</button>
       </div>
     </div>
