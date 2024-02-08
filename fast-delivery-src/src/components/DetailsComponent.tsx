@@ -4,6 +4,7 @@ import "@/styles/details.css";
 import "@/styles/buttons.css";
 import DetailsElement from "@/commons/DetailsElement";
 import CircularProgresss from "@/commons/CircularProgresss";
+import Link from "next/link";
 
 function DetailsComponent() {
   const fechaActual = new Date();
@@ -30,14 +31,15 @@ function DetailsComponent() {
             cantidad="2/10"
             accion="habilitados"
             percentage={<CircularProgresss percentage={20} />}
-            button={<button className="detailsGreenButton">Ver</button>}
+            button={<Link href="/delivery-drivers"><button className="detailsGreenButton">Ver</button></Link>}
           />
+          <hr className="box-dotted-line2" />
           <DetailsElement
             title="Paquetes"
             cantidad="16/20"
             accion="Repartidos"
             percentage={<CircularProgresss percentage={80} />}
-            button={<button className="detailsGreenButton">Ver</button>}
+            button={<Link href="/packages-admin"><button className="detailsGreenButton">Ver</button></Link>}
           />
         </div>
       </div>

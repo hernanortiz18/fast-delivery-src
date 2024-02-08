@@ -36,7 +36,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 20px;
-    width: fit;
+    width: fit-content;
     text-align: center;
     margin-left: 66px;
 }

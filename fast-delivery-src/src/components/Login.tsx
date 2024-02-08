@@ -94,7 +94,7 @@ function Login() {
           <Link href="/register">
             <button className="transparentButton1">Crear Cuenta</button>
           </Link>
-          <button className="link1">olvidé mi contraseña</button>
+          <button type="button" className="link1">olvidé mi contraseña</button>
 
           <ToastContainer
             position="bottom-left"
@@ -103,9 +103,14 @@ function Login() {
           />
         </div>
       </form>
-      <button className="link1" onClick={handleUserInfo} style={{
-            textAlign: "center" 
-          }}>
+      <button
+        className="link1"
+        onClick={handleUserInfo}
+        style={{
+          display: "flex",
+          margin: "auto",
+        }}
+      >
         Obtener información del usuario
       </button>
     </div>
