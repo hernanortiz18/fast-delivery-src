@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "../styles/checkboxPackage.css";
 
 interface CheckboxPackageProps {
@@ -7,6 +7,7 @@ interface CheckboxPackageProps {
 }
 
 function CheckboxPackage(props: CheckboxPackageProps) {
+    const [tick, setTick] = useState(false)
     return (
         <div className="box-rectangle">
             <div className="checkbox-container">

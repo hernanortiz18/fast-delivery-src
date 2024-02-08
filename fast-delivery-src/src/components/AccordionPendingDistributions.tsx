@@ -34,7 +34,7 @@ function AccordionPendingDistributions({
             location="CABA"
             tags="course"
             tagContent="En curso"
-            additionalElement={<TrashIcon />}
+            additionalElement={<TrashIcon style={{cursor: "pointer"}}/>}
           />
           <AccordionPackageItem
             packageCode="0G370"

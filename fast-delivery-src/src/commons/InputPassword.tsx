@@ -42,11 +42,11 @@ function InputPassword({
         />
         <span className="showPswIcon-container">
           {showPassword ? (
-            <button className="showPswBtn" onClick={togglePasswordVisibility}>
+            <button type="button" className="showPswBtn" onClick={togglePasswordVisibility}>
               <PswVisibleIcon className={className === "inputBlue" ? "white" : "#3D1DF3"} />
             </button>
           ) : (
-            <button className="showPswBtn" onClick={togglePasswordVisibility}>
+            <button type="button" className="showPswBtn" onClick={togglePasswordVisibility}>
               <PswNoVisibleIcon className={className === "inputBlue" ? "white" : "#3D1DF3"} />
             </button>
           )}

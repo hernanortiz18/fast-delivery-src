@@ -1,5 +1,5 @@
 import React from "react";
-import '@/styles/details.css'
+import "@/styles/details.css";
 
 type DetailsElementProps = {
   title: string;
@@ -20,20 +20,22 @@ function DetailsElement({
 }: DetailsElementProps) {
   return (
     <div>
-       <div className="driver-container">
-      <div className="percentage-name-container">
-        {percentage && <div>{percentage}</div>}
-        <div className="title-quantity-container">
-          <p className="title">{title}</p>
-          <p className="quantity">{cantidad}{accion}</p>
-          <div></div>
+      <div className="driver-container">
+        <div className="percentage-name-container">
+          {percentage && <div>{percentage}</div>}
+          <div className="title-quantity-container">
+            <p className="title">{title}</p>
+            <p className="quantity">
+              {cantidad}
+              {accion}
+            </p>
+            <div></div>
+          </div>
         </div>
+        <div className="button-container">{button && <div>{button}</div>}</div>
       </div>
-      <div className="button-container">{button && <div>{button}</div>}</div>
+      {/*<hr className="box-dotted-line2" />*/}
     </div>
-    <hr className="box-dotted-line2" />
-    </div>
-   
   );
 }
 
