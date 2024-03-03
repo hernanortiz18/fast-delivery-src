@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+.individual-statement-container {
+  border: 1px solid #3d1df3;
+  height: fit-content;
+  padding: 10px;
+  width: 270px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.required {
+  font-family: "Poppins";
+  font-size: 10px;
+  font-weight: 400px;
+  color: #3d1df3;
+  margin-left: 5px;
+}
+
+.content {
+  font-family: "Poppins";
+  font-size: 12px;
+  font-weight: 400px;
+  color: #3d1df3;
+  text-align: center;
+}
+
+.examples {
+  font-family: "Poppins";
+  font-size: 10px;
+  font-weight: 400px;
+  color: #3d1df3;
+  font-style: italic;
+  text-align: center;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 15px;
+}
