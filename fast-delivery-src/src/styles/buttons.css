@@ -89,6 +89,21 @@
   letter-spacing: 0.15px;
 }
 
+.transparentButton2Small{
+  width: 74px;
+  height: 30px;
+  padding: 8px 22px;
+  background-color: transparent;
+  color: rgba(61, 29, 243, 1);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 234, 119, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.15px;
+}
+
 .link1 {
   width: fit-content;
   color: rgba(255, 255, 255, 1);
