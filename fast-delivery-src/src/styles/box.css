@@ -163,6 +163,14 @@
   margin: auto;
 }
 
+.changePFormContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5% auto;
+}
+
 .deliveryMapInfo {
   display: flex;
   color: #3d1df3;

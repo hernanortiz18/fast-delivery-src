@@ -41,15 +41,6 @@ function Login() {
     }
   };
 
-  const handleUserInfo = async () => {
-    try {
-      const userData = await dataUser();
-      toast.info(`El mail con el que iniciaste sesión es: ${userData.email}`);
-    } catch (error) {
-      console.error("Error al obtener la información del usuario:", error);
-      toast.error("No se pudo obtener la información del usuario");
-    }
-  };
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -94,7 +85,11 @@ function Login() {
           <Link href="/register">
             <button className="transparentButton1">Crear Cuenta</button>
           </Link>
-          <button type="button" className="link1">olvidé mi contraseña</button>
+          <Link href="/recover-password-mail">
+            <button type="button" className="link1">
+              olvidé mi contraseña
+            </button>
+          </Link>
 
           <ToastContainer
             position="bottom-left"
@@ -103,16 +98,6 @@ function Login() {
           />
         </div>
       </form>
-      <button
-        className="link1"
-        onClick={handleUserInfo}
-        style={{
-          display: "flex",
-          margin: "auto",
-        }}
-      >
-        Obtener información del usuario
-      </button>
     </div>
   );
 }
