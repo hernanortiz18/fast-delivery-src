@@ -1,0 +1,23 @@
+import axios from "axios";
+
+const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/users`;
+
+type DataRegisterProps = {
+  name: string;
+  lastName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+};
+
+const dataRegister = async (formData: DataRegisterProps) => {
+  try {
+    const response = await axios.post(`${API_URL}/register`, formData);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+};
+
+export default dataRegister;

@@ -10,13 +10,15 @@ import Link from "next/link";
 import { loginUser } from "@/services/dataLogin";
 import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { dataUser } from "@/services/dataUser";
+import { useRouter } from "next/navigation";
 
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevFormData) => ({
@@ -33,6 +35,9 @@ function Login() {
       try {
         const response = await loginUser(formData);
         toast.success("Iniciaste sesión correctamente");
+        setTimeout(() => {
+          router.push("/home-delivery");
+        }, 3000);
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
         toast.error("No se ha podido iniciar sesión");
@@ -85,7 +90,7 @@ function Login() {
           <Link href="/register">
             <button className="transparentButton1">Crear Cuenta</button>
           </Link>
-          <Link href="/recover-password-mail">
+          <Link href="/forgot-password">
             <button type="button" className="link1">
               olvidé mi contraseña
             </button>
@@ -94,7 +99,7 @@ function Login() {
           <ToastContainer
             position="bottom-left"
             transition={Zoom}
-            autoClose={4000}
+            autoClose={3000}
           />
         </div>
       </form>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
 import "../styles/box.css";
 import "../styles/input.css";
@@ -11,11 +11,14 @@ import CameraAddIcon from "../assets/CameraAddIcon";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
+import dataRegister from "@/services/dataRegister";
+import { ToastContainer, Zoom, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function CreateAccountBox() {
   const [formData, setFormData] = useState({
     name: "",
-    lastname: "",
+    lastName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -29,6 +32,29 @@ function CreateAccountBox() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const onSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      await dataRegister(formData);
+      toast.success(
+        "¡Registro realizado correctamente! Verifica tu correo electrónico"
+      );
+      setTimeout(() => {
+        router.push("/");
+      }, 3000);
+    } catch (error) {
+      console.error(error);
+      toast.error("Error al registrar el usuario");
+    }
+    setFormData({
+      name: "",
+      lastName: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
   };
   return (
     <div
@@ -67,7 +93,7 @@ function CreateAccountBox() {
             </div>
           </button>
         </div>
-        <div className="formContainer">
+        <form className="formContainer" onSubmit={onSubmit}>
           <InputText
             className="inputWhite"
             placeholder="Nombre"
@@ -79,8 +105,8 @@ function CreateAccountBox() {
           <InputText
             className="inputWhite"
             placeholder="Apellido"
-            name="lastname"
-            value={formData.lastname}
+            name="lastName"
+            value={formData.lastName}
             disabled={false}
             onChange={handleChange}
           />
@@ -122,8 +148,13 @@ function CreateAccountBox() {
             <Link href="/">
               <button className="transparentButton2">Iniciar Sesión</button>
             </Link>
+            <ToastContainer
+              position="bottom-left"
+              transition={Zoom}
+              autoClose={3000}
+            />
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
