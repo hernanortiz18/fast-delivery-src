@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import "flatpickr/dist/l10n/es";
@@ -11,12 +11,14 @@ type DatePickerProps = {
   placeholder: string;
   name: string;
   onSelectPicker: (date: Date) => void;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 const InputDatePicker: React.FC<DatePickerProps> = ({
   className,
   placeholder,
   name,
   onSelectPicker,
+  onChange,
 }) => {
   const [openCalendar, setOpenCalendar] = useState(false);
   const [selectedDate, setSelectedDate] = useState<Date | undefined>(undefined);
@@ -89,10 +91,11 @@ const InputDatePicker: React.FC<DatePickerProps> = ({
           placeholder={placeholder}
           data-input
           onClick={handleInputClick}
+          onChange={onChange}
         />
-        <button className="arrow-container" onClick={handleArrowButtonClick}>
+        {/* <button className="arrow-container" onClick={handleArrowButtonClick}>
           <ArrowIcon />
-        </button>
+        </button> */}
       </div>
     </div>
   );

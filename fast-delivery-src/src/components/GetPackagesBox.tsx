@@ -1,17 +1,45 @@
-"use client"
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import "@/styles/buttons.css";
 import "../styles/getPackages.css";
 import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
 import CheckboxPackage from "@/commons/CheckboxPackage";
+import { getAllPackages } from "@/services/dataPackages";
+
+type Package = {
+  address: string;
+  city: string;
+};
+
+type SetPackages = React.Dispatch<React.SetStateAction<Package[]>>;
+async function fetchPackages(): Promise<Package[]> {
+  return await getAllPackages();
+}
 
 function GetpackageBox() {
+  const [packages, setPackages]: [Package[], SetPackages] = useState<Package[]>(
+    []
+  );
   const router = useRouter();
 
   const handleBackButton = () => {
     router.back();
   };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const allPackages = await fetchPackages();
+        setPackages(allPackages);
+      } catch (error) {
+        console.error("No se han podido obtener todos los paquetes:", error);
+        throw error;
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
@@ -23,21 +51,15 @@ function GetpackageBox() {
       <div className="boxGetPackagesStyle">
         <h1 className="box-subtitle">¿Cuántos paquetes repartirás hoy?</h1>
 
-        <CheckboxPackage address="Amenabar 2100" city="CABA" />
-
-        <CheckboxPackage address="Av Carabobo 4132" city="CABA" />
-
-        <CheckboxPackage address="Melian 1242" city="CABA" />
-
-        <CheckboxPackage address="Castillo 670" city="CABA" />
-
-        <CheckboxPackage address="Gorriti 4595" city="CABA" />
-
-        <CheckboxPackage address="Av. Gral. Mosconi 1056" city="CABA" />
-
-        <CheckboxPackage address="Tacuarí 1797" city="CABA" />
-
-        <CheckboxPackage address="Av. Francisco Beiro 2667" city="CABA" />
+        <ul>
+          {packages.map((individualPackage, index) => (
+            <CheckboxPackage
+              key={index}
+              address={individualPackage.address}
+              city={individualPackage.city}
+            />
+          ))}
+        </ul>
       </div>
       <div className="button-container">
         <button className="greenButton">Iniciar Jornada</button>
