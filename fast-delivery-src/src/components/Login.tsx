@@ -36,7 +36,7 @@ function Login() {
         const response = await loginUser(formData);
         toast.success("Iniciaste sesión correctamente");
         setTimeout(() => {
-          router.push("/home-delivery");
+          router.push("/statement");
         }, 3000);
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
@@ -99,7 +99,7 @@ function Login() {
           <ToastContainer
             position="bottom-left"
             transition={Zoom}
-            autoClose={3000}
+            autoClose={2000}
           />
         </div>
       </form>
