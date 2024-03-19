@@ -13,12 +13,19 @@ import InputDatePicker from "@/commons/InputDatePicker";
 import ArrowBack from "@/assets/ArrowBack";
 import { createPackage } from "@/services/dataPackages";
 
+type PackageData = {
+  address: string;
+  client_name: string;
+  weight: string;
+  delivery_date: string;
+};
+
 function AddPackagesBox() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<PackageData>({
     address: "",
     client_name: "",
     weight: "",
-    delivery_date: "",
+    delivery_date: new Date().toISOString().slice(0, 10),
   });
 
   const router = useRouter();
@@ -43,7 +50,7 @@ function AddPackagesBox() {
       !formData.weight
     ) {
       toast.warn("Debes completar todos los campos");
-      console.log(formData)
+      console.log(formData);
     } else {
       try {
         const response = await createPackage(formData);
@@ -52,7 +59,7 @@ function AddPackagesBox() {
           address: "",
           client_name: "",
           weight: "",
-          delivery_date: "",
+          delivery_date: new Date().toISOString().slice(0, 10),
         });
       } catch (error) {
         console.error("Error al agregar el paquete:", error);
@@ -111,16 +118,16 @@ function AddPackagesBox() {
               onSelectPicker={handleDateSelect}
               onChange={handleChange}
             />
-          </div>{" "}
-          <button
-            type="submit"
-            className="greenButton"
-            style={{ marginTop: "auto", marginBottom: "10px" }}
-          >
-            Agregar
-          </button>
+          </div>
+          <div className="buttonSubmitContainer">
+            <button
+              type="submit"
+              className="greenButton"
+            >
+              Agregar
+            </button>
+          </div>
         </form>
-
         <ToastContainer
           position="bottom-left"
           transition={Zoom}

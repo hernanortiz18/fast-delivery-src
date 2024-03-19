@@ -21,6 +21,8 @@ function GetpackageBox() {
   const [packages, setPackages]: [Package[], SetPackages] = useState<Package[]>(
     []
   );
+
+  const [noPackages, setNoPackages] = useState(false);
   const router = useRouter();
 
   const handleBackButton = () => {
@@ -32,9 +34,11 @@ function GetpackageBox() {
       try {
         const allPackages = await fetchPackages();
         setPackages(allPackages);
+        setNoPackages(false);
       } catch (error) {
         console.error("No se han podido obtener todos los paquetes:", error);
-        throw error;
+        setNoPackages(true);
+        // throw error;
       }
     };
 
@@ -50,6 +54,7 @@ function GetpackageBox() {
       </div>
       <div className="boxGetPackagesStyle">
         <h1 className="box-subtitle">¿Cuántos paquetes repartirás hoy?</h1>
+        {noPackages ? <h3 style={{fontFamily: "Poppins", fontSize: "14px", textAlign: "center"}}>Lo siento, no se han encontrado paquetes.</h3> : ""}
 
         <ul>
           {packages.map((individualPackage, index) => (

@@ -9,7 +9,7 @@ type PackageData = {
   weight: string;
   delivery_date: string;
   id?: number;
-  driver_id?: null;
+  driver_id?: number;
   status?: string;
 };
 
@@ -44,7 +44,7 @@ export const getPackageById = async ({ id }: PackageData) => {
 };
 
 //get package by status
-export const getPackageByStatus = async ({ status }: PackageData) => {
+export const getPackageByStatus = async ( status : string) => {
   try {
     const response = await axios.get(`${API_URL}/status/${status}`, {
       withCredentials: true,
@@ -57,7 +57,7 @@ export const getPackageByStatus = async ({ status }: PackageData) => {
 };
 
 //get packages By driver
-export const getPackagesByDriver = async ({ driver_id }: PackageData) => {
+export const getPackagesByDriver = async (driver_id : number) => {
   try {
     const response = await axios.get(`${API_URL}/driver/${driver_id}`, {
       withCredentials: true,
