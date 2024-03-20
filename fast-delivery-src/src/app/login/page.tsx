@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import Logo from "@/assets/Logo";
-import LoginA from "@/components/LoginAdmin";
+import Login from "@/components/Login";
 
-function LoginAdmin() {
+function LoginPage() {
   return (
     <div>
       <div
@@ -15,7 +15,6 @@ function LoginAdmin() {
         }}
       >
         <Logo />
-
         <div
           style={{
             width: "fit-content",
@@ -25,11 +24,11 @@ function LoginAdmin() {
             marginTop: "1rem",
           }}
         >
-          <LoginA />
+          <Login />
         </div>
       </div>
     </div>
   );
 }
 
-export default LoginAdmin;
+export default LoginPage;

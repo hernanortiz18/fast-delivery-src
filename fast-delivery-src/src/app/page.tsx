@@ -1,35 +1,21 @@
 "use client";
+import { useAppSelector } from "@/redux/hooks";
 import React from "react";
-import Logo from "@/assets/Logo";
-import Login from "@/components/Login";
+import LoginPage from "./login/page";
+import ManageOrders from "./manage-orders/page";
+import HomeDeliveryPage from "./home-delivery/page";
 
 export default function Home() {
-
+  const user = useAppSelector((state) => state.user);
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          margin: "10rem auto",
-        }}
-      >
-        <Logo />
-
-        <div
-          style={{
-            width: "fit-content",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            marginTop: "1rem",
-          }}
-        >
-          <Login />
-        </div>
-      </div>
-    </div>
-
+    <>
+      {!user.id ? (
+        <LoginPage />
+      ) : user.role === "Admin" ? (
+        <ManageOrders />
+      ) : (
+        <HomeDeliveryPage />
+      )}
+    </>
   );
 }

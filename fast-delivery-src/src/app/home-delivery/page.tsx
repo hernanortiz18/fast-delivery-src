@@ -6,9 +6,7 @@ import "@/styles/buttons.css";
 import Navbar from "@/commons/Navbar";
 import HomeDeliveryComponent from "@/components/HomeDeliveryComponent";
 
-function Init() {
-
-
+function HomeDeliveryPage() {
   return (
     <div>
       <Navbar />
@@ -17,4 +15,4 @@ function Init() {
   );
 }
 
-export default Init;
+export default HomeDeliveryPage;

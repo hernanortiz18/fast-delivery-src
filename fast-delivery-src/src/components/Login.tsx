@@ -11,14 +11,17 @@ import { loginUser } from "@/services/dataLogin";
 import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/features/user";
 
 function Login() {
+  const router = useRouter();
+  const dispatch = useDispatch();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-
-  const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData((prevFormData) => ({
@@ -34,9 +37,10 @@ function Login() {
     } else {
       try {
         const response = await loginUser(formData);
+        dispatch(setUser(response));
         toast.success("Iniciaste sesión correctamente");
         setTimeout(() => {
-          router.push("/home-delivery");
+          router.push("/");
         }, 3000);
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
