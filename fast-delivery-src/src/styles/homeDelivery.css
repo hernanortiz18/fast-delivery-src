@@ -9,21 +9,34 @@
 
 .accordion-box-top {
   width: 300px;
+  max-height: 250px;
   padding: 15px;
   margin: auto;
   background-color: white;
   border-radius: 10px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.accordion-box-top::-webkit-scrollbar{
+  width: 2px;
 }
 
 .accordion-box-bottom {
   width: 300px;
+  max-height: 250px;
   padding: 15px;
   margin: 15px auto;
   background-color: white;
   border-radius: 10px;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
+
+.accordion-box-bottom::-webkit-scrollbar{
+  width: 2px;
+}
+
 
 .box-title {
   display: flex;

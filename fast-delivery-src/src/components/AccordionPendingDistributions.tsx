@@ -6,9 +6,12 @@ import TrashIcon from "@/assets/TrashIcon";
 import AccordionPackageItem from "./AccordionPackageItem";
 import ArrowIcon from "@/assets/ArrowIcon";
 import {
+  changeStatus,
   getPackageByStatus,
   getPackagesByDriver,
 } from "@/services/dataPackages";
+import { ToastContainer, Zoom, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type AccordionPendingDistributionsProps = {
   onClick: () => void;
@@ -22,38 +25,11 @@ type Package = {
   driver_id: number;
 };
 
-async function fetchPackages(driverId: number): Promise<Package[]> {
-  const status1 = "On Course"; 
-  const status2 = "Pending"; 
-  
-  try {
-    const packagesByStatus1 = await getPackageByStatus(status1);
-    const packagesByStatus2 = await getPackageByStatus(status2);
-    
-    
-    const filteredPackages = [...packagesByStatus1, ...packagesByStatus2].filter((specificPackage) => specificPackage.status === status1 || specificPackage.status === status2);
-    
-    console.log(filteredPackages);
-
-    const driverPackages = await getPackagesByDriver(2);
-    const filteredDriverPackages = driverPackages.filter((specificPackage: Package) => specificPackage.status === status1 || specificPackage.status === status2);
-
-    // Combinar los paquetes filtrados por estado y por conductor
-    const combinedPackages = [...filteredPackages, ...filteredDriverPackages];
-    
-    return combinedPackages;
-  } catch (error) {
-    console.error("No se han podido obtener todos los paquetes:", error);
-    throw error;
-  }
-}
-
 function AccordionPendingDistributions({
   onClick,
 }: AccordionPendingDistributionsProps) {
   const [openSection, setOpenSection] = useState(0);
   const [packages, setPackages] = useState<Package[]>([]);
-  const [noPackages, setNoPackages] = useState(false);
 
   const handleClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
@@ -61,20 +37,56 @@ function AccordionPendingDistributions({
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const driverId = 2;
-        const driverPackages = await fetchPackages(driverId);
-        setPackages(driverPackages);
-        setNoPackages(driverPackages.length === 0);
-      } catch (error) {
-        console.error("No se han podido obtener todos los paquetes:", error);
-        setNoPackages(true);
-      }
-    };
+    getPackagesByDriver(2)
+      .then((packages) => {
+        const pending = packages.filter(
+          (pendingPackage: Package) => pendingPackage.status === "Pending"
+        );
+        const onCourse = packages.filter(
+          (onCoursePackage: Package) => onCoursePackage.status === "On Course"
+        );
 
-    fetchData();
+        const combinedPackages = pending.concat(onCourse);
+        setPackages(combinedPackages);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
+
+  const handleInitDeliver = async () => {
+    try {
+      toast.success("¡Felicitaciones! Ya puede ir a repartir su paquete.");
+      setTimeout(() => {
+        changeStatus(5, "On Course");
+        window.location.reload();
+      }, 2000);
+
+      
+    } catch (error) {
+      console.error(`Error al iniciar el reparto del paquete`, error);
+      setTimeout(() => {
+        toast.error("¡Lo siento! No puede ir a repartir su paquete.");
+      }, 2000);
+    }
+  };
+
+  const handleDeletePackage = async () => {
+    try {
+      toast.info("Paquete eliminado correctamente");
+      setTimeout(() => {
+        changeStatus(5, "Free");
+        window.location.reload();
+      }, 2000);
+
+      
+    } catch (error) {
+      console.error(`Error al eliminar el paquete`, error);
+      setTimeout(() => {
+        toast.error("Error al eliminar el paquete");
+      }, 2000);
+    }
+  }
   return (
     <div className="accordion-box-top">
       <div className="box-title" onClick={handleClick}>
@@ -84,7 +96,7 @@ function AccordionPendingDistributions({
 
       {(openSection === 1 || openSection === 3) && (
         <>
-          {noPackages ? (
+         {packages.length === 0 ? (
             <h3
               style={{
                 fontFamily: "Poppins",
@@ -117,13 +129,23 @@ function AccordionPendingDistributions({
                 }
                 additionalElement={
                   individualPackage.status === "On Course" ? (
-                    <TrashIcon style={{ cursor: "pointer" }} />
+                    <TrashIcon style={{ cursor: "pointer" }} onClick={handleDeletePackage}/>
                   ) : (
-                    <button className="greenButtonSmall">iniciar</button>
+                    <button
+                      className="greenButtonSmall"
+                      onClick={handleInitDeliver}
+                    >
+                      iniciar
+                    </button>
                   )
                 }
               />
             ))}
+            <ToastContainer
+              position="bottom-left"
+              transition={Zoom}
+              autoClose={2000}
+            />
           </ul>
         </>
       )}

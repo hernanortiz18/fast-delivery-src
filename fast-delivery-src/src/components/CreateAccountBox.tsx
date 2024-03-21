@@ -18,7 +18,7 @@ import "react-toastify/dist/ReactToastify.css";
 function CreateAccountBox() {
   const [formData, setFormData] = useState({
     name: "",
-    lastName: "",
+    last_name: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -50,7 +50,7 @@ function CreateAccountBox() {
     }
     setFormData({
       name: "",
-      lastName: "",
+      last_name: "",
       email: "",
       password: "",
       confirmPassword: "",
@@ -105,8 +105,8 @@ function CreateAccountBox() {
           <InputText
             className="inputWhite"
             placeholder="Apellido"
-            name="lastName"
-            value={formData.lastName}
+            name="last_name"
+            value={formData.last_name}
             disabled={false}
             onChange={handleChange}
           />

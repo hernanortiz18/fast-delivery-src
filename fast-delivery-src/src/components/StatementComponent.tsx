@@ -14,30 +14,32 @@ function StatementComponent() {
     drugs: "",
     emotional: "",
   });
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(formData);
+  const handleSubmit = async () => {
+    setFormSubmitted(true); // Marcar el formulario como enviado
     validateForm();
   };
 
   const validateForm = () => {
-    if (!formData.alcohol && !formData.drugs && !formData.emotional) {
-      toast.success(
-        "¡Muchas gracias! Ya puede comenzar a repartir sus paquetes."
-      );
-      setTimeout(() => {
-        router.push("/home-delivery");
-      }, 3000);
-    } else {
-      toast.warn("Lo siento, no puede comenzar su día de repartos.");
-      setTimeout(() => {
-        updateUser(2, { status: "Disabled" });
-        dataLogout();
-        router.push("/");
-      }, 3000);
+    if (formSubmitted) {
+      if (formData.alcohol || formData.drugs || formData.emotional) {
+        toast.warn("Lo siento, no puede comenzar su día de repartos.");
+        setTimeout(() => {
+          updateUser(2, { status: "Disabled" });
+          dataLogout();
+          router.push("/");
+        }, 2000);
+      } else {
+        toast.success(
+          "¡Muchas gracias! Ya puede comenzar a repartir sus paquetes."
+        );
+        setTimeout(() => {
+          router.push("/home-delivery");
+        }, 2000);
+      }
     }
   };
 
@@ -50,7 +52,7 @@ function StatementComponent() {
           <p className="title">Declaración jurada</p>
         </div>
       </div>
-      <form className="boxStatementStyle" onSubmit={handleSubmit}>
+      <div className="boxStatementStyle">
         <IndividualStatement
           content="¿Ha consumido bebidas alcohólicas en las últimas 12 horas?"
           type="alcohol"
@@ -70,11 +72,11 @@ function StatementComponent() {
         <button
           className="greenButton"
           style={{ marginTop: "30px" }}
-          type="submit"
+          onClick={handleSubmit}
         >
           Continuar
         </button>
-      </form>
+      </div>
       <ToastContainer
         position="bottom-left"
         transition={Zoom}
