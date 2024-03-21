@@ -4,7 +4,7 @@ const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/users`;
 
 type DataRegisterProps = {
   name: string;
-  lastName: string;
+  last_name: string;
   email: string;
   password: string;
   confirmPassword: string;

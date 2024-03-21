@@ -37,7 +37,7 @@ function Login() {
         toast.success("Iniciaste sesión correctamente");
         setTimeout(() => {
           router.push("/statement");
-        }, 3000);
+        }, 2000);
       } catch (error) {
         console.error("Error al iniciar sesión:", error);
         toast.error("No se ha podido iniciar sesión");

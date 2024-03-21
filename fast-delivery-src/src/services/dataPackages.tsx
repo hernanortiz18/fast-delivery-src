@@ -5,9 +5,9 @@ const API_URL = `${process.env.NEXT_PUBLIC_API_URL}/packages`;
 type PackageData = {
   address: string;
   city?: string;
-  client_name: string;
-  weight: string;
-  delivery_date: string;
+  client_name?: string;
+  weight?: string;
+  delivery_date?: string;
   id?: number;
   driver_id?: number;
   status?: string;
@@ -44,12 +44,19 @@ export const getPackageById = async ({ id }: PackageData) => {
 };
 
 //get package by status
-export const getPackageByStatus = async ( status : string) => {
+export const getPackageByStatus = async (status: string) => {
   try {
     const response = await axios.get(`${API_URL}/status/${status}`, {
       withCredentials: true,
     });
-    return response.data;
+    let newArr = response.data.map((individualPackage: PackageData) => {
+      const adressArr = individualPackage.address.split(",");
+      individualPackage.address = adressArr[0];
+      individualPackage.city = adressArr[1];
+      return individualPackage;
+    });
+    console.log(newArr);
+    return newArr;
   } catch (error) {
     console.error("Error al obtener el paquete:", error);
     throw error;
@@ -57,12 +64,21 @@ export const getPackageByStatus = async ( status : string) => {
 };
 
 //get packages By driver
-export const getPackagesByDriver = async (driver_id : number) => {
+export const getPackagesByDriver = async (driver_id: number) => {
   try {
     const response = await axios.get(`${API_URL}/driver/${driver_id}`, {
       withCredentials: true,
     });
-    return response.data;
+    let newArr = response.data.map((individualPackage: PackageData) => {
+      const adressArr = individualPackage.address.split(",");
+      individualPackage.address = adressArr[0];
+      individualPackage.city = adressArr[1];
+      return individualPackage;
+    });
+    console.log(newArr);
+    return newArr;
+
+    // return response.data;
   } catch (error) {
     console.error("Error al obtener los paquetes:", error);
     throw error;
@@ -83,7 +99,36 @@ export const createPackage = async (packageData: PackageData) => {
 };
 
 // start delivery (put)
-export const startDelivery = async () => {};
+export const startDelivery = async (idsArray: number[], userId: number) => {
+  try {
+    const response = await axios.put(
+      `${API_URL}/start-delivery`,
+      {
+        ids: idsArray,
+        driver_id: userId,
+      },
+      { withCredentials: true }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al iniciar la entrega:", error);
+    throw error;
+  }
+};
 
 // change status (put)
-export const changeStatus = async () => {};
+export const changeStatus = async (id: number, newStatus: string) => {
+  try {
+    const response = await axios.put(
+      `${API_URL}/status/${id}`,
+      { newStatus },
+      {
+        withCredentials: true,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al modificar el estado de un paquete:", error);
+    throw error;
+  }
+};
