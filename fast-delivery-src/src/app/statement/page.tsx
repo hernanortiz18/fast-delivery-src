@@ -6,7 +6,6 @@ import Navbar from "@/commons/Navbar";
 function statement() {
   return (
     <div>
-      <Navbar />
       <StatementComponent />
     </div>
   );

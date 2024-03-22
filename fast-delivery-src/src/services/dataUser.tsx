@@ -67,3 +67,34 @@ export const changePassword = async () => {
     throw error;
   }
 };
+
+type userProps = {
+  email?: string;
+  name?: string;
+  last_name?: string;
+  status?: string;
+};
+//update user
+export const updateUser = async (id: number, bodyInfo: userProps) => {
+  try {
+    const response = await axios.put(`${API_URL}/update/${id}`, bodyInfo, {
+      withCredentials: true,
+    });
+    return response.data[0];
+  } catch (error) {
+    console.error("Error al actualizar el usuario:", error);
+    throw error;
+  }
+};
+
+//verify account
+export const verifyAccount = async (token: string) => {
+  try {
+    await axios.put(`${API_URL}/verify-email/${token}`, null, {
+      withCredentials: true,
+    });
+  } catch (error) {
+    console.error("Error al verificar la cuenta:", error);
+    throw error;
+  }
+};

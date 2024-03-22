@@ -5,20 +5,16 @@ import "../styles/getPackages.css";
 import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
 import CheckboxPackage from "@/commons/CheckboxPackage";
-import { getAllPackages } from "@/services/dataPackages";
+import { startDelivery, getAllPackages } from "@/services/dataPackages";
 
 type Package = {
   address: string;
   city: string;
+  status: string;
 };
 
-type SetPackages = React.Dispatch<React.SetStateAction<Package[]>>;
-async function fetchPackages(): Promise<Package[]> {
-  return await getAllPackages();
-}
-
 function GetpackageBox() {
-  const [packages, setPackages]: [Package[], SetPackages] = useState<Package[]>(
+  const [packages, setPackages] = useState<Package[]>(
     []
   );
   const router = useRouter();
@@ -28,18 +24,29 @@ function GetpackageBox() {
   };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const allPackages = await fetchPackages();
-        setPackages(allPackages);
-      } catch (error) {
-        console.error("No se han podido obtener todos los paquetes:", error);
-        throw error;
-      }
-    };
-
-    fetchData();
+    getAllPackages()
+      .then((packages) => {
+        const free = packages.filter(
+          (freePackage: Package) => freePackage.status === "Free"
+        );
+        console.log(free)
+        setPackages(free);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, []);
+
+  const handleIniciarJornada = async () => {
+    try{
+      setTimeout(() => {
+        startDelivery([4,5,6], 2)
+        router.push("/home-delivery")
+      }, 2000);
+    } catch(error) {
+      console.error("Error al iniciar la jornada", error )
+    }
+  }
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
@@ -50,6 +57,7 @@ function GetpackageBox() {
       </div>
       <div className="boxGetPackagesStyle">
         <h1 className="box-subtitle">¿Cuántos paquetes repartirás hoy?</h1>
+        {packages.length === 0 ? <h3 style={{fontFamily: "Poppins", fontSize: "14px", textAlign: "center"}}>Lo siento, no se han encontrado paquetes.</h3> : ""}
 
         <ul>
           {packages.map((individualPackage, index) => (
@@ -62,7 +70,7 @@ function GetpackageBox() {
         </ul>
       </div>
       <div className="button-container">
-        <button className="greenButton">Iniciar Jornada</button>
+        <button className="greenButton" onClick={handleIniciarJornada}>Iniciar Jornada</button>
       </div>
     </div>
   );

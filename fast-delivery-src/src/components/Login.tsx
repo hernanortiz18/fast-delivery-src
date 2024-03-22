@@ -103,7 +103,7 @@ function Login() {
           <ToastContainer
             position="bottom-left"
             transition={Zoom}
-            autoClose={3000}
+            autoClose={2000}
           />
         </div>
       </form>

@@ -4,18 +4,18 @@ import "@/styles/buttons.css";
 import BoxIcon from "@/assets/BoxIcon";
 
 type PackageItemProps = {
-  packageCode: string;
-  packageDirection: string;
-  location: string;
+  package_code: string;
+  address: string;
+  city: string;
   tags?: string;
   tagContent?: string;
   additionalElement?: React.ReactNode;
 };
 
 function AccordionPackageItem({
-  packageCode,
-  packageDirection,
-  location,
+  package_code,
+  address,
+  city,
   tags,
   additionalElement,
   tagContent,
@@ -25,9 +25,9 @@ function AccordionPackageItem({
       <div className="box-icon-info-container">
         <BoxIcon />
         <div>
-          <h1 className="package-code">#{packageCode}</h1>
-          <h2 className="package-direction">{packageDirection},</h2>
-          <h2 className="package-direction">{location}</h2>
+          <h1 className="package-code">#{package_code}</h1>
+          <h2 className="package-direction">{address},</h2>
+          <h2 className="package-direction">{city}</h2>
         </div>
       </div>
       <div className="tags-container">

@@ -42,8 +42,9 @@ const InputDatePicker: React.FC<DatePickerProps> = ({
       ],
       onChange: (selectedDates) => {
         if (selectedDates && selectedDates.length > 0) {
-          setSelectedDate(selectedDates[0]);
-          onSelectPicker(selectedDates[0]);
+          const newSelectedDate = selectedDates[0];
+          setSelectedDate(newSelectedDate);
+          onSelectPicker(newSelectedDate);
         }
       },
       onClose: () => {
@@ -58,7 +59,8 @@ const InputDatePicker: React.FC<DatePickerProps> = ({
     };
   }, [name, onSelectPicker, selectedDate]);
 
-  const handleArrowButtonClick = () => {
+  const handleArrowButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     if (pickerRef.current) {
       if (openCalendar) {
         pickerRef.current.close();
@@ -69,7 +71,8 @@ const InputDatePicker: React.FC<DatePickerProps> = ({
       }
     }
   };
-  const handleInputClick = () => {
+  const handleInputClick = (e: React.MouseEvent<HTMLInputElement>) => {
+    e.preventDefault();
     if (pickerRef.current) {
       if (openCalendar) {
         pickerRef.current.close();
@@ -89,13 +92,14 @@ const InputDatePicker: React.FC<DatePickerProps> = ({
           name={name}
           className={className}
           placeholder={placeholder}
+          value={selectedDate ? selectedDate.toLocaleDateString("es-ES") : ""} // Mostrar la fecha seleccionada en el input
           data-input
           onClick={handleInputClick}
           onChange={onChange}
         />
-        {/* <button className="arrow-container" onClick={handleArrowButtonClick}>
+        <button className="arrow-container" onClick={handleArrowButtonClick}>
           <ArrowIcon />
-        </button> */}
+        </button>
       </div>
     </div>
   );
