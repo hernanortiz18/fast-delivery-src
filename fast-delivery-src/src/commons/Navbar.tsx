@@ -5,12 +5,24 @@ import AppIcon from "../assets/AppIcon";
 import LogoutIcon from "../assets/LogoutIcon";
 import dataLogout from "@/services/dataLogout";
 import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/features/user";
 
 function Navbar() {
+  const dispatch = useDispatch();
   const router = useRouter();
   const clickLogout = async () => {
     try {
       await dataLogout();
+      dispatch(
+        setUser({
+          id: null,
+          email: "",
+          name: "",
+          last_name: "",
+          role: "",
+        })
+      );
       router.push("/");
     } catch (error) {
       console.error("Error al cerrar sesión:", error);

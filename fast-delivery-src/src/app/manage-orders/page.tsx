@@ -3,7 +3,7 @@ import ManageOrdersBox from "@/components/ManageOrdersBox";
 
 import React from "react";
 
-function manageOrders() {
+function ManageOrders() {
   return (
     <div>
       <Navbar />
@@ -12,4 +12,4 @@ function manageOrders() {
   );
 }
 
-export default manageOrders;
+export default ManageOrders;

@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./providers";
+import { ReactProvider } from "@/redux/providers";
+import RoutesProtection from "@/components/RoutesProtection";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-
-  title: 'Fast Delivery',
-  description: '',
-}
-
+  title: "Fast Delivery",
+  description: "",
+};
 
 export default function RootLayout({
   children,
@@ -23,7 +23,11 @@ export default function RootLayout({
         className={inter.className}
         style={{ background: "rgba(61, 29, 243, 1)" }}
       >
-        <Providers>{children}</Providers>
+        <ReactProvider>
+          <Providers>
+            <RoutesProtection>{children}</RoutesProtection>
+          </Providers>
+        </ReactProvider>
       </body>
     </html>
   );
