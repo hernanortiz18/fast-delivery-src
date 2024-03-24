@@ -8,6 +8,7 @@ import {
   getPackageByStatus,
   getPackagesByDriver,
 } from "@/services/dataPackages";
+import { useAppSelector } from "@/redux/hooks";
 
 type AccordionHistoryDistributionsProps = {
   onClick: () => void;
@@ -17,24 +18,8 @@ type Package = {
   city: string;
   package_code: string;
   status: string;
-  driver_id: number;
+  driver_id: Number | null;
 };
-
-// type SetPackages = React.Dispatch<React.SetStateAction<Package[]>>;
-// async function fetchPackages(): Promise<Package[]> {
-//   const driverId = 2;
-//   const status = "Delivered";
-//   try {
-//     const packagesByStatus = await getPackageByStatus(status);
-//     // Filtra los paquetes obtenidos por el conductor
-//     const filteredPackages = packagesByStatus.filter((specificPackage: Package) => specificPackage.driver_id === driverId);
-
-//     return filteredPackages;
-//   } catch (error) {
-//     console.error("No se han podido obtener todos los paquetes:", error);
-//     throw error;
-//   }
-// }
 
 function AccordionHistoryDistributions({
   onClick,
@@ -42,6 +27,7 @@ function AccordionHistoryDistributions({
   const [openSection, setOpenSection] = useState(0);
   const [packages, setPackages] = useState<Package[]>([]);
 
+  const user = useAppSelector((state) => state.user);
 
   const handleClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
@@ -49,7 +35,7 @@ function AccordionHistoryDistributions({
   };
 
   useEffect(() => {
-    getPackagesByDriver(2)
+    getPackagesByDriver(user.id)
       .then((packages) => {
         const delivered = packages.filter(
           (pendingPackage: Package) => pendingPackage.status === "Delivered"

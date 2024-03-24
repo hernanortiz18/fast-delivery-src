@@ -1,5 +1,6 @@
 import React from "react";
 import "@/styles/deliveryDrivers.css";
+import Link from "next/link";
 
 type DeliveryDriverCommonProps = {
   driverName: string;
@@ -21,7 +22,10 @@ function DeliveryDriverCommon({
       <div className="percentage-name-container">
         {percentage && <div>{percentage}</div>}
         <div className="name-tag-container">
-          <p className="name">{driverName}</p>
+          <Link href="/delivery-profile">
+            <p className="name">{driverName}</p>
+          </Link>
+
           <div className={`tags ${tags}`}>{tagContent}</div>
         </div>
       </div>

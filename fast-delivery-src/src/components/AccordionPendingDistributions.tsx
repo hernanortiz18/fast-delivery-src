@@ -12,6 +12,7 @@ import {
 } from "@/services/dataPackages";
 import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useAppSelector } from "@/redux/hooks";
 
 type AccordionPendingDistributionsProps = {
   onClick: () => void;
@@ -31,13 +32,15 @@ function AccordionPendingDistributions({
   const [openSection, setOpenSection] = useState(0);
   const [packages, setPackages] = useState<Package[]>([]);
 
+  const user = useAppSelector((state) => state.user);
+
   const handleClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
     onClick();
   };
 
   useEffect(() => {
-    getPackagesByDriver(2)
+    getPackagesByDriver(user.id)
       .then((packages) => {
         const pending = packages.filter(
           (pendingPackage: Package) => pendingPackage.status === "Pending"
@@ -58,7 +61,7 @@ function AccordionPendingDistributions({
     try {
       toast.success("¡Felicitaciones! Ya puede ir a repartir su paquete.");
       setTimeout(() => {
-        changeStatus(5, "On Course");
+        changeStatus(4, "On Course");
         window.location.reload();
       }, 2000);
 
@@ -78,8 +81,6 @@ function AccordionPendingDistributions({
         changeStatus(5, "Free");
         window.location.reload();
       }, 2000);
-
-      
     } catch (error) {
       console.error(`Error al eliminar el paquete`, error);
       setTimeout(() => {
