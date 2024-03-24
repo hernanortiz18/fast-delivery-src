@@ -64,7 +64,7 @@ export const getPackageByStatus = async (status: string) => {
 };
 
 //get packages By driver
-export const getPackagesByDriver = async (driver_id: number) => {
+export const getPackagesByDriver = async (driver_id: Number | null) => {
   try {
     const response = await axios.get(`${API_URL}/driver/${driver_id}`, {
       withCredentials: true,
@@ -99,7 +99,10 @@ export const createPackage = async (packageData: PackageData) => {
 };
 
 // start delivery (put)
-export const startDelivery = async (idsArray: number[], userId: number) => {
+export const startDelivery = async (
+  idsArray: number[],
+  userId: Number | null
+) => {
   try {
     const response = await axios.put(
       `${API_URL}/start-delivery`,
@@ -129,6 +132,16 @@ export const changeStatus = async (id: number, newStatus: string) => {
     return response.data;
   } catch (error) {
     console.error("Error al modificar el estado de un paquete:", error);
+    throw error;
+  }
+};
+
+//delete package
+export const deletePackage = async (id: number) => {
+  try {
+    await axios.delete(`${API_URL}/single/${id}`, { withCredentials: true });
+  } catch (error) {
+    console.error("Error al eliminar el paquete:", error);
     throw error;
   }
 };

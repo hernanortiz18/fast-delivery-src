@@ -10,6 +10,7 @@ import CarrouselCalendar from "./CarrouselCalendar";
 import { TfiPlus } from "react-icons/tfi";
 import AdminPresentation from "./AdminPresentation";
 import DetailsComponent from "./DetailsComponent";
+import { useAppSelector } from "@/redux/hooks";
 
 function ManageOrdersBox() {
   const router = useRouter();
@@ -17,6 +18,8 @@ function ManageOrdersBox() {
   const handleClickNewPackage = () => {
     router.push("/add-package");
   };
+
+  const user = useAppSelector((state) => state.user);
 
   /*
       FUNCIÓN PARA IR AL PERFIL DEL REPARTIDOR
@@ -41,7 +44,7 @@ function ManageOrdersBox() {
       >
         <AdminPresentation
           adminPic="https://static.vecteezy.com/system/resources/previews/023/186/830/non_2x/portrait-of-a-wolf-in-profile-on-a-dark-background-digital-painting-ai-generative-image-free-photo.jpg"
-          adminName="Lobo"
+          adminName={user.name}
         />
         <div className="carrousel-calendar-container">
           <CarrouselCalendar />

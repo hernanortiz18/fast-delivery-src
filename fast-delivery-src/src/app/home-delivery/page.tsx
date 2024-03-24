@@ -5,12 +5,42 @@ import "@/styles/input.css";
 import "@/styles/buttons.css";
 import Navbar from "@/commons/Navbar";
 import HomeDeliveryComponent from "@/components/HomeDeliveryComponent";
+import { useAppSelector } from "@/redux/hooks";
+import LoginPage from "../login/page";
 
 function HomeDeliveryPage() {
+  const user = useAppSelector((state) => state.user);
+
   return (
     <div>
-      <Navbar />
-      <HomeDeliveryComponent />
+      {!user.id ? (
+        <h2
+          style={{
+            color: "white",
+            fontFamily: "Poppins",
+            textAlign: "center",
+            marginTop: "20px",
+          }}
+        >
+          404 Not Found
+        </h2>
+      ) : user.role === "Driver" ? (
+        <>
+          <Navbar />
+          <HomeDeliveryComponent />
+        </>
+      ) : (
+        <h2
+          style={{
+            color: "white",
+            fontFamily: "Poppins",
+            textAlign: "center",
+            marginTop: "20px",
+          }}
+        >
+          No puede acceder a esta pagina si no es repartidor.
+        </h2>
+      )}
     </div>
   );
 }

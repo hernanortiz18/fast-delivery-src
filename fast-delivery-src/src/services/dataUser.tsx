@@ -21,7 +21,7 @@ export const getAllUsers = async () => {
 };
 
 //get user by id
-export const getUserById = async ({ id }: DataUserProps) => {
+export const getUserById = async ( id : Number | null) => {
   try {
     const response = await axios.get(`${API_URL}/single/${id}`, {
       withCredentials: true,
@@ -75,7 +75,7 @@ type userProps = {
   status?: string;
 };
 //update user
-export const updateUser = async (id: number, bodyInfo: userProps) => {
+export const updateUser = async (id: Number | null, bodyInfo: userProps) => {
   try {
     const response = await axios.put(`${API_URL}/update/${id}`, bodyInfo, {
       withCredentials: true,
@@ -83,7 +83,7 @@ export const updateUser = async (id: number, bodyInfo: userProps) => {
     return response.data[0];
   } catch (error) {
     console.error("Error al actualizar el usuario:", error);
-    throw error;
+    throw error; 
   }
 };
 

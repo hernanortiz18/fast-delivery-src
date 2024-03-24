@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
 import CheckboxPackage from "@/commons/CheckboxPackage";
 import { startDelivery, getAllPackages } from "@/services/dataPackages";
+import { useAppSelector } from "@/redux/hooks";
 
 type Package = {
   address: string;
@@ -18,6 +19,8 @@ function GetpackageBox() {
     []
   );
   const router = useRouter();
+
+  const user = useAppSelector((state) => state.user);
 
   const handleBackButton = () => {
     router.back();
@@ -40,7 +43,7 @@ function GetpackageBox() {
   const handleIniciarJornada = async () => {
     try{
       setTimeout(() => {
-        startDelivery([4,5,6], 2)
+        startDelivery([4,5,6], user.id)
         router.push("/home-delivery")
       }, 2000);
     } catch(error) {
