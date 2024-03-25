@@ -6,15 +6,13 @@ import "../styles/box.css";
 import "../styles/switch.css";
 import "../styles/buttons.css";
 import "@/styles/init.css";
-import Avatar from "@/commons/Avatar";
 import "@/styles/avatar.css";
 import "@/components/PendingDeliveries";
 import "@/components/DeliveriesHistory";
-import deliveryProfileImage from "../assets/delivery-profile.jpeg";
+import iconoProfile from "../../public/img/iconoProfile.jpg";
 import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
 import { getUserById, updateUser } from "@/services/dataUser";
-import PendingDistributions from "@/components/PendingDeliveries";
 import DeliveriesHistory from "@/components/DeliveriesHistory";
 import PendingDeliveries from "@/components/PendingDeliveries";
 
@@ -96,7 +94,7 @@ const DeliveryProfile = () => {
       <div className="boxDeliveryProfileStyle">
         <div style={{ width: "25%" }}>
           <Image
-            src={deliveryProfileImage}
+            src={iconoProfile}
             alt="Profile-Image"
             width={56}
             height={56}

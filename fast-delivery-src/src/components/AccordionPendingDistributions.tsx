@@ -61,7 +61,7 @@ function AccordionPendingDistributions({
     try {
       toast.success("¡Felicitaciones! Ya puede ir a repartir su paquete.");
       setTimeout(() => {
-        changeStatus(4, "On Course");
+        changeStatus(6, "On Course");
         window.location.reload();
       }, 2000);
 
@@ -78,7 +78,7 @@ function AccordionPendingDistributions({
     try {
       toast.info("Paquete eliminado correctamente");
       setTimeout(() => {
-        changeStatus(5, "Free");
+        changeStatus(4, "Free");
         window.location.reload();
       }, 2000);
     } catch (error) {
