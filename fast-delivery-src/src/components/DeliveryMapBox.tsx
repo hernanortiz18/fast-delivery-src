@@ -1,14 +1,11 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/box.css";
 import "../styles/input.css";
 import "../styles/buttons.css";
 import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
 import DeliveryMapInfo from "./DeliveryMapInfo";
-<<<<<<< Updated upstream
-
-=======
 import {
   changeStatus,
   getPackageById,
@@ -23,15 +20,13 @@ type DeliveryInfo = {
   city: string;
   status: string;
 };
->>>>>>> Stashed changes
 function DeliveryMapBox() {
+  const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>();
   const router = useRouter();
 
   const handleBackButton = () => {
     router.back();
   };
-<<<<<<< Updated upstream
-=======
 
   useEffect(() => {
     const fetchPackage = async () => {
@@ -116,7 +111,6 @@ function DeliveryMapBox() {
     }
   };
 
->>>>>>> Stashed changes
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
@@ -131,18 +125,6 @@ function DeliveryMapBox() {
       <div className="boxDeliveryMapStyle">
         <div className="mapContainer"></div>
         <DeliveryMapInfo
-<<<<<<< Updated upstream
-          packageDirection="Amenabar 2100"
-          packageCode="0A235"
-          clientName="Mauro Bruno"
-        />
-        <button className="greenButton" style={{ marginTop: "30px" }}>
-          Finalizar
-        </button>
-      </div>
-      <div style={{ display: "flex", margin: "15px auto" }}>
-        <button className="transparentButton1">Cancelar entrega</button>
-=======
           address={deliveryInfo?.address}
           package_code={deliveryInfo?.id}
           client_name={deliveryInfo?.client_name}
@@ -186,7 +168,6 @@ function DeliveryMapBox() {
         ) : (
           ""
         )}
->>>>>>> Stashed changes
       </div>
     </div>
   );

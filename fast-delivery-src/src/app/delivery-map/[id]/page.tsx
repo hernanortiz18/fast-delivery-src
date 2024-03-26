@@ -4,7 +4,7 @@ import DeliveryMapBox from "@/components/DeliveryMapBox";
 import React from "react";
 import LoginPage from "../../login/page";
 import { useAppSelector } from "@/redux/hooks";
-import NotFound from "@/components/NotFound";
+
 
 function page() {
   const user = useAppSelector((state) => state.user);
@@ -19,7 +19,7 @@ function page() {
             marginTop: "20px",
           }}
         >
-          <NotFound />
+          404 not found
         </h2>
       ) : user.role === "Driver" ? (
         <>

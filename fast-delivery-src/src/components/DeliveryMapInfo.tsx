@@ -2,31 +2,33 @@ import React from 'react'
 import '@/styles/box.css'
 
 type DeliveryMapInfoProps ={
-  packageDirection: string
-  packageCode: string
-  clientName: string
+  address: string | undefined
+  package_code: string | undefined
+  client_name: string | undefined
+  city: string | undefined
 }
 
-function DeliveryMapInfo({packageDirection, packageCode, clientName}: DeliveryMapInfoProps) {
+function DeliveryMapInfo({address, package_code, client_name, city}: DeliveryMapInfoProps) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
           <div className="deliveryMapInfo">
             <p className="infoP" style={{ fontWeight: "bolder" }}>
               Destino: ​
             </p>
-            <p className="infoP">{packageDirection},</p>
+            <p className="infoP">{address},</p>
+            <p className="infoP">{city},</p>
           </div>
           <div className="deliveryMapInfo">
             <p className="infoP" style={{ fontWeight: "bolder" }}>
               Número de paquete: ​
             </p>
-            <p className="infoP">#{packageCode}</p>
+            <p className="infoP">#{package_code}</p>
           </div>
           <div className="deliveryMapInfo">
             <p className="infoP" style={{ fontWeight: "bolder" }}>
               Recibe: ​
             </p>
-            <p className="infoP">{clientName}</p>
+            <p className="infoP">{client_name}</p>
           </div>
         </div>
   )

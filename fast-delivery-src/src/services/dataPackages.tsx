@@ -31,11 +31,9 @@ export const getAllPackages = async () => {
 };
 
 // get package by id
-<<<<<<< Updated upstream
-export const getPackageById = async ({ id }: PackageData) => {
-=======
+
 export const getPackageById = async ( id : number | string) => {
->>>>>>> Stashed changes
+
   try {
     const response = await axios.get(`${API_URL}/single/${id}`, {
       withCredentials: true,
