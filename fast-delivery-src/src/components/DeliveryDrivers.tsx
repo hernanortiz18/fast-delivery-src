@@ -11,15 +11,27 @@ import Avatar from "@/commons/Avatar";
 import CircularProgresss from "@/commons/CircularProgresss";
 import DeliveryDriverCommon from "@/commons/DeliveryDriverCommon";
 import { getAllUsers } from "@/services/dataUser";
+import { getPackagesByDriver } from "@/services/dataPackages";
 
 type Users = {
   name: string;
   role: string;
   status: string;
+  id: number;
+};
+
+type Package = {
+  address: string;
+  city: string;
+  package_code: string;
+  status: string;
+  driver_id: Number | null;
 };
 
 function DeliveryDrivers() {
   const [users, setUsers] = useState<Users[]>([]);
+  const [packages, setPackages] = useState<Package[]>([]);
+  const [deliveredPackages, setDeliveredPackages] = useState<Package[]>([]);
   const router = useRouter();
 
   const handleBackButton = () => {
@@ -29,16 +41,29 @@ function DeliveryDrivers() {
   useEffect(() => {
     getAllUsers()
       .then((users) => {
-        const drivers = users.filter(
-          (driverUser: Users) => driverUser.role === "Driver"
-        );
+        const drivers = users.filter((driverUser: Users) => driverUser.role === "Driver");
         console.log(drivers);
         setUsers(drivers);
+
+        
+        Promise.all(drivers.map((driver: Users) => { 
+          return getPackagesByDriver(driver.id)
+            .then((packages) => {
+              const delivered = packages.filter((deliveredPackages: Package) => deliveredPackages.status === "Delivered");
+              console.log(delivered);
+              setPackages(packages);
+              setDeliveredPackages(delivered);
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }));
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
+
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
@@ -93,10 +118,10 @@ function DeliveryDrivers() {
                     ? "Habilitado"
                     : ""
                 }
-                percentage={<CircularProgresss percentage={25} />}
+                percentage={<CircularProgresss percentage={(deliveredPackages.length / packages.length) * 100} />}
                 avatar={
                   <Avatar
-                    src="/img/franco.jpg"
+                    src="/img/iconoUsers2.png"
                     className="distributors-stats-avatar"
                   />
                 }

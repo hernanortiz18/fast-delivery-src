@@ -2,9 +2,9 @@ import React from 'react'
 import '@/styles/box.css'
 
 type DeliveryMapInfoProps ={
-  address: string | undefined
-  package_code: string | undefined
-  client_name: string | undefined
+  address: string | undefined,
+  package_code: string | undefined,
+  client_name: string | undefined,
   city: string | undefined
 }
 

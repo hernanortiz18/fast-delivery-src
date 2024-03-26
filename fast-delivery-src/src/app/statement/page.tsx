@@ -1,8 +1,10 @@
+"use client"
 import React from "react";
 import "@/styles/statement.css";
 import StatementComponent from "@/components/StatementComponent";
 import { useAppSelector } from "@/redux/hooks";
 import LoginPage from "../login/page";
+import NotFound from "@/components/NotFound";
 
 function statement() {
   const user = useAppSelector((state) => state.user);
@@ -17,7 +19,7 @@ function statement() {
             marginTop: "20px",
           }}
         >
-          404 Not Found
+          <NotFound />
         </h2>
       ) : user.role === "Driver" ? (
         <StatementComponent />

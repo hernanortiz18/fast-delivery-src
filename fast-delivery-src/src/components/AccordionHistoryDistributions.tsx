@@ -4,6 +4,7 @@ import "@/styles/input.css";
 import "@/styles/buttons.css";
 import AccordionPackageItem from "./AccordionPackageItem";
 import ArrowIcon from "@/assets/ArrowIcon";
+import { PackageProps } from "../../types";
 import {
   getPackageByStatus,
   getPackagesByDriver,
@@ -11,25 +12,18 @@ import {
 import { useAppSelector } from "@/redux/hooks";
 import Link from "next/link";
 
+
 type AccordionHistoryDistributionsProps = {
   onClick: () => void;
-};
-type Package = {
-  address: string;
-  city: string;
-  package_code: string;
-  status: string;
-  driver_id: Number | null;
-  id: Number | null | string;
 };
 
 function AccordionHistoryDistributions({
   onClick,
 }: AccordionHistoryDistributionsProps) {
   const [openSection, setOpenSection] = useState(0);
-  const [packages, setPackages] = useState<Package[]>([]);
-
+  const [packages, setPackages] = useState<PackageProps[]>([]);
   const user = useAppSelector((state) => state.user);
+
 
   const handleClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
@@ -40,7 +34,8 @@ function AccordionHistoryDistributions({
     getPackagesByDriver(user.id)
       .then((packages) => {
         const delivered = packages.filter(
-          (pendingPackage: Package) => pendingPackage.status === "Delivered"
+          (pendingPackage: PackageProps) =>
+            pendingPackage.status === "Delivered"
         );
         setPackages(delivered);
       })
@@ -82,20 +77,18 @@ function AccordionHistoryDistributions({
           )}
           <ul>
             {packages.map((individualPackage, index) => (
-              <Link href={`/delivery-map/${individualPackage.id}`}>
-                <AccordionPackageItem
-                  key={index}
-                  package_code={individualPackage.package_code}
-                  address={individualPackage.address}
-                  city={individualPackage.city}
-                  tags={
-                    individualPackage.status === "Delivered" ? "delivered" : ""
-                  }
-                  tagContent={
-                    individualPackage.status === "Delivered" ? "Entregado" : ""
-                  }
-                />
-              </Link>
+              <AccordionPackageItem
+                key={index}
+                id={individualPackage.id}
+                address={individualPackage.address}
+                city={individualPackage.city}
+                tags={
+                  individualPackage.status === "Delivered" ? "delivered" : ""
+                }
+                tagContent={
+                  individualPackage.status === "Delivered" ? "Entregado" : ""
+                }
+              />
             ))}
           </ul>
         </>

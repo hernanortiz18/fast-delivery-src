@@ -7,6 +7,7 @@ import Navbar from "@/commons/Navbar";
 import HomeDeliveryComponent from "@/components/HomeDeliveryComponent";
 import { useAppSelector } from "@/redux/hooks";
 import LoginPage from "../login/page";
+import NotFound from "@/components/NotFound";
 
 function HomeDeliveryPage() {
   const user = useAppSelector((state) => state.user);
@@ -22,7 +23,7 @@ function HomeDeliveryPage() {
             marginTop: "20px",
           }}
         >
-          404 Not Found
+          <NotFound />
         </h2>
       ) : user.role === "Driver" ? (
         <>

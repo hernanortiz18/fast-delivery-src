@@ -4,6 +4,7 @@ import Navbar from "@/commons/Navbar";
 import GetpackageBox from "@/components/GetPackagesBox";
 import LoginPage from "../login/page";
 import { useAppSelector } from "@/redux/hooks";
+import NotFound from "@/components/NotFound";
 
 function Box() {
   const user = useAppSelector((state) => state.user);
@@ -18,7 +19,7 @@ function Box() {
             marginTop: "20px",
           }}
         >
-          404 Not Found
+          <NotFound />
         </h2>
       ) : user.role === "Driver" ? (
         <>

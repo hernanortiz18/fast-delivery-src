@@ -1,7 +1,7 @@
 import React from "react";
 
 type AvatarProps = {
-  src: string
+  src: string 
   className: string
 };
 

@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
+
 import "../styles/box.css";
 import "../styles/input.css";
 import "../styles/buttons.css";
@@ -21,8 +22,9 @@ type DeliveryInfo = {
   status: string;
 };
 function DeliveryMapBox() {
-  const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo>();
+
   const router = useRouter();
+  const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo | null>(null);
 
   const handleBackButton = () => {
     router.back();

@@ -4,6 +4,7 @@ import ManageOrdersBox from "@/components/ManageOrdersBox";
 import React from "react";
 import LoginPage from "../login/page";
 import { useAppSelector } from "@/redux/hooks";
+import NotFound from "@/components/NotFound";
 
 function ManageOrders() {
   const user = useAppSelector((state) => state.user);
@@ -18,7 +19,7 @@ function ManageOrders() {
             marginTop: "20px",
           }}
         >
-          404 Not Found
+          <NotFound />
         </h2>
       ) : user.role === "Admin" ? (
         <>

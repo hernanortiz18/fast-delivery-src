@@ -6,6 +6,7 @@ import PendingDeliveries from "@/components/PendingDeliveries";
 import React, { useState } from "react";
 import { useAppSelector } from "@/redux/hooks";
 import LoginPage from "../login/page";
+import NotFound from "@/components/NotFound";
 
 const page = () => {
   const [openSection, setOpenSection] = useState(0);
@@ -29,7 +30,7 @@ const page = () => {
             marginTop: "20px",
           }}
         >
-          404 Not Found
+          <NotFound />
         </h2>
       ) : user.role === "Admin" ? (
         <>

@@ -6,18 +6,15 @@ import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
 import CheckboxPackage from "@/commons/CheckboxPackage";
 import { startDelivery, getAllPackages } from "@/services/dataPackages";
+import { PackageProps } from "../../types";
 import { useAppSelector } from "@/redux/hooks";
 import Link from "next/link";
 
-type Package = {
-  address: string;
-  city: string;
-  status: string;
-  id: number | null | string;
-};
+
 
 function GetpackageBox() {
-  const [packages, setPackages] = useState<Package[]>([]);
+  const [packages, setPackages] = useState<PackageProps[]>([]);
+  const [tickedPackages, setTickedPackages] = useState([]);
   const router = useRouter();
 
   const user = useAppSelector((state) => state.user);
@@ -30,9 +27,8 @@ function GetpackageBox() {
     getAllPackages()
       .then((packages) => {
         const free = packages.filter(
-          (freePackage: Package) => freePackage.status === "Free"
+          (freePackage: PackageProps) => freePackage.status === "Free"
         );
-        console.log(free);
         setPackages(free);
       })
       .catch((error) => {
@@ -43,7 +39,7 @@ function GetpackageBox() {
   const handleIniciarJornada = async () => {
     try {
       setTimeout(() => {
-        startDelivery([4, 5, 6], user.id);
+        startDelivery(tickedPackages, 2);
         router.push("/home-delivery");
       }, 2000);
     } catch (error) {
@@ -76,13 +72,14 @@ function GetpackageBox() {
 
         <ul>
           {packages.map((individualPackage, index) => (
-            <Link href={`/delivery-map/${individualPackage.id}`}>
-              <CheckboxPackage
-                key={index}
-                address={individualPackage.address}
-                city={individualPackage.city}
-              />
-            </Link>
+            <CheckboxPackage
+              id={individualPackage.id}
+              key={index}
+              address={individualPackage.address}
+              city={individualPackage.city}
+              setTickedPackages={setTickedPackages}
+              tickedPackages={tickedPackages}
+            />
           ))}
         </ul>
       </div>

@@ -38,6 +38,13 @@ export const getPackageById = async ( id : number | string) => {
     const response = await axios.get(`${API_URL}/single/${id}`, {
       withCredentials: true,
     });
+    // let newArr = response.data.map((individualPackage: PackageData) => {
+    //   const adressArr = individualPackage.address.split(",");
+    //   individualPackage.address = adressArr[0];
+    //   individualPackage.city = adressArr[1];
+    //   return individualPackage;
+    // });
+    // return newArr;
     return response.data;
   } catch (error) {
     console.error("Error al obtener el paquete:", error);
@@ -57,7 +64,6 @@ export const getPackageByStatus = async (status: string) => {
       individualPackage.city = adressArr[1];
       return individualPackage;
     });
-    console.log(newArr);
     return newArr;
   } catch (error) {
     console.error("Error al obtener el paquete:", error);
@@ -77,7 +83,6 @@ export const getPackagesByDriver = async (driver_id: Number | null) => {
       individualPackage.city = adressArr[1];
       return individualPackage;
     });
-    console.log(newArr);
     return newArr;
 
     // return response.data;
@@ -122,7 +127,7 @@ export const startDelivery = async (
 };
 
 // change status (put)
-export const changeStatus = async (id: number, newStatus: string) => {
+export const changeStatus = async (id: number | string, newStatus: string) => {
   try {
     const response = await axios.put(
       `${API_URL}/status/${id}`,
