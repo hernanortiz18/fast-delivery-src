@@ -13,6 +13,7 @@ import {
 import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useAppSelector } from "@/redux/hooks";
+import Link from "next/link";
 
 type AccordionPendingDistributionsProps = {
   onClick: () => void;
@@ -24,6 +25,7 @@ type Package = {
   package_code: string;
   status: string;
   driver_id: number;
+  id: Number | null | string;
 };
 
 function AccordionPendingDistributions({
@@ -64,8 +66,6 @@ function AccordionPendingDistributions({
         changeStatus(4, "On Course");
         window.location.reload();
       }, 2000);
-
-      
     } catch (error) {
       console.error(`Error al iniciar el reparto del paquete`, error);
       setTimeout(() => {
@@ -87,7 +87,7 @@ function AccordionPendingDistributions({
         toast.error("Error al eliminar el paquete");
       }, 2000);
     }
-  }
+  };
   return (
     <div className="accordion-box-top">
       <div className="box-title" onClick={handleClick}>
@@ -97,7 +97,7 @@ function AccordionPendingDistributions({
 
       {(openSection === 1 || openSection === 3) && (
         <>
-         {packages.length === 0 ? (
+          {packages.length === 0 ? (
             <h3
               style={{
                 fontFamily: "Poppins",
@@ -113,34 +113,39 @@ function AccordionPendingDistributions({
           )}
           <ul>
             {packages.map((individualPackage, index) => (
-              <AccordionPackageItem
-                key={index}
-                package_code={individualPackage.package_code}
-                address={individualPackage.address}
-                city={individualPackage.city}
-                tags={
-                  individualPackage.status === "On Course"
-                    ? "course"
-                    : "pending"
-                }
-                tagContent={
-                  individualPackage.status === "On Course"
-                    ? "En curso"
-                    : "Pendiente"
-                }
-                additionalElement={
-                  individualPackage.status === "On Course" ? (
-                    <TrashIcon style={{ cursor: "pointer" }} onClick={handleDeletePackage}/>
-                  ) : (
-                    <button
-                      className="greenButtonSmall"
-                      onClick={handleInitDeliver}
-                    >
-                      iniciar
-                    </button>
-                  )
-                }
-              />
+              <Link href={`/delivery-map/${individualPackage.id}`}>
+                <AccordionPackageItem
+                  key={index}
+                  package_code={individualPackage.package_code}
+                  address={individualPackage.address}
+                  city={individualPackage.city}
+                  tags={
+                    individualPackage.status === "On Course"
+                      ? "course"
+                      : "pending"
+                  }
+                  tagContent={
+                    individualPackage.status === "On Course"
+                      ? "En curso"
+                      : "Pendiente"
+                  }
+                  additionalElement={
+                    individualPackage.status === "On Course" ? (
+                      <TrashIcon
+                        style={{ cursor: "pointer" }}
+                        onClick={handleDeletePackage}
+                      />
+                    ) : (
+                      <button
+                        className="greenButtonSmall"
+                        onClick={handleInitDeliver}
+                      >
+                        iniciar
+                      </button>
+                    )
+                  }
+                />
+              </Link>
             ))}
             <ToastContainer
               position="bottom-left"

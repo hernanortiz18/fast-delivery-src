@@ -9,6 +9,7 @@ import {
   getPackagesByDriver,
 } from "@/services/dataPackages";
 import { useAppSelector } from "@/redux/hooks";
+import Link from "next/link";
 
 type AccordionHistoryDistributionsProps = {
   onClick: () => void;
@@ -19,6 +20,7 @@ type Package = {
   package_code: string;
   status: string;
   driver_id: Number | null;
+  id: Number | null | string;
 };
 
 function AccordionHistoryDistributions({
@@ -80,18 +82,20 @@ function AccordionHistoryDistributions({
           )}
           <ul>
             {packages.map((individualPackage, index) => (
-              <AccordionPackageItem
-                key={index}
-                package_code={individualPackage.package_code}
-                address={individualPackage.address}
-                city={individualPackage.city}
-                tags={
-                  individualPackage.status === "Delivered" ? "delivered" : ""
-                }
-                tagContent={
-                  individualPackage.status === "Delivered" ? "Entregado" : ""
-                }
-              />
+              <Link href={`/delivery-map/${individualPackage.id}`}>
+                <AccordionPackageItem
+                  key={index}
+                  package_code={individualPackage.package_code}
+                  address={individualPackage.address}
+                  city={individualPackage.city}
+                  tags={
+                    individualPackage.status === "Delivered" ? "delivered" : ""
+                  }
+                  tagContent={
+                    individualPackage.status === "Delivered" ? "Entregado" : ""
+                  }
+                />
+              </Link>
             ))}
           </ul>
         </>
