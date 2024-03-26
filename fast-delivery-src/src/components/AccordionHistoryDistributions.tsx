@@ -4,44 +4,18 @@ import "@/styles/input.css";
 import "@/styles/buttons.css";
 import AccordionPackageItem from "./AccordionPackageItem";
 import ArrowIcon from "@/assets/ArrowIcon";
-import {
-  getPackageByStatus,
-  getPackagesByDriver,
-} from "@/services/dataPackages";
+import { getPackagesByDriver } from "@/services/dataPackages";
+import { PackageProps } from "../../types";
 
 type AccordionHistoryDistributionsProps = {
   onClick: () => void;
 };
-type Package = {
-  address: string;
-  city: string;
-  package_code: string;
-  status: string;
-  driver_id: number;
-};
-
-// type SetPackages = React.Dispatch<React.SetStateAction<Package[]>>;
-// async function fetchPackages(): Promise<Package[]> {
-//   const driverId = 2;
-//   const status = "Delivered";
-//   try {
-//     const packagesByStatus = await getPackageByStatus(status);
-//     // Filtra los paquetes obtenidos por el conductor
-//     const filteredPackages = packagesByStatus.filter((specificPackage: Package) => specificPackage.driver_id === driverId);
-
-//     return filteredPackages;
-//   } catch (error) {
-//     console.error("No se han podido obtener todos los paquetes:", error);
-//     throw error;
-//   }
-// }
 
 function AccordionHistoryDistributions({
   onClick,
 }: AccordionHistoryDistributionsProps) {
   const [openSection, setOpenSection] = useState(0);
-  const [packages, setPackages] = useState<Package[]>([]);
-
+  const [packages, setPackages] = useState<PackageProps[]>([]);
 
   const handleClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
@@ -52,7 +26,8 @@ function AccordionHistoryDistributions({
     getPackagesByDriver(2)
       .then((packages) => {
         const delivered = packages.filter(
-          (pendingPackage: Package) => pendingPackage.status === "Delivered"
+          (pendingPackage: PackageProps) =>
+            pendingPackage.status === "Delivered"
         );
         setPackages(delivered);
       })
@@ -96,7 +71,7 @@ function AccordionHistoryDistributions({
             {packages.map((individualPackage, index) => (
               <AccordionPackageItem
                 key={index}
-                package_code={individualPackage.package_code}
+                id={individualPackage.id}
                 address={individualPackage.address}
                 city={individualPackage.city}
                 tags={

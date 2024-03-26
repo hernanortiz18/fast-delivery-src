@@ -6,17 +6,11 @@ import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
 import CheckboxPackage from "@/commons/CheckboxPackage";
 import { startDelivery, getAllPackages } from "@/services/dataPackages";
-
-type Package = {
-  address: string;
-  city: string;
-  status: string;
-};
+import { CheckboxPackageProps } from "../../types";
 
 function GetpackageBox() {
-  const [packages, setPackages] = useState<Package[]>(
-    []
-  );
+  const [packages, setPackages] = useState<CheckboxPackageProps[]>([]);
+  const [tickedPackages, setTickedPackages] = useState([]);
   const router = useRouter();
 
   const handleBackButton = () => {
@@ -27,9 +21,8 @@ function GetpackageBox() {
     getAllPackages()
       .then((packages) => {
         const free = packages.filter(
-          (freePackage: Package) => freePackage.status === "Free"
+          (freePackage: CheckboxPackageProps) => freePackage.status === "Free"
         );
-        console.log(free)
         setPackages(free);
       })
       .catch((error) => {
@@ -38,15 +31,15 @@ function GetpackageBox() {
   }, []);
 
   const handleIniciarJornada = async () => {
-    try{
+    try {
       setTimeout(() => {
-        startDelivery([4,5,6], 2)
-        router.push("/home-delivery")
+        startDelivery(tickedPackages, 2);
+        router.push("/home-delivery");
       }, 2000);
-    } catch(error) {
-      console.error("Error al iniciar la jornada", error )
+    } catch (error) {
+      console.error("Error al iniciar la jornada", error);
     }
-  }
+  };
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
@@ -57,20 +50,37 @@ function GetpackageBox() {
       </div>
       <div className="boxGetPackagesStyle">
         <h1 className="box-subtitle">¿Cuántos paquetes repartirás hoy?</h1>
-        {packages.length === 0 ? <h3 style={{fontFamily: "Poppins", fontSize: "14px", textAlign: "center"}}>Lo siento, no se han encontrado paquetes.</h3> : ""}
+        {packages.length === 0 ? (
+          <h3
+            style={{
+              fontFamily: "Poppins",
+              fontSize: "14px",
+              textAlign: "center",
+            }}
+          >
+            Lo siento, no se han encontrado paquetes.
+          </h3>
+        ) : (
+          ""
+        )}
 
         <ul>
           {packages.map((individualPackage, index) => (
             <CheckboxPackage
+              id={individualPackage.id}
               key={index}
               address={individualPackage.address}
               city={individualPackage.city}
+              setTickedPackages={setTickedPackages}
+              tickedPackages={tickedPackages}
             />
           ))}
         </ul>
       </div>
       <div className="button-container">
-        <button className="greenButton" onClick={handleIniciarJornada}>Iniciar Jornada</button>
+        <button className="greenButton" onClick={handleIniciarJornada}>
+          Iniciar Jornada
+        </button>
       </div>
     </div>
   );

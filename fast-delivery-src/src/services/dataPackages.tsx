@@ -55,7 +55,6 @@ export const getPackageByStatus = async (status: string) => {
       individualPackage.city = adressArr[1];
       return individualPackage;
     });
-    console.log(newArr);
     return newArr;
   } catch (error) {
     console.error("Error al obtener el paquete:", error);
@@ -75,7 +74,6 @@ export const getPackagesByDriver = async (driver_id: number) => {
       individualPackage.city = adressArr[1];
       return individualPackage;
     });
-    console.log(newArr);
     return newArr;
 
     // return response.data;
@@ -117,7 +115,7 @@ export const startDelivery = async (idsArray: number[], userId: number) => {
 };
 
 // change status (put)
-export const changeStatus = async (id: number, newStatus: string) => {
+export const changeStatus = async (id: number | string, newStatus: string) => {
   try {
     const response = await axios.put(
       `${API_URL}/status/${id}`,
