@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "@/styles/packagesAdmin.css";
 import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
@@ -8,13 +8,51 @@ import TrashIcon from "@/assets/TrashIcon";
 import SeeMoreArrow from "@/assets/SeeMoreArrow";
 import CalendarComponent from "./CalendarComponent";
 import AccordionPackageItem from "./AccordionPackageItem";
+import { deletePackage, getAllPackages } from "@/services/dataPackages";
+import { ToastContainer, Zoom, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+type Package = {
+  address: string;
+  city: string;
+  package_code: string;
+  status: string;
+  driver_id: number;
+};
 
 function PackagesAdmin() {
   const router = useRouter();
+  const [packages, setPackages] = useState<Package[]>([]);
 
   const handleBackButton = () => {
     router.back();
   };
+
+  useEffect(() => {
+    getAllPackages()
+      .then((packages) => {
+        setPackages(packages);
+        console.log(packages)
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const handleDeletePackage = async () => {
+    try{
+      toast.info("Paquete eliminado correctamente");
+      setTimeout(() => {
+        deletePackage(5);
+        window.location.reload();
+      }, 2000);
+    } catch (error) {
+      console.error("Error al eliminar el paquete:", error)
+      setTimeout(() => {
+        toast.error("Error al eliminar el paquete");
+      }, 2000);
+    }
+  }
   return (
     <div
       style={{ display: "flex", flexDirection: "column", marginTop: "3.5rem" }}
@@ -30,53 +68,27 @@ function PackagesAdmin() {
           <CalendarComponent />
         </div>
 
-        <div className="package-amount">523 paquetes</div>
+        <div className="package-amount">{`${packages.length} paquetes`}</div>
         <div className="accordion-container">
-          <AccordionPackageItem
-            packageCode="0A235"
-            packageDirection="Amenabar 2100"
-            location="CABA"
-            additionalElement={
-              <TrashIcon style={{marginBottom: "17px"}}/>
-            }
-          />
-           <AccordionPackageItem
-            packageCode="0A235"
-            packageDirection="Castillo 1356"
-            location="CABA"
-            additionalElement={
-              <TrashIcon style={{marginBottom: "17px"}}/>
-            }
-          />
+          {packages.map((individualPackage, index)=> (
             <AccordionPackageItem
-            packageCode="0H167"
-            packageDirection="Av. Carabobo 2888"
-            location="CABA"
-            additionalElement={
-              <TrashIcon style={{marginBottom: "17px"}}/>
-            }
+            key={index}
+            package_code={individualPackage.package_code}
+            address={individualPackage.address}
+            city={individualPackage.city}
+            additionalElement={<TrashIcon style={{ marginBottom: "17px", cursor: "pointer"}} onClick={handleDeletePackage}/>}
           />
-            <AccordionPackageItem
-            packageCode="0H166"
-            packageDirection="Mendoza 1810"
-            location="CABA"
-            additionalElement={
-              <TrashIcon style={{marginBottom: "17px"}}/>
-            }
-          />
-             <AccordionPackageItem
-            packageCode="0B540"
-            packageDirection="Scalabrini Ortiz 5073"
-            location="CABA"
-            additionalElement={
-              <TrashIcon style={{marginBottom: "17px"}}/>
-            }
-          />
+          ))}
         </div>
         <div className="see-more-arrow-container">
           <SeeMoreArrow />
         </div>
       </div>
+      <ToastContainer
+              position="bottom-left"
+              transition={Zoom}
+              autoClose={2000}
+            />
     </div>
   );
 }

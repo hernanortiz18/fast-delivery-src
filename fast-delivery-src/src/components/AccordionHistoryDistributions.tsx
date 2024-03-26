@@ -4,8 +4,13 @@ import "@/styles/input.css";
 import "@/styles/buttons.css";
 import AccordionPackageItem from "./AccordionPackageItem";
 import ArrowIcon from "@/assets/ArrowIcon";
-import { getPackagesByDriver } from "@/services/dataPackages";
 import { PackageProps } from "../../types";
+import {
+  getPackageByStatus,
+  getPackagesByDriver,
+} from "@/services/dataPackages";
+import { useAppSelector } from "@/redux/hooks";
+
 
 type AccordionHistoryDistributionsProps = {
   onClick: () => void;
@@ -16,6 +21,8 @@ function AccordionHistoryDistributions({
 }: AccordionHistoryDistributionsProps) {
   const [openSection, setOpenSection] = useState(0);
   const [packages, setPackages] = useState<PackageProps[]>([]);
+  const user = useAppSelector((state) => state.user);
+
 
   const handleClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
@@ -23,7 +30,7 @@ function AccordionHistoryDistributions({
   };
 
   useEffect(() => {
-    getPackagesByDriver(2)
+    getPackagesByDriver(user.id)
       .then((packages) => {
         const delivered = packages.filter(
           (pendingPackage: PackageProps) =>

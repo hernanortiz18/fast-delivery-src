@@ -7,11 +7,16 @@ import ArrowBack from "@/assets/ArrowBack";
 import CheckboxPackage from "@/commons/CheckboxPackage";
 import { startDelivery, getAllPackages } from "@/services/dataPackages";
 import { CheckboxPackageProps } from "../../types";
+import { useAppSelector } from "@/redux/hooks";
+
+
 
 function GetpackageBox() {
   const [packages, setPackages] = useState<CheckboxPackageProps[]>([]);
   const [tickedPackages, setTickedPackages] = useState([]);
   const router = useRouter();
+
+  const user = useAppSelector((state) => state.user);
 
   const handleBackButton = () => {
     router.back();

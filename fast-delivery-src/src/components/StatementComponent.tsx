@@ -7,6 +7,7 @@ import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/navigation";
 import dataLogout from "@/services/dataLogout";
+import { useAppSelector } from "@/redux/hooks";
 
 function StatementComponent() {
   const [formData, setFormData] = useState({
@@ -15,7 +16,7 @@ function StatementComponent() {
     emotional: "",
   });
   const [formSubmitted, setFormSubmitted] = useState(false);
-
+  const user = useAppSelector((state) => state.user);
   const router = useRouter();
 
   const handleSubmit = async () => {
@@ -28,7 +29,7 @@ function StatementComponent() {
       if (formData.alcohol || formData.drugs || formData.emotional) {
         toast.warn("Lo siento, no puede comenzar su día de repartos.");
         setTimeout(() => {
-          updateUser(2, { status: "Disabled" });
+          updateUser(user.id, { status: "Disabled" });
           dataLogout();
           router.push("/");
         }, 2000);

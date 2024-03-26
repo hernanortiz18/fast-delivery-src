@@ -9,7 +9,8 @@ import { changeStatus, getPackagesByDriver } from "@/services/dataPackages";
 import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { PackageProps } from "../../types";
-import { Event } from "react-big-calendar";
+import { useAppSelector } from "@/redux/hooks";
+
 
 type AccordionPendingDistributionsProps = {
   onClick: () => void;
@@ -21,13 +22,15 @@ function AccordionPendingDistributions({
   const [openSection, setOpenSection] = useState(0);
   const [packages, setPackages] = useState<PackageProps[]>([]);
 
+  const user = useAppSelector((state) => state.user);
+
   const handleClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
     onClick();
   };
 
   useEffect(() => {
-    getPackagesByDriver(2)
+    getPackagesByDriver(user.id)
       .then((packages) => {
         const pending = packages.filter(
           (pendingPackage: PackageProps) => pendingPackage.status === "Pending"
@@ -67,7 +70,7 @@ function AccordionPendingDistributions({
     try {
       toast.info("Paquete eliminado correctamente");
       setTimeout(() => {
-        changeStatus(5, "Free");
+        changeStatus(4, "Free");
         window.location.reload();
       }, 2000);
     } catch (error) {

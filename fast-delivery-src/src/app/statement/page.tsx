@@ -1,12 +1,40 @@
+"use client"
 import React from "react";
 import "@/styles/statement.css";
 import StatementComponent from "@/components/StatementComponent";
-import Navbar from "@/commons/Navbar";
+import { useAppSelector } from "@/redux/hooks";
+import LoginPage from "../login/page";
+import NotFound from "@/components/NotFound";
 
 function statement() {
+  const user = useAppSelector((state) => state.user);
   return (
     <div>
-      <StatementComponent />
+      {!user.id ? (
+        <h2
+          style={{
+            color: "white",
+            fontFamily: "Poppins",
+            textAlign: "center",
+            marginTop: "20px",
+          }}
+        >
+          <NotFound />
+        </h2>
+      ) : user.role === "Driver" ? (
+        <StatementComponent />
+      ) : (
+        <h2
+          style={{
+            color: "white",
+            fontFamily: "Poppins",
+            textAlign: "center",
+            marginTop: "20px",
+          }}
+        >
+          No puede acceder a esta pagina si no es repartidor.
+        </h2>
+      )}
     </div>
   );
 }

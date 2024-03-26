@@ -1,12 +1,31 @@
+"use client";
 import ArrowIcon from "@/assets/ArrowIcon";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "@/styles/details.css";
 import "@/styles/buttons.css";
 import DetailsElement from "@/commons/DetailsElement";
 import CircularProgresss from "@/commons/CircularProgresss";
 import Link from "next/link";
+import { getAllUsers } from "@/services/dataUser";
+import { getAllPackages } from "@/services/dataPackages";
+
+type Package = {
+  address: string;
+  city: string;
+  status: string;
+};
+
+type Users = {
+  name: string;
+  role: string;
+  status: string;
+};
 
 function DetailsComponent() {
+  const [packages, setPackages] = useState<Package[]>([]);
+  const [deliveredPackages, setDeliveredPackages] = useState<Package[]>([]);
+  const [users, setUsers] = useState<Users[]>([]);
+  const [freeUsers, setFreeUsers] = useState<Users[]>([]);
   const fechaActual = new Date();
 
   const fechaFormateada = fechaActual.toLocaleDateString("es-ES", {
@@ -14,6 +33,38 @@ function DetailsComponent() {
     month: "2-digit",
     year: "numeric",
   });
+
+  useEffect(() => {
+    getAllUsers()
+      .then((users) => {
+        const drivers = users.filter(
+          (driverUser: Users) => driverUser.role === "Driver"
+        );
+        const freeDrivers = drivers.filter(
+          (freeDriverUser: Users) => freeDriverUser.status === "Free"
+        );
+        console.log(freeDrivers);
+        setUsers(drivers);
+        setFreeUsers(freeDrivers);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+    getAllPackages()
+      .then((packages) => {
+        const delivered = packages.filter(
+          (deliveredPackages: Package) =>
+            deliveredPackages.status === "Delivered"
+        );
+        console.log(delivered);
+        setPackages(packages);
+        setDeliveredPackages(delivered);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
   return (
     <div id="details-container" className="detailsContainer">
       <div>
@@ -28,18 +79,30 @@ function DetailsComponent() {
         <div className="detailsContainer3">
           <DetailsElement
             title="Repartidores"
-            cantidad="2/10"
-            accion="habilitados"
-            percentage={<CircularProgresss percentage={20} />}
-            button={<Link href="/delivery-drivers"><button className="detailsGreenButton">Ver</button></Link>}
+            cantidad={`${freeUsers.length}/${users.length} `}
+            accion="Habilitados"
+            percentage={<CircularProgresss percentage={(freeUsers.length / users.length) * 100} />}
+            button={
+              <Link href="/delivery-drivers">
+                <button className="detailsGreenButton">Ver</button>
+              </Link>
+            }
           />
           <hr className="box-dotted-line2" />
           <DetailsElement
             title="Paquetes"
-            cantidad="16/20"
+            cantidad={`${deliveredPackages.length}/${packages.length} `}
             accion="Repartidos"
-            percentage={<CircularProgresss percentage={80} />}
-            button={<Link href="/packages-admin"><button className="detailsGreenButton">Ver</button></Link>}
+            percentage={
+              <CircularProgresss
+                percentage={(deliveredPackages.length / packages.length) * 100}
+              />
+            }
+            button={
+              <Link href="/packages-admin">
+                <button className="detailsGreenButton">Ver</button>
+              </Link>
+            }
           />
         </div>
       </div>
