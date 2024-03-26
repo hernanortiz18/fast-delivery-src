@@ -4,30 +4,25 @@ import "@/styles/input.css";
 import "@/styles/buttons.css";
 import AccordionPackageItem from "./AccordionPackageItem";
 import ArrowIcon from "@/assets/ArrowIcon";
+import { PackageProps } from "../../types";
 import {
   getPackageByStatus,
   getPackagesByDriver,
 } from "@/services/dataPackages";
 import { useAppSelector } from "@/redux/hooks";
 
+
 type AccordionHistoryDistributionsProps = {
   onClick: () => void;
-};
-type Package = {
-  address: string;
-  city: string;
-  package_code: string;
-  status: string;
-  driver_id: Number | null;
 };
 
 function AccordionHistoryDistributions({
   onClick,
 }: AccordionHistoryDistributionsProps) {
   const [openSection, setOpenSection] = useState(0);
-  const [packages, setPackages] = useState<Package[]>([]);
-
+  const [packages, setPackages] = useState<PackageProps[]>([]);
   const user = useAppSelector((state) => state.user);
+
 
   const handleClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
@@ -38,7 +33,8 @@ function AccordionHistoryDistributions({
     getPackagesByDriver(user.id)
       .then((packages) => {
         const delivered = packages.filter(
-          (pendingPackage: Package) => pendingPackage.status === "Delivered"
+          (pendingPackage: PackageProps) =>
+            pendingPackage.status === "Delivered"
         );
         setPackages(delivered);
       })
@@ -82,7 +78,7 @@ function AccordionHistoryDistributions({
             {packages.map((individualPackage, index) => (
               <AccordionPackageItem
                 key={index}
-                package_code={individualPackage.package_code}
+                id={individualPackage.id}
                 address={individualPackage.address}
                 city={individualPackage.city}
                 tags={

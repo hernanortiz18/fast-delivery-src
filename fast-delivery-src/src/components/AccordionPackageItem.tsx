@@ -4,7 +4,7 @@ import "@/styles/buttons.css";
 import BoxIcon from "@/assets/BoxIcon";
 
 type PackageItemProps = {
-  package_code: string;
+  id: string;
   address: string;
   city: string;
   tags?: string;
@@ -13,7 +13,7 @@ type PackageItemProps = {
 };
 
 function AccordionPackageItem({
-  package_code,
+  id,
   address,
   city,
   tags,
@@ -25,7 +25,7 @@ function AccordionPackageItem({
       <div className="box-icon-info-container">
         <BoxIcon />
         <div>
-          <h1 className="package-code">#{package_code}</h1>
+          <h1 className="package-code">#{id}</h1>
           <h2 className="package-direction">{address},</h2>
           <h2 className="package-direction">{city}</h2>
         </div>

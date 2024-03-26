@@ -1,36 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { MouseEventHandler, useEffect, useState } from "react";
 import "@/styles/homeDelivery.css";
 import "@/styles/input.css";
 import "@/styles/buttons.css";
 import TrashIcon from "@/assets/TrashIcon";
 import AccordionPackageItem from "./AccordionPackageItem";
 import ArrowIcon from "@/assets/ArrowIcon";
-import {
-  changeStatus,
-  getPackageByStatus,
-  getPackagesByDriver,
-} from "@/services/dataPackages";
+import { changeStatus, getPackagesByDriver } from "@/services/dataPackages";
 import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { PackageProps } from "../../types";
 import { useAppSelector } from "@/redux/hooks";
+
 
 type AccordionPendingDistributionsProps = {
   onClick: () => void;
-};
-
-type Package = {
-  address: string;
-  city: string;
-  package_code: string;
-  status: string;
-  driver_id: number;
 };
 
 function AccordionPendingDistributions({
   onClick,
 }: AccordionPendingDistributionsProps) {
   const [openSection, setOpenSection] = useState(0);
-  const [packages, setPackages] = useState<Package[]>([]);
+  const [packages, setPackages] = useState<PackageProps[]>([]);
 
   const user = useAppSelector((state) => state.user);
 
@@ -43,10 +33,11 @@ function AccordionPendingDistributions({
     getPackagesByDriver(user.id)
       .then((packages) => {
         const pending = packages.filter(
-          (pendingPackage: Package) => pendingPackage.status === "Pending"
+          (pendingPackage: PackageProps) => pendingPackage.status === "Pending"
         );
         const onCourse = packages.filter(
-          (onCoursePackage: Package) => onCoursePackage.status === "On Course"
+          (onCoursePackage: PackageProps) =>
+            onCoursePackage.status === "On Course"
         );
 
         const combinedPackages = pending.concat(onCourse);
@@ -57,15 +48,16 @@ function AccordionPendingDistributions({
       });
   }, []);
 
-  const handleInitDeliver = async () => {
+  const handleInitDeliver: React.MouseEventHandler<HTMLButtonElement> = async (
+    e
+  ) => {
     try {
       toast.success("¡Felicitaciones! Ya puede ir a repartir su paquete.");
+      const button = e.target as HTMLButtonElement;
       setTimeout(() => {
-        changeStatus(6, "On Course");
+        changeStatus(button.id, "On Course");
         window.location.reload();
       }, 2000);
-
-      
     } catch (error) {
       console.error(`Error al iniciar el reparto del paquete`, error);
       setTimeout(() => {
@@ -87,7 +79,7 @@ function AccordionPendingDistributions({
         toast.error("Error al eliminar el paquete");
       }, 2000);
     }
-  }
+  };
   return (
     <div className="accordion-box-top">
       <div className="box-title" onClick={handleClick}>
@@ -97,7 +89,7 @@ function AccordionPendingDistributions({
 
       {(openSection === 1 || openSection === 3) && (
         <>
-         {packages.length === 0 ? (
+          {packages.length === 0 ? (
             <h3
               style={{
                 fontFamily: "Poppins",
@@ -115,7 +107,7 @@ function AccordionPendingDistributions({
             {packages.map((individualPackage, index) => (
               <AccordionPackageItem
                 key={index}
-                package_code={individualPackage.package_code}
+                id={individualPackage.id}
                 address={individualPackage.address}
                 city={individualPackage.city}
                 tags={
@@ -130,11 +122,15 @@ function AccordionPendingDistributions({
                 }
                 additionalElement={
                   individualPackage.status === "On Course" ? (
-                    <TrashIcon style={{ cursor: "pointer" }} onClick={handleDeletePackage}/>
+                    <TrashIcon
+                      style={{ cursor: "pointer" }}
+                      onClick={handleDeletePackage}
+                    />
                   ) : (
                     <button
                       className="greenButtonSmall"
                       onClick={handleInitDeliver}
+                      id={individualPackage.id}
                     >
                       iniciar
                     </button>
