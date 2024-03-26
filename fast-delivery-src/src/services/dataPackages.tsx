@@ -31,7 +31,9 @@ export const getAllPackages = async () => {
 };
 
 // get package by id
-export const getPackageById = async ( id : number) => {
+
+export const getPackageById = async ( id : number | string) => {
+
   try {
     const response = await axios.get(`${API_URL}/single/${id}`, {
       withCredentials: true,

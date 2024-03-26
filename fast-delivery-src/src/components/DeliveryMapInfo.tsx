@@ -15,8 +15,8 @@ function DeliveryMapInfo({address, package_code, client_name, city}: DeliveryMap
             <p className="infoP" style={{ fontWeight: "bolder" }}>
               Destino: ​
             </p>
-            <p className="infoP">{address}</p>
-           
+            <p className="infoP">{address},</p>
+            <p className="infoP">{city},</p>
           </div>
           <div className="deliveryMapInfo">
             <p className="infoP" style={{ fontWeight: "bolder" }}>

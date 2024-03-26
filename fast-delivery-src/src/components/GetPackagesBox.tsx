@@ -6,13 +6,14 @@ import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
 import CheckboxPackage from "@/commons/CheckboxPackage";
 import { startDelivery, getAllPackages } from "@/services/dataPackages";
-import { CheckboxPackageProps } from "../../types";
+import { PackageProps } from "../../types";
 import { useAppSelector } from "@/redux/hooks";
+import Link from "next/link";
 
 
 
 function GetpackageBox() {
-  const [packages, setPackages] = useState<CheckboxPackageProps[]>([]);
+  const [packages, setPackages] = useState<PackageProps[]>([]);
   const [tickedPackages, setTickedPackages] = useState([]);
   const router = useRouter();
 
@@ -26,7 +27,7 @@ function GetpackageBox() {
     getAllPackages()
       .then((packages) => {
         const free = packages.filter(
-          (freePackage: CheckboxPackageProps) => freePackage.status === "Free"
+          (freePackage: PackageProps) => freePackage.status === "Free"
         );
         setPackages(free);
       })

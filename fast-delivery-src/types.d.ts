@@ -10,7 +10,7 @@ export interface PackageProps {
   address: string;
   city: string;
   status?: string;
-  id: never;
+  id: string | undefined;
   setTickedPackages: React.Dispatch<React.SetStateAction<never[]>>;
   tickedPackages: never[]
 }

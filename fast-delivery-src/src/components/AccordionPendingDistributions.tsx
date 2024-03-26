@@ -10,6 +10,7 @@ import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { PackageProps } from "../../types";
 import { useAppSelector } from "@/redux/hooks";
+import Link from "next/link";
 
 
 type AccordionPendingDistributionsProps = {

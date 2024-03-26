@@ -1,22 +1,28 @@
 "use client";
 import React, { useEffect, useState } from "react";
+
 import "../styles/box.css";
 import "../styles/input.css";
 import "../styles/buttons.css";
 import { useRouter } from "next/navigation";
 import ArrowBack from "@/assets/ArrowBack";
 import DeliveryMapInfo from "./DeliveryMapInfo";
-import { changeStatus, getPackageById, startDelivery } from "@/services/dataPackages";
+import {
+  changeStatus,
+  getPackageById,
+  startDelivery,
+} from "@/services/dataPackages";
 import { toast } from "react-toastify";
 
 type DeliveryInfo = {
   address: string;
-  package_code: string;
+  id: string;
   client_name: string;
   city: string;
   status: string;
 };
 function DeliveryMapBox() {
+
   const router = useRouter();
   const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo | null>(null);
 
@@ -25,15 +31,26 @@ function DeliveryMapBox() {
   };
 
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchPackage = async () => {
       try {
-        const fetchedUser = await getPackageById(3);
-        setDeliveryInfo(fetchedUser);
+        const currentURL = window.location.href;
+        if (currentURL) {
+          const urlParts = currentURL.split("/");
+          if (urlParts && urlParts.length > 0) {
+            const packageId = urlParts[urlParts.length - 1];
+            const fetchedPackage = await getPackageById(packageId);
+            setDeliveryInfo(fetchedPackage);
+          } else {
+            console.error("No se pudo dividir la URL");
+          }
+        } else {
+          console.error("No se pudo obtener la URL actual");
+        }
       } catch (error) {
-        console.error("Error al obtener el repartidor solicitado:", error);
+        console.error("Error al obtener el paquete solicitado:", error);
       }
     };
-    fetchUser();
+    fetchPackage();
   }, []);
 
   const handleEndDelivery = async () => {
@@ -81,7 +98,6 @@ function DeliveryMapBox() {
     }
   };
 
-
   const handleSelectPackage = async () => {
     try {
       toast.success("Paquete Seleccionado.");
@@ -112,7 +128,7 @@ function DeliveryMapBox() {
         <div className="mapContainer"></div>
         <DeliveryMapInfo
           address={deliveryInfo?.address}
-          package_code={deliveryInfo?.package_code}
+          package_code={deliveryInfo?.id}
           client_name={deliveryInfo?.client_name}
           city={deliveryInfo?.city}
         />
@@ -127,11 +143,19 @@ function DeliveryMapBox() {
             Finalizar
           </button>
         ) : deliveryInfo?.status === "Pending" ? (
-          <button className="greenButton" style={{ marginTop: "30px" }} onClick={handleStartDelivery}>
+          <button
+            className="greenButton"
+            style={{ marginTop: "30px" }}
+            onClick={handleStartDelivery}
+          >
             Repartir
           </button>
         ) : deliveryInfo?.status === "Free" ? (
-          <button className="greenButton" style={{ marginTop: "30px" }} onClick={handleSelectPackage}>
+          <button
+            className="greenButton"
+            style={{ marginTop: "30px" }}
+            onClick={handleSelectPackage}
+          >
             Seleccionar Paquete
           </button>
         ) : (
@@ -139,8 +163,13 @@ function DeliveryMapBox() {
         )}
       </div>
       <div style={{ display: "flex", margin: "15px auto" }}>
-        {deliveryInfo?.status === "On Course" ? (<button className="transparentButton1" onClick={handleCancelDelivery}>Cancelar entrega</button>) : ""}
-        
+        {deliveryInfo?.status === "On Course" ? (
+          <button className="transparentButton1" onClick={handleCancelDelivery}>
+            Cancelar entrega
+          </button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
