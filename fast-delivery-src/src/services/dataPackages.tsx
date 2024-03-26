@@ -31,11 +31,18 @@ export const getAllPackages = async () => {
 };
 
 // get package by id
-export const getPackageById = async ({ id }: PackageData) => {
+export const getPackageById = async ( id : number) => {
   try {
     const response = await axios.get(`${API_URL}/single/${id}`, {
       withCredentials: true,
     });
+    // let newArr = response.data.map((individualPackage: PackageData) => {
+    //   const adressArr = individualPackage.address.split(",");
+    //   individualPackage.address = adressArr[0];
+    //   individualPackage.city = adressArr[1];
+    //   return individualPackage;
+    // });
+    // return newArr;
     return response.data;
   } catch (error) {
     console.error("Error al obtener el paquete:", error);

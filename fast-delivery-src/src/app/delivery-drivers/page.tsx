@@ -5,6 +5,7 @@ import { useAppSelector } from "@/redux/hooks";
 
 import React from "react";
 import LoginPage from "../login/page";
+import NotFound from "@/components/NotFound";
 
 function DeliveryDriversPage() {
   const user = useAppSelector((state) => state.user);
@@ -19,7 +20,7 @@ function DeliveryDriversPage() {
             marginTop: "20px",
           }}
         >
-          404 Not Found
+          <NotFound />
         </h2>
       ) : user.role === "Admin" ? (
         <>
