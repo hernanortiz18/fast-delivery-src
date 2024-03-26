@@ -4,7 +4,7 @@ import "@/styles/buttons.css";
 import BoxIcon from "@/assets/BoxIcon";
 
 type PackageItemProps = {
-  id: string;
+  id: string | undefined;
   address: string;
   city: string;
   tags?: string;
