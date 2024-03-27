@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import "@/styles/homeDelivery.css";
 import "@/styles/input.css";
@@ -11,7 +12,7 @@ import {
 } from "@/services/dataPackages";
 import { useAppSelector } from "@/redux/hooks";
 import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 
 type AccordionHistoryDistributionsProps = {
   onClick: () => void;
@@ -23,8 +24,7 @@ function AccordionHistoryDistributions({
   const [openSection, setOpenSection] = useState(0);
   const [packages, setPackages] = useState<PackageProps[]>([]);
   const user = useAppSelector((state) => state.user);
-
-
+  const router = useRouter();
   const handleClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
     onClick();
@@ -77,8 +77,10 @@ function AccordionHistoryDistributions({
           )}
           <ul>
             {packages.map((individualPackage, index) => (
-              <Link href={`/delivery-map/${individualPackage.id}`}>
               <AccordionPackageItem
+                onClick={() =>
+                  router.push(`/delivery-map/${individualPackage.id}`)
+                }
                 key={index}
                 id={individualPackage.id}
                 address={individualPackage.address}
@@ -90,8 +92,6 @@ function AccordionHistoryDistributions({
                   individualPackage.status === "Delivered" ? "Entregado" : ""
                 }
               />
-              </Link>
-              
             ))}
           </ul>
         </>

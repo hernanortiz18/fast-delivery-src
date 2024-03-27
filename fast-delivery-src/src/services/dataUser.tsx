@@ -75,7 +75,7 @@ type userProps = {
   status?: string;
 };
 //update user
-export const updateUser = async (id: Number |  undefined, bodyInfo: userProps) => {
+export const updateUser = async (id: Number |  undefined | null, bodyInfo: userProps) => {
   try {
     const response = await axios.put(`${API_URL}/update/${id}`, bodyInfo, {
       withCredentials: true,

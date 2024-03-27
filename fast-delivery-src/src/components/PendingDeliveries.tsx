@@ -143,7 +143,7 @@ function PendingDeliveries({ onClick }: PendingDistributionsProps) {
               />
             ))}
             <ToastContainer
-              position="bottom-left"
+              position="top-right"
               transition={Zoom}
               autoClose={2000}
             />

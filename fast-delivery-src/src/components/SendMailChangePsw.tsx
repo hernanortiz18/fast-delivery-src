@@ -71,7 +71,7 @@ function SendMailChangePsw() {
               <button className="greenButton">Enviar</button>
             </div>
             <ToastContainer
-              position="bottom-left"
+              position="top-right"
               transition={Zoom}
               autoClose={4000}
             />

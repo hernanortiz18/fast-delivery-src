@@ -92,7 +92,7 @@ function ChangePassword() {
               <button className="greenButton">Confirmar</button>
             </div>
             <ToastContainer
-              position="bottom-left"
+              position="top-right"
               transition={Zoom}
               autoClose={4000}
             />

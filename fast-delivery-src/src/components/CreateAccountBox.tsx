@@ -149,7 +149,7 @@ function CreateAccountBox() {
               <button className="transparentButton2">Iniciar Sesión</button>
             </Link>
             <ToastContainer
-              position="bottom-left"
+              position="top-right"
               transition={Zoom}
               autoClose={3000}
             />

@@ -73,6 +73,7 @@ function PackagesAdmin() {
         <div className="accordion-container">
           {packages.map((individualPackage, index)=> (
             <AccordionPackageItem
+            onClick={() => router.push(`/delivery-map/${individualPackage.id}`)}
             key={index}
             id={individualPackage.id}
             address={individualPackage.address}
@@ -86,7 +87,7 @@ function PackagesAdmin() {
         </div>
       </div>
       <ToastContainer
-              position="bottom-left"
+              position="top-right"
               transition={Zoom}
               autoClose={2000}
             />

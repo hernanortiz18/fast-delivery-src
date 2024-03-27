@@ -129,7 +129,7 @@ function AddPackagesBox() {
           </div>
         </form>
         <ToastContainer
-          position="bottom-left"
+          position="top-right"
           transition={Zoom}
           autoClose={3000}
         />
