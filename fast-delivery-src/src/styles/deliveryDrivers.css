@@ -1,128 +1,139 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .white-box {
-    width: 300px;
-    height: 495px;
-    padding: 10px 15px 0;
-    margin: auto;
-    background-color: white;
-    border-radius: 10px;
-    overflow-x: hidden;
-    overflow-y: auto;
-    z-index: 2;
-    font-family: Poppins;
+  width: 300px;
+  height: 495px;
+  padding: 10px 15px 0;
+  margin: auto;
+  background-color: white;
+  border-radius: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 2;
+  font-family: Poppins;
 }
 
 .header-box {
-    background-color: #c7ffb1;
-    color: #3d1df3;
-    height: 60px;
-    width: 300px;
-    margin: auto;
-    border-radius: 10px 10px 0px 0px;
-    position: relative;
-    z-index: 1;
-    top: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding-bottom: 10px;
+  background-color: #c7ffb1;
+  color: #3d1df3;
+  height: 60px;
+  width: 300px;
+  margin: auto;
+  border-radius: 10px 10px 0px 0px;
+  position: relative;
+  z-index: 1;
+  top: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 10px;
 }
 
 .header-box-title {
-    color: #3D1DF3;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 20px;
-    width: fit-content;
-    text-align: center;
-    margin-left: 66px;
+  color: #3d1df3;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px;
+  width: fit-content;
+  text-align: center;
+  margin-left: 66px;
 }
 
 .arrow-back {
-    margin-left: 15px;
+  margin-left: 15px;
 }
 
 .see-more-arrow-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
 }
 
 .month {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .driver-container {
-    padding: 10px;
-    border-bottom: #3D1DF3 1px dotted;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  padding: 10px;
+  border-bottom: #3d1df3 1px dotted;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .percentage {
-    width: 71px;
-    height: 71px;
-    border-radius: 70px;
+  width: 71px;
+  height: 71px;
+  border-radius: 70px;
 }
 
 .percentage-name-container {
-    display: flex;
+  display: flex;
 }
 
 .name-tag-container {
-    margin-left: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 3px;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
 }
 
 .name {
-    font-family: Poppins;
-    font-size: 14px;
-    font-weight: bolder;
-    line-height: 15px;
-    letter-spacing: 0em;
-    color: #3D1DF3;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: bolder;
+  line-height: 15px;
+  letter-spacing: 0em;
+  color: #3d1df3;
 }
 
-.status-tag {
-    margin-top: 5px;
-    height: 15px;
-    border-radius: 20px;
-    color: #3D1DF3;
-    font-size: 10px;
-    font-weight: 600;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 0 10px;
+/* .status-tag {
+  margin-top: 5px;
+  height: 15px;
+  border-radius: 20px;
+  color: #3d1df3;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 10px;
+} */
+
+.tags {
+  height: 15px;
+  border-radius: 20px 0px 0px 20px;
+  color: #3d1df3;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 10px;
 }
 
 .profile-picture-container {
-    height: 40px;
-    width: 40px;
-    border-radius: 40px;
-    border: #3D1DF3 1px solid;
+  height: 40px;
+  width: 40px;
+  border-radius: 40px;
+  border: #3d1df3 1px solid;
 }
 
 .disabled {
-    background: #62626233;
-    color: #62626233;
+  background: rgb(162, 161, 161);
+  color: #626262 !important;
 }
 
-.drivers-container{
-    width: 100%;
-    height: 370px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    margin-bottom: 10px;
+.drivers-container {
+  width: 100%;
+  height: 370px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-bottom: 10px;
 }
 
-.drivers-container::-webkit-scrollbar{
-    width: 2px;
+.drivers-container::-webkit-scrollbar {
+  width: 2px;
 }

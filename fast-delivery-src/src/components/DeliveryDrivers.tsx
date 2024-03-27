@@ -12,12 +12,13 @@ import CircularProgresss from "@/commons/CircularProgresss";
 import DeliveryDriverCommon from "@/commons/DeliveryDriverCommon";
 import { getAllUsers } from "@/services/dataUser";
 import { getPackagesByDriver } from "@/services/dataPackages";
+import Link from "next/link";
 
 type Users = {
   name: string;
   role: string;
   status: string;
-  id: number;
+  id: number | null;
 };
 
 type Package = {
@@ -41,23 +42,29 @@ function DeliveryDrivers() {
   useEffect(() => {
     getAllUsers()
       .then((users) => {
-        const drivers = users.filter((driverUser: Users) => driverUser.role === "Driver");
+        const drivers = users.filter(
+          (driverUser: Users) => driverUser.role === "Driver"
+        );
         console.log(drivers);
         setUsers(drivers);
 
-        
-        Promise.all(drivers.map((driver: Users) => { 
-          return getPackagesByDriver(driver.id)
-            .then((packages) => {
-              const delivered = packages.filter((deliveredPackages: Package) => deliveredPackages.status === "Delivered");
-              console.log(delivered);
-              setPackages(packages);
-              setDeliveredPackages(delivered);
-            })
-            .catch((error) => {
-              console.error(error);
-            });
-        }));
+        Promise.all(
+          drivers.map((driver: Users) => {
+            return getPackagesByDriver(driver.id)
+              .then((packages) => {
+                const delivered = packages.filter(
+                  (deliveredPackages: Package) =>
+                    deliveredPackages.status === "Delivered"
+                );
+                console.log(delivered);
+                setPackages(packages);
+                setDeliveredPackages(delivered);
+              })
+              .catch((error) => {
+                console.error(error);
+              });
+          })
+        );
       })
       .catch((error) => {
         console.error(error);
@@ -94,6 +101,7 @@ function DeliveryDrivers() {
           <ul>
             {users.map((user, index) => (
               <DeliveryDriverCommon
+                onClick={() => router.push(`/delivery-profile/${user.id}`)}
                 key={index}
                 driverName={user.name}
                 tags={
@@ -118,7 +126,13 @@ function DeliveryDrivers() {
                     ? "Habilitado"
                     : ""
                 }
-                percentage={<CircularProgresss percentage={(deliveredPackages.length / packages.length) * 100} />}
+                percentage={
+                  <CircularProgresss
+                    percentage={
+                      (deliveredPackages.length / packages.length) * 100
+                    }
+                  />
+                }
                 avatar={
                   <Avatar
                     src="/img/iconoUsers2.png"

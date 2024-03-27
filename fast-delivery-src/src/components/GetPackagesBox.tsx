@@ -39,7 +39,7 @@ function GetpackageBox() {
   const handleIniciarJornada = async () => {
     try {
       setTimeout(() => {
-        startDelivery(tickedPackages, 2);
+        startDelivery(tickedPackages, user.id);
         router.push("/home-delivery");
       }, 2000);
     } catch (error) {
@@ -79,6 +79,7 @@ function GetpackageBox() {
               city={individualPackage.city}
               setTickedPackages={setTickedPackages}
               tickedPackages={tickedPackages}
+              onClick={() => router.push(`/delivery-map/${individualPackage.id}`)}
             />
           ))}
         </ul>

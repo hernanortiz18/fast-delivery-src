@@ -18,6 +18,7 @@ type Package = {
   package_code: string;
   status: string;
   driver_id: Number | null;
+  id: string | undefined
 };
 
 function DeliveriesHistory({
@@ -45,6 +46,7 @@ function DeliveriesHistory({
         console.error(error);
       });
   }, []);
+  const handleClickPackage = () => {}
   return (
     <div className="accordion-box-top">
       <div className="box-title" onClick={handleClick}>
@@ -80,8 +82,9 @@ function DeliveriesHistory({
           <ul>
             {packages.map((individualPackage, index) => (
               <AccordionPackageItem
+              onClick={handleClickPackage}
                 key={index}
-                package_code={individualPackage.package_code}
+                id={individualPackage.id}
                 address={individualPackage.address}
                 city={individualPackage.city}
                 tags={

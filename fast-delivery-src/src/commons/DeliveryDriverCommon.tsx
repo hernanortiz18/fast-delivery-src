@@ -8,6 +8,7 @@ type DeliveryDriverCommonProps = {
   tagContent: string;
   percentage: React.ReactNode;
   avatar: React.ReactNode;
+  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 };
 
 function DeliveryDriverCommon({
@@ -16,9 +17,10 @@ function DeliveryDriverCommon({
   tagContent,
   percentage,
   avatar,
+  onClick
 }: DeliveryDriverCommonProps) {
   return (
-    <div className="driver-container">
+    <div className="driver-container" onClick={onClick}>
       <div className="percentage-name-container">
         {percentage && <div>{percentage}</div>}
         <div className="name-tag-container">

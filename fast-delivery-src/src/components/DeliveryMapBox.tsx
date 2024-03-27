@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
 import "../styles/box.css";
 import "../styles/input.css";
 import "../styles/buttons.css";
@@ -12,23 +11,27 @@ import {
   getPackageById,
   startDelivery,
 } from "@/services/dataPackages";
-import { toast } from "react-toastify";
+import { ToastContainer, Zoom, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAppSelector } from "@/redux/hooks";
+import Map from "./initMap";
 
 type DeliveryInfo = {
   address: string;
-  id: string;
+  id: number | undefined;
   client_name: string;
   city: string;
   status: string;
 };
 function DeliveryMapBox() {
-
   const router = useRouter();
   const [deliveryInfo, setDeliveryInfo] = useState<DeliveryInfo | null>(null);
 
   const handleBackButton = () => {
     router.back();
   };
+
+  const user = useAppSelector((state) => state.user);
 
   useEffect(() => {
     const fetchPackage = async () => {
@@ -55,9 +58,9 @@ function DeliveryMapBox() {
 
   const handleEndDelivery = async () => {
     try {
-      toast.success("Paquete entregado!!.");
+      toast.success("Paquete entregado.");
       setTimeout(() => {
-        changeStatus(3, "Delivered");
+        changeStatus(deliveryInfo?.id, "Delivered");
         router.push("/home-delivery");
       }, 2000);
     } catch (error) {
@@ -70,9 +73,9 @@ function DeliveryMapBox() {
 
   const handleStartDelivery = async () => {
     try {
-      toast.success("¡Felicitaciones! Ya puede ir a repartir su paquete.");
+      toast.success("Ya puede ir a repartir su paquete.");
       setTimeout(() => {
-        changeStatus(3, "On Course");
+        changeStatus(deliveryInfo?.id, "On Course");
         window.location.reload();
       }, 2000);
     } catch (error) {
@@ -85,9 +88,9 @@ function DeliveryMapBox() {
 
   const handleCancelDelivery = async () => {
     try {
-      toast.success("Reparto Cancelado.");
+      toast.info("Reparto Cancelado.");
       setTimeout(() => {
-        changeStatus(3, "Pending");
+        changeStatus(deliveryInfo?.id, "Free");
         window.location.reload();
       }, 2000);
     } catch (error) {
@@ -102,7 +105,7 @@ function DeliveryMapBox() {
     try {
       toast.success("Paquete Seleccionado.");
       setTimeout(() => {
-        startDelivery([3], 2);
+        startDelivery([deliveryInfo?.id], user.id);
         window.location.reload();
       }, 2000);
     } catch (error) {
@@ -125,7 +128,9 @@ function DeliveryMapBox() {
       </div>
 
       <div className="boxDeliveryMapStyle">
-        <div className="mapContainer"></div>
+        <div className="mapContainer">
+          {/* <Map address="Concordia 3451, Ciudad Autonoma de Buenos Aires" /> */}
+        </div>
         <DeliveryMapInfo
           address={deliveryInfo?.address}
           package_code={deliveryInfo?.id}
@@ -133,7 +138,15 @@ function DeliveryMapBox() {
           city={deliveryInfo?.city}
         />
         {deliveryInfo?.status === "Delivered" ? (
-          <p>Paquete entregado</p>
+          <p
+            style={{
+              display: "flex",
+              marginTop: "8%",
+              justifyContent: "center",
+            }}
+          >
+            Paquete entregado
+          </p>
         ) : deliveryInfo?.status === "On Course" ? (
           <button
             className="greenButton"
@@ -167,10 +180,19 @@ function DeliveryMapBox() {
           <button className="transparentButton1" onClick={handleCancelDelivery}>
             Cancelar entrega
           </button>
+        ) : deliveryInfo?.status === "Pending" ? (
+          <button className="transparentButton1" onClick={handleCancelDelivery}>
+            Cancelar entrega
+          </button>
         ) : (
           ""
         )}
       </div>
+      <ToastContainer
+        position="bottom-left"
+        transition={Zoom}
+        autoClose={2000}
+      />
     </div>
   );
 }

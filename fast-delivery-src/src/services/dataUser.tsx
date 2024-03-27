@@ -21,7 +21,7 @@ export const getAllUsers = async () => {
 };
 
 //get user by id
-export const getUserById = async ( id : Number | null) => {
+export const getUserById = async ( id : string | null) => {
   try {
     const response = await axios.get(`${API_URL}/single/${id}`, {
       withCredentials: true,
@@ -75,7 +75,7 @@ type userProps = {
   status?: string;
 };
 //update user
-export const updateUser = async (id: Number | null, bodyInfo: userProps) => {
+export const updateUser = async (id: Number |  undefined, bodyInfo: userProps) => {
   try {
     const response = await axios.put(`${API_URL}/update/${id}`, bodyInfo, {
       withCredentials: true,

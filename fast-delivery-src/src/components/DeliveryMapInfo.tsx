@@ -3,7 +3,7 @@ import '@/styles/box.css'
 
 type DeliveryMapInfoProps ={
   address: string | undefined,
-  package_code: string | undefined,
+  package_code:  undefined | number,
   client_name: string | undefined,
   city: string | undefined
 }
@@ -15,8 +15,7 @@ function DeliveryMapInfo({address, package_code, client_name, city}: DeliveryMap
             <p className="infoP" style={{ fontWeight: "bolder" }}>
               Destino: ​
             </p>
-            <p className="infoP">{address},</p>
-            <p className="infoP">{city},</p>
+            <p className="infoP">{address}</p>
           </div>
           <div className="deliveryMapInfo">
             <p className="infoP" style={{ fontWeight: "bolder" }}>

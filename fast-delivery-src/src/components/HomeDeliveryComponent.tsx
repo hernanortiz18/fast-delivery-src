@@ -6,9 +6,13 @@ import "@/styles/homeDelivery.css";
 import "@/styles/input.css";
 import "@/styles/buttons.css";
 import Link from "next/link";
+import { useAppSelector } from "@/redux/hooks";
 
 function HomeDeliveryComponent() {
   const [openSection, setOpenSection] = useState(0);
+
+  const user = useAppSelector((state) => state.user);
+
 
   const handleAccordionClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
@@ -18,6 +22,8 @@ function HomeDeliveryComponent() {
     <div className="accordion">
       <AccordionPendingDistributions onClick={handleAccordionClick} />
       <AccordionHistoryDistributions onClick={handleAccordionClick} />
+      {}
+
       <Link href="/get-packages">
         <button className="greenButton">Obtener Paquetes</button>
       </Link>

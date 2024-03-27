@@ -18,6 +18,7 @@ type Package = {
   package_code: string;
   status: string;
   driver_id: number;
+  id: string | undefined
 };
 
 function PackagesAdmin() {
@@ -73,7 +74,7 @@ function PackagesAdmin() {
           {packages.map((individualPackage, index)=> (
             <AccordionPackageItem
             key={index}
-            package_code={individualPackage.package_code}
+            id={individualPackage.id}
             address={individualPackage.address}
             city={individualPackage.city}
             additionalElement={<TrashIcon style={{ marginBottom: "17px", cursor: "pointer"}} onClick={handleDeletePackage}/>}

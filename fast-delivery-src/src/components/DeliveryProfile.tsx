@@ -17,7 +17,7 @@ import DeliveriesHistory from "@/components/DeliveriesHistory";
 import PendingDeliveries from "@/components/PendingDeliveries";
 
 type User = {
-  id: number;
+  id: number | undefined;
   name: string;
   last_name: string;
   role: string;
@@ -40,8 +40,22 @@ const DeliveryProfile = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const fetchedUser = await getUserById(2);
-        setUser(fetchedUser);
+        const currentURL = window.location.href;
+        if (currentURL) {
+          const urlParts = currentURL.split("/");
+          if (urlParts && urlParts.length > 0) {
+            const userId = urlParts[urlParts.length - 1];
+            const fetchedUser = await getUserById(userId);
+            setUser(fetchedUser);
+            setIsChecked(fetchedUser.status === "Free" ? true : false);
+          } else {
+            console.error("No se pudo dividir la URL");
+          }
+        } else {
+          console.error("No se pudo obtener la URL actual");
+        }
+        // const fetchedUser = await getUserById(2);
+        // setUser(fetchedUser);
       } catch (error) {
         console.error("Error al obtener el repartidor solicitado:", error);
       }
@@ -52,13 +66,15 @@ const DeliveryProfile = () => {
   const handleSwitchChange = async () => {
     try {
       if (isChecked) {
-        await updateUser(2, { status: "Disabled" });
+        await updateUser(user?.id, { status: "Disabled" });
         setIsChecked(false);
         setUserStatus("Disabled");
+        window.location.reload();
       } else {
-        await updateUser(2, { status: "Free" });
+        await updateUser(user?.id, { status: "Free" });
         setIsChecked(true);
         setUserStatus("Free");
+        window.location.reload();
       }
     } catch (error) {
       console.error("Error al cambiar el estado del repartidor:", error);
