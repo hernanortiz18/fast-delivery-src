@@ -21,11 +21,10 @@ type Package = {
   package_code: string;
   status: string;
   driver_id: number;
+  id: string | undefined;
 };
 
-function PendingDeliveries({
-  onClick,
-}: PendingDistributionsProps) {
+function PendingDeliveries({ onClick }: PendingDistributionsProps) {
   const [openSection, setOpenSection] = useState(0);
   const [packages, setPackages] = useState<Package[]>([]);
 
@@ -61,8 +60,6 @@ function PendingDeliveries({
         changeStatus(4, "On Course");
         window.location.reload();
       }, 2000);
-
-      
     } catch (error) {
       console.error(`Error al iniciar el reparto del paquete`, error);
       setTimeout(() => {
@@ -84,7 +81,9 @@ function PendingDeliveries({
         toast.error("Error al eliminar el paquete");
       }, 2000);
     }
-  }
+  };
+
+  const handleClickPackage = () => {};
   return (
     <div className="accordion-box-top">
       <div className="box-title" onClick={handleClick}>
@@ -94,7 +93,7 @@ function PendingDeliveries({
 
       {(openSection === 1 || openSection === 3) && (
         <>
-         {packages.length === 0 ? (
+          {packages.length === 0 ? (
             <h3
               style={{
                 fontFamily: "Poppins",
@@ -111,8 +110,9 @@ function PendingDeliveries({
           <ul>
             {packages.map((individualPackage, index) => (
               <AccordionPackageItem
+                onClick={handleClickPackage}
                 key={index}
-                package_code={individualPackage.package_code}
+                id={individualPackage.id}
                 address={individualPackage.address}
                 city={individualPackage.city}
                 tags={
@@ -127,7 +127,10 @@ function PendingDeliveries({
                 }
                 additionalElement={
                   individualPackage.status === "On Course" ? (
-                    <TrashIcon style={{ cursor: "pointer" }} onClick={handleDeletePackage}/>
+                    <TrashIcon
+                      style={{ cursor: "pointer" }}
+                      onClick={handleDeletePackage}
+                    />
                   ) : (
                     <button
                       className="greenButtonSmall"

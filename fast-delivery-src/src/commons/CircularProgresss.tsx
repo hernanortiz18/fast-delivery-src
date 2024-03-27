@@ -12,11 +12,12 @@ function CircularProgresss(props: CircularProgressProps) {
   CircularProgress.propTypes = {
     percentage: PropTypes.number.isRequired,
   };
+  const formattedPercentage = Math.min(100, Math.max(0, props.percentage)).toString().slice(0, 4);
 
   return (
     <div>
       <CircularProgress value={props.percentage} size="71px" color="green.400">
-        <CircularProgressLabel>{`${props.percentage}%`}</CircularProgressLabel>
+        <CircularProgressLabel>{`${formattedPercentage}%`}</CircularProgressLabel>
       </CircularProgress>
     </div>
   );

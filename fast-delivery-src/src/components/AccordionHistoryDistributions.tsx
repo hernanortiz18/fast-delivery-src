@@ -77,6 +77,7 @@ function AccordionHistoryDistributions({
           )}
           <ul>
             {packages.map((individualPackage, index) => (
+              <Link href={`/delivery-map/${individualPackage.id}`}>
               <AccordionPackageItem
                 key={index}
                 id={individualPackage.id}
@@ -89,6 +90,8 @@ function AccordionHistoryDistributions({
                   individualPackage.status === "Delivered" ? "Entregado" : ""
                 }
               />
+              </Link>
+              
             ))}
           </ul>
         </>

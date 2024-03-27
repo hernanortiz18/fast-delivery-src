@@ -8,7 +8,7 @@ type PackageData = {
   client_name?: string;
   weight?: string;
   delivery_date?: string;
-  id?: number;
+  id?: number | null;
   driver_id?: number;
   status?: string;
 };
@@ -72,7 +72,7 @@ export const getPackageByStatus = async (status: string) => {
 };
 
 //get packages By driver
-export const getPackagesByDriver = async (driver_id: Number | null) => {
+export const getPackagesByDriver = async (driver_id: Number | null | undefined) => {
   try {
     const response = await axios.get(`${API_URL}/driver/${driver_id}`, {
       withCredentials: true,
@@ -107,7 +107,7 @@ export const createPackage = async (packageData: PackageData) => {
 
 // start delivery (put)
 export const startDelivery = async (
-  idsArray: number[],
+  idsArray: (number | undefined)[] ,
   userId: Number | null
 ) => {
   try {
@@ -127,7 +127,7 @@ export const startDelivery = async (
 };
 
 // change status (put)
-export const changeStatus = async (id: number | string, newStatus: string) => {
+export const changeStatus = async (id: number | string | undefined, newStatus: string) => {
   try {
     const response = await axios.put(
       `${API_URL}/status/${id}`,

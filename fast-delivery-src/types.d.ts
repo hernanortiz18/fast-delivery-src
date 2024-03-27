@@ -12,5 +12,6 @@ export interface PackageProps {
   status?: string;
   id: string | undefined;
   setTickedPackages: React.Dispatch<React.SetStateAction<never[]>>;
-  tickedPackages: never[]
+  tickedPackages: never[];
+  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }

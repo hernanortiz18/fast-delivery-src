@@ -10,8 +10,7 @@ import { ToastContainer, Zoom, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { PackageProps } from "../../types";
 import { useAppSelector } from "@/redux/hooks";
-import Link from "next/link";
-
+import { useRouter } from "next/navigation";
 
 type AccordionPendingDistributionsProps = {
   onClick: () => void;
@@ -24,6 +23,7 @@ function AccordionPendingDistributions({
   const [packages, setPackages] = useState<PackageProps[]>([]);
 
   const user = useAppSelector((state) => state.user);
+  const router = useRouter();
 
   const handleClick = () => {
     setOpenSection(openSection === 1 ? 0 : 1);
@@ -53,7 +53,7 @@ function AccordionPendingDistributions({
     e
   ) => {
     try {
-      toast.success("¡Felicitaciones! Ya puede ir a repartir su paquete.");
+      toast.success("Ya puede ir a repartir su paquete.");
       const button = e.target as HTMLButtonElement;
       setTimeout(() => {
         changeStatus(button.id, "On Course");
@@ -67,11 +67,14 @@ function AccordionPendingDistributions({
     }
   };
 
-  const handleDeletePackage = async () => {
+  const handleDeletePackage: React.MouseEventHandler<SVGSVGElement> = async (
+    e
+  ) => {
     try {
       toast.info("Paquete eliminado correctamente");
+      const button = e.target as HTMLButtonElement;
       setTimeout(() => {
-        changeStatus(4, "Free");
+        changeStatus(button.id, "Free");
         window.location.reload();
       }, 2000);
     } catch (error) {
@@ -107,6 +110,9 @@ function AccordionPendingDistributions({
           <ul>
             {packages.map((individualPackage, index) => (
               <AccordionPackageItem
+                onClick={() =>
+                  router.push(`/delivery-map/${individualPackage.id}`)
+                }
                 key={index}
                 id={individualPackage.id}
                 address={individualPackage.address}

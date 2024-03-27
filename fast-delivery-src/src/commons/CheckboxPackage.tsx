@@ -16,17 +16,22 @@ function CheckboxPackage(props: PackageProps) {
       props.setTickedPackages(filteredArr);
     }
   };
+
+  const handleClick = () => {
+
+  }
   return (
-    <div className="box-rectangle">
+    <div className="box-rectangle"  style={{cursor: "pointer"}}>
       <div className="checkbox-container">
         <input
           type="checkbox"
           className="input-checkbox"
           onChange={handleCheckbox}
           checked={tick}
+          style={{cursor: "pointer"}}
         />
       </div>
-      <div>
+      <div onClick={props.onClick} style={{width: "100%"}}>
         <h2 className="box-content">{props.address},</h2>
         <h2 className="box-content">{props.city}</h2>
       </div>
